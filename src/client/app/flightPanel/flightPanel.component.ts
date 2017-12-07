@@ -18,7 +18,6 @@ export class FlightPanelComponent {
 
   flightQuery = new flightModel();
 
-
   private JSONUrl = '/assets/flights-copy.json';
   constructor (private http: HttpClient) {};
   search() {
