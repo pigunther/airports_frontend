@@ -16,6 +16,7 @@ export class FlightPanelComponent {
   result = 'empty';
   price = -1;
 
+
   flightQuery = new flightModel();
 
   private JSONUrl = '/assets/flights-copy.json';
