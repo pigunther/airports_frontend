@@ -1,0 +1,29 @@
+[
+  {
+    "departureDate": 1273185387,
+    "arrivalDate": 1273185387,
+    "cityFrom": "Москва",
+    "cityTo": "Город",
+    "airportTo": "VKO",
+    "airportFrom": "AAA",
+    "price": 0
+  },
+  {
+    "departureDate": 1273185387,
+    "arrivalDate": 1273185387,
+    "cityFrom": "Москва",
+    "cityTo": "Город",
+    "airportTo": "SVO",
+    "airportFrom": "AAA",
+    "price": 10
+  },
+  {
+    "departureDate":  1273185386,
+    "arrivalDate":  1273185387,
+    "cityFrom": "string",
+    "cityTo": "string",
+    "airportTo": "string",
+    "airportFrom": "string",
+    "price": 1
+  }
+]

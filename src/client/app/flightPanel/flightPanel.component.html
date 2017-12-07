@@ -1,0 +1,62 @@
+<div class="p-toolbar">
+<p-toolbar>
+  <div class="flightPanel">
+    <input type="text" pInputText placeholder="Откуда" [(ngModel)]="flightQuery.cityFrom" class="flightPanel-first"/>
+    <input type="text" pInputText placeholder="Куда" [(ngModel)]="flightQuery.cityTo"/>
+    <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureDate" [minDate]="flightQuery.departureDate" class="flightPanel-first"></p-calendar>
+    <p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalDate" [minDate]="flightQuery.departureDate"></p-calendar>
+
+
+    <button type="button" (click)="search()" class="flightPanel-in flightPanel-first btn">Поиск</button>
+
+
+  </div>
+
+</p-toolbar>
+</div>
+<div *ngIf="result !== 'empty'">
+  <h3>{{ result }}</h3>
+</div>
+
+<ul *ngIf="flights">
+  <table class="mainTable">
+    <tr>
+      <td class="flightFilter">
+        <div class="flightFilter-divs">
+          <p>Фильтры</p>
+        </div>
+        <div class="flightFilter-price flightFilter-divs ">
+          <p>Максимальная цена: {{flightQuery.price}}</p>
+          <p-slider [(ngModel)]="flightQuery.price" [min]="100" max="100000"></p-slider>
+        </div>
+        <div class="flightFilter-divs ">
+          <p>Eще ...</p>
+        </div>
+
+        <div class="flightFilter-divs">
+          <button type="button" (click)="search()" class="btn">Обновить</button>
+        </div>
+
+
+
+      </td>
+      <td>
+        <li *ngFor="let flight of flights" class="main">
+
+          <table class="flightTicket">
+            <tr>
+              <div class="flightTicket-text flightTicket-text_margin">{{ flight.cityFrom }}</div>
+              <div class="flightTicket-text flightTicket-text_margin">{{ flight.cityTo }}</div>
+              <div class="flightTicket-text flightTicket-text_margin">{{ flight.departureDate }}</div>
+              <div class="flightTicket-text flightTicket-text_margin">{{ flight.arrivalDate }}</div>
+            </tr>
+            <tr>
+              <div class="flightTicket-text">{{ flight.airportFrom }}</div>
+              <div class="flightTicket-text">{{ flight.airportTo }}</div>
+            </tr>
+          </table>
+        </li>
+      </td>
+    </tr>
+  </table>
+</ul>

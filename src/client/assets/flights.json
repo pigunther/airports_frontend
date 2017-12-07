@@ -1,0 +1,14 @@
+{
+  "Flight": [
+  {
+    "cityFrom": "Москва",
+    "cityTo": "Владивосток",
+    "departureDate":"01.01.18",
+    "arrivalDate": "02.01.18"},
+  {
+    "cityFrom": "Москва",
+    "cityTo": "Владивосток",
+    "departureDate":"02.01.18",
+    "arrivalDate": "20.01.18"}
+  ]
+}

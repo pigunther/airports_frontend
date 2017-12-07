@@ -1,0 +1,110 @@
+$blue-color: #106cc8;
+$border-radius: 5px;
+
+:host {
+  display: block;
+  padding: 0 16px;
+}
+
+input {
+  width: 250px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 8px;
+}
+.p-toolbar {
+  background-color: lightblue;
+ // background-image: url(../../assets/img/10665_big.jpg);
+  background-repeat: no-repeat;
+  background-position-y: -500px;
+  background-size: cover;
+}
+
+// TODO doesn't work
+p-calendar {
+  border-radius: $border-radius;
+}
+
+// TODO doesn't work
+p-calendar table {
+  background-color: white !important;
+}
+.flightPanel {
+  margin: 20px 20px 20px 20px;
+  //border: groove;
+}
+
+input {
+  color: black;
+  font-weight: normal;
+  border-radius: $border-radius;
+  border: none;
+  height: 29px;
+}
+.flightPanel-in {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.flightPanel-first {
+  margin-left: 20px;
+}
+
+.flightTicket {
+  //border: groove;
+  //width: 120%;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 130px;
+  background-color: beige;
+  margin-left: 1%;
+}
+
+div.flightTicket-text{
+  margin-left: 20px;
+  width: 200px;
+  float: left;
+  margin-bottom: 10px;
+  /*display: inline-block;*/
+}
+div.flightTicket-text_margin{
+  margin-top: 40px;
+}
+
+.btn {
+  background-color: $blue-color;
+  color: white;
+}
+
+
+.mainTable {
+  width: 100%;
+}
+
+.flightFilter {
+  border-right: 1px solid $blue-color;
+  width: 250px;
+  height: 200px;
+  padding-top: 0px;
+}
+
+.flightFilter-price {
+  //margin-top: -70%;
+}
+.flightFilter-divs {
+  width: 75%;
+  margin-left: 10%;
+  //border: groove;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
