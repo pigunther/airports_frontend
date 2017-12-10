@@ -6,10 +6,6 @@ $border-radius: 5px;
   padding: 0 16px;
 }
 
-input {
-  width: 250px;
-}
-
 ul {
   list-style-type: none;
   padding: 0 0 0 8px;
@@ -22,26 +18,25 @@ ul {
   background-size: cover;
 }
 
-// TODO doesn't work
-p-calendar {
-  border-radius: $border-radius;
+p-calendar .p-calendar-style input{
+  width: 200px;
+}
+p-calendar .p-calendar-style .ui-datepicker {
+  background-color: white;
 }
 
-// TODO doesn't work
-p-calendar table {
-  background-color: white !important;
-}
 .flightPanel {
   margin: 20px 20px 20px 20px;
   //border: groove;
 }
 
-input {
+.flightPanel-input {
   color: black;
   font-weight: normal;
   border-radius: $border-radius;
   border: none;
   height: 29px;
+  width: 200px;
 }
 .flightPanel-in {
   margin-top: 10px;
@@ -78,7 +73,6 @@ div.flightTicket-text_margin{
   color: white;
 }
 
-
 .mainTable {
   width: 100%;
 }
@@ -87,19 +81,19 @@ div.flightTicket-text_margin{
   border-right: 1px solid $blue-color;
   width: 250px;
   height: 200px;
-  padding-top: 0px;
+  padding-top: 0;
 }
 
-.flightFilter-price {
-  //margin-top: -70%;
-}
 .flightFilter-divs {
   width: 75%;
   margin-left: 10%;
-  //border: groove;
+  border: groove;
   margin-bottom: 20px;
 }
 
+p-slider {
+  border: solid;
+}
 
 
 

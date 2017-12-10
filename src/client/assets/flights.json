@@ -1,14 +1,34 @@
-{
-  "Flight": [
+[
   {
-    "cityFrom": "Москва",
-    "cityTo": "Владивосток",
-    "departureDate":"01.01.18",
-    "arrivalDate": "02.01.18"},
-  {
-    "cityFrom": "Москва",
-    "cityTo": "Владивосток",
-    "departureDate":"02.01.18",
-    "arrivalDate": "20.01.18"}
-  ]
-}
+    "id":7,
+    "airportFromId":11,
+    "airportToId":1,
+    "departureTime":33096028393000,
+    "arrivalTime":33096075193000,
+    "cost":1313.13,
+    "airline":null,
+    "alwaysLate":null,
+    "freePlace":null,
+    "airportFromObject":
+      {
+        "id":11,
+        "name":"Быково",
+        "cityId":62,
+        "parallel":55.617222,
+        "meridian":38.059999,
+        "cityName": "Москва"
+      },
+    "airportToObject":
+      {
+        "id":1,
+        "name":"Витязево",
+        "cityId":6,
+        "parallel":45.00209699999999912733983364887535572052001953125,
+        "meridian":37.347272,
+        "cityName":"Анапа"
+      }
+  }
+]
+
+
+

@@ -1,15 +1,27 @@
+import {airportModel} from "./airportModel";
+
 export class flightModel {
-  departureDate: Date;
-  arrivalDate: Date;
+  departureTime: Date;
+  arrivalTime: Date;
   cityFrom: string;
   cityTo: string;
-  airportTo: string;
-  airportFrom: string;
-  price: number;
+  cost: number;
+  id: number;
+  airoportFromId: number;
+  airoportToId: number;
+  airline: string;
+  alwayslate: boolean;
+  freePlace: number;
+
+  airportFromObject: airportModel;
+  airportToObject: airportModel;
 
   constructor () {
-    this.departureDate=new Date();
-    this.price = 100000;
+    this.departureTime=new Date();
+    this.cost = 100000;
+    this.airportFromObject = new airportModel();
+    this.airportToObject = new airportModel();
   }
+
 
 }

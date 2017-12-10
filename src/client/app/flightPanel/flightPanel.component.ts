@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { flightModel } from '../components/models/flightModel';
 
@@ -6,6 +6,7 @@ import { flightModel } from '../components/models/flightModel';
 
 @Component({
   moduleId: module.id,
+  encapsulation: ViewEncapsulation.None,
   selector: 'sd-flightPanel',
   templateUrl: 'flightPanel.component.html',
   styleUrls: ['flightPanel.component.css'],
@@ -14,71 +15,39 @@ export class FlightPanelComponent {
 
   flights: flightModel[];
   result = 'empty';
-  price = -1;
-
+  price: number;
 
   flightQuery = new flightModel();
 
-  private JSONUrl = '/assets/flights-copy.json';
+  private JSONUrl = '/assets/flights.json';
   constructor (private http: HttpClient) {};
   search() {
     this.flights = null;
-    this.result = `${this.flightQuery.cityFrom} ${this.flightQuery.cityTo} ${this.flightQuery.departureDate} ${this.flightQuery.arrivalDate} ${this.flightQuery.price}`;
+    this.result = `${this.flightQuery.airportFromObject.cityName} ${this.flightQuery.airportToObject.cityName} ${this.flightQuery.departureTime} ${this.flightQuery.arrivalTime} ${this.flightQuery.cost}`;
 
     console.log('button click');
-    console.log(this.flightQuery.departureDate.toDateString());
+    console.log(this.flightQuery.departureTime.toDateString());
 
-    // this.http.get(this.JSONUrl).subscribe((data: flightModel[]) => {
-    //   // Read the result field from the JSON response.
-    //
-    //   this.flights = data;
-    //   for (let i = 0; i < this.flights.length; i++) {
-    //     //this.flights[i];
-    //     this.flights[i].departureDate = new Date(1000*this.flights[i].departureDate.valueOf());
-    //     this.flights[i].arrivalDate = new Date(1000*this.flights[i].arrivalDate.valueOf());
-    //     console.log(this.flights[i]);
-    //   }
-    // });
+    this.http.get(this.JSONUrl).subscribe((data: flightModel[]) => {
+    //this.http.get(this.JSONUrl).toPromise().then((data: flightModel[]) => {
+      // Read the result field from the JSON response.
 
-    this.httpGet(this.JSONUrl)
-      .then((response: string) => {
-        this.flights = JSON.parse(response);
-        for (let i = 0; i < this.flights.length; i++) {
-          //this.flights[i];
-          this.flights[i].departureDate = new Date(1000*this.flights[i].departureDate.valueOf());
-          this.flights[i].arrivalDate = new Date(1000*this.flights[i].arrivalDate.valueOf());
-          console.log(this.flights[i]);
-        }
-        return this.flights;
-      })
-      .catch(error => {
-        alert(error);
-      })
-
-  }
-
-  //return promise for get query
-  httpGet(url: string) {
-    return new Promise(function(resolve, reject) {
-
-      let xhr = new XMLHttpRequest();
-      xhr.open('GET', url, true);
-
-      xhr.onload = function() {
-        if (this.status == 200) {
-          resolve(this.response);
-        } else {
-          let error = new Error(this.statusText);
-          reject(error);
-        }
-      };
-
-      xhr.onerror = function() {
-        reject(new Error("Network Error"));
-      };
-
-      xhr.send();
+      this.flights = data;
+      for (let i = 0; i < this.flights.length; i++) {
+        //this.flights[i];
+        this.flights[i].departureTime = new Date(this.flights[i].departureTime.valueOf());
+        this.flights[i].arrivalTime = new Date(this.flights[i].arrivalTime.valueOf());
+        console.log(this.flights[i]);
+      }
     });
-  }
+  /*
 
+  TODO
+  добавить подсказки к поиску города
+  p-slider?
+
+
+   */
+
+  }
 }
