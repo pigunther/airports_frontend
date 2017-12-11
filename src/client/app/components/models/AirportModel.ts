@@ -1,4 +1,4 @@
-export  class airportModel {
+export  class AirportModel {
   id: number;
   name: string;
   cityId: number;

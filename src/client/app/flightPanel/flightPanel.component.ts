@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { flightModel } from '../components/models/flightModel';
+import { FlightModel } from '../components/models/FlightModel';
 
 
 
@@ -13,11 +13,11 @@ import { flightModel } from '../components/models/flightModel';
 })
 export class FlightPanelComponent {
 
-  flights: flightModel[];
+  flights: FlightModel[];
   result = 'empty';
   price: number;
 
-  flightQuery = new flightModel();
+  flightQuery = new FlightModel();
 
   private JSONUrl = '/assets/flights.json';
   constructor (private http: HttpClient) {};
@@ -28,16 +28,21 @@ export class FlightPanelComponent {
     console.log('button click');
     console.log(this.flightQuery.departureTime.toDateString());
 
-    this.http.get(this.JSONUrl).subscribe((data: flightModel[]) => {
-    //this.http.get(this.JSONUrl).toPromise().then((data: flightModel[]) => {
+    this.http.get(this.JSONUrl).subscribe((data: FlightModel[]) => {
+    //this.http.get(this.JSONUrl).toPromise().then((data: FlightModel[]) => {
       // Read the result field from the JSON response.
 
       this.flights = data;
-      for (let i = 0; i < this.flights.length; i++) {
-        //this.flights[i];
-        this.flights[i].departureTime = new Date(this.flights[i].departureTime.valueOf());
-        this.flights[i].arrivalTime = new Date(this.flights[i].arrivalTime.valueOf());
-        console.log(this.flights[i]);
+      // for (let i = 0; i < this.flights.length; i++) {
+      //   //this.flights[i];
+      //   this.flights[i].departureTime = new Date(this.flights[i].departureTime.valueOf());
+      //   this.flights[i].arrivalTime = new Date(this.flights[i].arrivalTime.valueOf());
+      //   console.log(this.flights[i]);
+      // }
+      for (let flighti of this.flights) {
+        flighti.departureTime = new Date(flighti.departureTime);
+        flighti.arrivalTime = new Date(flighti.arrivalTime);
+        console.log(flighti);
       }
     });
   /*

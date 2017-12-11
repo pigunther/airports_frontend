@@ -1,8 +1,6 @@
 [
   {
     "id":7,
-    "airportFromId":11,
-    "airportToId":1,
     "departureTime":33096028393000,
     "arrivalTime":33096075193000,
     "cost":1313.13,
