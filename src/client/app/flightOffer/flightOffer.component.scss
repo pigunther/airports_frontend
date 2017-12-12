@@ -1,0 +1,78 @@
+$blue-color: #106cc8;
+$blue-color-darker: #0f478e;
+$border-radius: 5px;
+
+:host {
+  display: block;
+  padding: 0 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 8px;
+}
+
+p-calendar .p-calendar-style input{
+  width: 200px;
+}
+
+p-calendar .p-calendar-style .ui-datepicker {
+  background-color: white;
+}
+
+.flightTicket {
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: beige;
+  margin-left: 1%;
+  display: block;
+  height: 120px !important;
+}
+
+div.flightTicket-text{
+  margin-left: 20px;
+  width: 200px;
+  float: left;
+  margin-bottom: 10px;
+  /*display: inline-block;*/
+}
+
+
+div.flightTicket-text_margin{
+  margin-top: 40px;
+  //margin-bottom: -20px;
+}
+
+
+.flightTicket .flightTicket-addition {
+  visibility: hidden;
+  opacity: 1;
+}
+
+
+.flightTicket:hover .flightTicket-addition {
+  background-color: white;
+  border: 1px solid black;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top:none;
+  position: relative;
+  visibility: visible;
+  width: 200px;
+  padding: 20px 20px 20px 20px;
+
+}
+
+
+.btn, .btn:hover, .btn:focus {
+  background-color: $blue-color;
+  color: white;
+
+}
+
+.btn-white {
+  border: 1px solid #bfd7f2;
+}
+
+
+
