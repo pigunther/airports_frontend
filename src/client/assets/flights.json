@@ -32,8 +32,8 @@
     "arrivalTime":33096075193000,
     "cost":1313.13,
     "airline":null,
-    "alwaysLate":null,
-    "freePlace":null,
+    "alwaysLate":true,
+    "freePlace":10,
     "airportFromObject":
     {
       "id":11,
