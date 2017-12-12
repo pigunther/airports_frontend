@@ -7,6 +7,7 @@ import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {FlightOfferModule} from "../flightOffer/flightOffer.module";
 
 @NgModule({
   imports: [FlightPanelRoutingModule,
@@ -20,7 +21,8 @@ import {CommonModule} from "@angular/common";
             TooltipModule,
             CalendarModule,
             AutoCompleteModule,
-            SliderModule
+            SliderModule,
+            FlightOfferModule
             ],
   declarations: [FlightPanelComponent],
   exports: [FlightPanelComponent],

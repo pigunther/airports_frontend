@@ -7,10 +7,7 @@ $border-radius: 5px;
   padding: 0 16px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0 0 0 8px;
-}
+
 div.p-toolbar .ui-toolbar{
   background-color: lightblue;
   background-image: url(../../assets/img/10665_big.jpg);
@@ -46,28 +43,6 @@ p-calendar .p-calendar-style .ui-datepicker {
 
 .flightPanel-first {
   margin-left: 20px;
-}
-
-.flightTicket {
-  //border: groove;
-  //width: 120%;
-  border-radius: 5px;
-  margin-top: 10px;
-  height: 130px;
-  background-color: beige;
-  margin-left: 1%;
-}
-
-div.flightTicket-text{
-  margin-left: 20px;
-  width: 200px;
-  float: left;
-  margin-bottom: 10px;
-  /*display: inline-block;*/
-}
-div.flightTicket-text_margin{
-  margin-top: 40px;
-  margin-bottom: -20px;
 }
 
 .btn, .btn:hover, .btn:focus {

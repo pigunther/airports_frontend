@@ -18,7 +18,7 @@
   <!--<h3>{{ result }}</h3>-->
 <!--</div>-->
 
-<ul *ngIf="flights">
+
   <table class="mainTable">
     <tr>
       <td class="flightFilter">
@@ -39,22 +39,9 @@
 
       </td>
       <td>
-        <li *ngFor="let flight of flights" class="main">
 
-          <table class="flightTicket">
-            <tr>
-              <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportFromObject.cityName }}</div>
-              <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportToObject.cityName }}</div>
-              <div class="flightTicket-text flightTicket-text_margin">{{ formatDate(flight.departureTime) }}</div>
-              <div class="flightTicket-text flightTicket-text_margin">{{ formatDate(flight.arrivalTime) }}</div>
-            </tr>
-            <tr>
-              <div class="flightTicket-text">{{ flight.airportFromObject.name }}</div>
-              <div class="flightTicket-text">{{ flight.airportToObject.name }}</div>
-            </tr>
-          </table>
-        </li>
+        <sd-flightOffer [flights]="flights"></sd-flightOffer>
+
       </td>
     </tr>
   </table>
-</ul>

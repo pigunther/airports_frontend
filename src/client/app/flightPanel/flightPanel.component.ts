@@ -33,12 +33,6 @@ export class FlightPanelComponent {
       // Read the result field from the JSON response.
 
       this.flights = data;
-      // for (let i = 0; i < this.flights.length; i++) {
-      //   //this.flights[i];
-      //   this.flights[i].departureTime = new Date(this.flights[i].departureTime.valueOf());
-      //   this.flights[i].arrivalTime = new Date(this.flights[i].arrivalTime.valueOf());
-      //   console.log(this.flights[i]);
-      // }
       for (let flighti of this.flights) {
         flighti.departureTime = new Date(flighti.departureTime);
         flighti.arrivalTime = new Date(flighti.arrivalTime);
@@ -50,11 +44,6 @@ export class FlightPanelComponent {
   добавить подсказки к поиску города
    */
 
-  }
-
-  formatDate(date: Date) {
-    return date.getDate().toString() + '.' + date.getMonth().toString() + '.' + date.getFullYear().toString() +
-      '   ' + date.getHours().toString() + ':' + date.getMinutes().toString();
   }
 
 }
