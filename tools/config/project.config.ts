@@ -41,6 +41,7 @@ export class ProjectConfig extends SeedConfig {
       {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
       { src: 'primeng/resources/primeng.css', inject: true },
       //{ src: 'primeng/resources/themes/redmond/theme.css', inject: true },
+      { src: 'primeng/resources/themes/bootstrap/theme.css', inject: true },
       { src: 'font-awesome/css/font-awesome.min.css', inject: true },
     ];
 

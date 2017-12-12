@@ -1,4 +1,5 @@
 $blue-color: #106cc8;
+$blue-color-darker: #0f478e;
 $border-radius: 5px;
 
 :host {
@@ -10,11 +11,11 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
-.p-toolbar {
+div.p-toolbar .ui-toolbar{
   background-color: lightblue;
- // background-image: url(../../assets/img/10665_big.jpg);
+  background-image: url(../../assets/img/10665_big.jpg);
   background-repeat: no-repeat;
-  background-position-y: -500px;
+  background-position-y: -480px;
   background-size: cover;
 }
 
@@ -66,14 +67,21 @@ div.flightTicket-text{
 }
 div.flightTicket-text_margin{
   margin-top: 40px;
+  margin-bottom: -20px;
 }
 
-.btn {
+.btn, .btn:hover, .btn:focus {
   background-color: $blue-color;
   color: white;
 }
 
+.btn-white {
+  border: 1px solid #bfd7f2;
+}
+
+
 .mainTable {
+  margin-top: 40px;
   width: 100%;
 }
 
@@ -81,20 +89,26 @@ div.flightTicket-text_margin{
   border-right: 1px solid $blue-color;
   width: 250px;
   height: 200px;
-  padding-top: 0;
+  padding-top: 10px;
+  vertical-align: text-top;
 }
 
 .flightFilter-divs {
   width: 75%;
-  margin-left: 10%;
-  border: groove;
+  margin-left: 10%  ;
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $blue-color;
 }
 
-p-slider {
-  border: solid;
+h4 {
+  color: $blue-color-darker;
+  font-family: Geneva, Arial, sans-serif;
 }
 
+//table.flightTicket:nth-child(2) div{
+//  margin-bottom: 20px;
+//}
 
 
 
