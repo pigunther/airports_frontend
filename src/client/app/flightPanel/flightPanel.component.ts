@@ -46,13 +46,15 @@ export class FlightPanelComponent {
       }
     });
   /*
-
   TODO
   добавить подсказки к поиску города
-  p-slider?
-
-
    */
 
   }
+
+  formatDate(date: Date) {
+    return date.getDate().toString() + '.' + date.getMonth().toString() + '.' + date.getFullYear().toString() +
+      '   ' + date.getHours().toString() + ':' + date.getMinutes().toString();
+  }
+
 }
