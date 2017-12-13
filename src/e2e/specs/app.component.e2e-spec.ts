@@ -8,7 +8,7 @@ describe('App', () => {
 
   it('should have a title', async () => {
     const title = await browser.getTitle();
-    expect(title).toEqual('Welcome to angular-seed!');
+    expect(title).toEqual('Flight search');
   });
 
   it('should have <nav>', async () => {
