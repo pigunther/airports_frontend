@@ -31,7 +31,7 @@
     "departureTime":33096028393000,
     "arrivalTime":33096075193000,
     "cost":1313.13,
-    "airline":null,
+    "airline":"A",
     "alwaysLate":true,
     "freePlace":10,
     "airportFromObject":
