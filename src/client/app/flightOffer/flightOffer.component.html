@@ -6,18 +6,23 @@
         <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportToObject.cityName }}</div>
         <div class="flightTicket-text flightTicket-text_margin">{{ flight.departureTime | date:'short' }}</div>
         <div class="flightTicket-text flightTicket-text_margin">{{ flight.arrivalTime | date:'short'}}</div>
+
       </tr>
       <tr>
-        <div class="flightTicket-text flightTicket-bottomtext">{{ flight.airportFromObject.name }}</div>
-        <div class="flightTicket-text flightTicket-bottomtext">{{ flight.airportToObject.name }}</div>
+        <div class="flightTicket-text">{{ flight.airportFromObject.name }}</div>
+        <div class="flightTicket-text">{{ flight.airportToObject.name }}</div>
       </tr>
-      <div class="flightTicket-addition">
-        <!--<h4> доп инфа </h4>-->
-        <p>Цена: {{flight.cost}}</p>
-        <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
-        <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
-        <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+
+      <div class=" flightTicket-addition">
+        <div class="addition-container">
+          <!--<h4> доп инфа </h4>-->
+          <p>Цена: {{flight.cost}}</p>
+          <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
+          <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
+          <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+        </div>
       </div>
+
     </table>
   </li>
 </ul>
