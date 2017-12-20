@@ -60,7 +60,7 @@ div.flightTicket-text_margin{
   visibility: visible;
 }
 
-.flightTicket-addition .addition-container {
+.addition-container {
   height: $flightTicket-height;
   width: 200px;
   position: relative;
@@ -84,3 +84,8 @@ div.flightTicket-text_margin{
 
 
 
+.ui-dialog {
+  position: relative !important;
+  //width: 300px !important;
+  //left: -500px;
+}

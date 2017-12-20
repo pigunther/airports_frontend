@@ -14,6 +14,7 @@ import { PanelModule, ToolbarModule } from 'primeng/primeng';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlightPanelModule } from './flightPanel/flightPanel.module';
+import { AirportMapModule } from './cityMap/airportMap.module';
 
 @NgModule({
   imports: [BrowserModule,
@@ -22,6 +23,8 @@ import { FlightPanelModule } from './flightPanel/flightPanel.module';
             AboutModule,
             HomeModule,
             FlightPanelModule,
+            AirportMapModule,
+
             PanelModule,
             ToolbarModule,
             SharedModule.forRoot(),

@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { FlightPanelComponent } from './flightPanel.component';
-import { FlightPanelRoutingModule } from './flightPanel-routing.module';
+import { FlightPanelRoutingModule } from './adminPanel-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
 import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule } from 'primeng/primeng';

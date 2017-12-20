@@ -14,6 +14,21 @@ import { FlightModel } from '../components/models/FlightModel';
 })
 export class FlightOfferComponent {
 
-  @Input() flights: FlightModel[];
+  dialogVisible: boolean;
 
+  @Input() flight: FlightModel;
+
+  mouseover() {
+    this.dialogVisible = true;
+  }
+
+  mouseout() {
+    this.dialogVisible = false;
+  }
+
+/*
+
+TODO
+добавить окно внизу с картой
+ */
 }

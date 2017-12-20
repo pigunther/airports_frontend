@@ -1,7 +1,10 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
-import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule } from 'primeng/primeng';
+import {
+  PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule,
+  DialogModule
+} from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -19,7 +22,8 @@ import {FlightOfferComponent} from "./flightOffer.component";
             TooltipModule,
             CalendarModule,
             AutoCompleteModule,
-            SliderModule
+            SliderModule,
+            DialogModule
             ],
   declarations: [FlightOfferComponent],
   exports: [FlightOfferComponent],
