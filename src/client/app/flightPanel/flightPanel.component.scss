@@ -12,9 +12,9 @@ div.p-toolbar .ui-toolbar{
   background-color: lightblue;
   background-image: url(../../assets/img/10665_big.jpg);
   background-repeat: no-repeat;
-  background-position-y: -480px;
+  background-position-y: -550px;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 p-calendar .p-calendar-style input{
@@ -80,6 +80,16 @@ p-calendar .p-calendar-style .ui-datepicker {
 h4 {
   color: $blue-color-darker;
   font-family: Geneva, Arial, sans-serif;
+}
+
+.flightTabPanel {
+  padding-top: 10px;
+  padding-left: 20px;
+  vertical-align: text-top;
+  top:160px;
+  width: 1000px;
+  position: absolute;
+  overflow: auto;
 }
 
 //table.flightTicket:nth-child(2) div{

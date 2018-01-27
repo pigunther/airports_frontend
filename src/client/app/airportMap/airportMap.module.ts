@@ -1,6 +1,5 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {AirportMapComponent} from './airportMap.component';
-import { AirportMapRoutingModule } from './airportMap-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
 import {
@@ -14,7 +13,7 @@ import {FlightOfferModule} from "../flightOffer/flightOffer.module";
 import {FlightLoadService} from "../services/FlightLoad.service";
 
 @NgModule({
-  imports: [AirportMapRoutingModule,
+  imports: [
             SharedModule,
             CommonModule,
             RouterModule,

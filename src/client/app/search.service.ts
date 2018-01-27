@@ -1,6 +1,5 @@
 
 import {Injectable, OnInit} from '@angular/core';
-import { Flight } from './Flight';
 import 'rxjs/add/operator/toPromise';
 import { Http } from '@angular/http';
 import {HttpClient} from "@angular/common/http";

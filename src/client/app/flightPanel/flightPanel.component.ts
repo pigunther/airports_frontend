@@ -16,6 +16,7 @@ export class FlightPanelComponent {
 
   flights: FlightModel[];
   price: number;
+  tabIndex: number;
 
   flightQuery = new FlightModel();
 

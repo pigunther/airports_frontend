@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FlightPanelComponent } from './flightPanel.component';
+import { AdminPanelComponent } from './adminPanel.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'flightPanel', component: FlightPanelComponent }
+      { path: 'admin', component: AdminPanelComponent }
     ])
   ],
   exports: [RouterModule]

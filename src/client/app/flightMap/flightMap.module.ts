@@ -1,17 +1,17 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import { FlightPanelComponent } from './flightPanel.component';
-import { FlightPanelRoutingModule } from './adminPanel-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
-import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule } from 'primeng/primeng';
+import {
+  PanelModule, ToolbarModule, ButtonModule, TooltipModule, AutoCompleteModule, SliderModule,
+  DialogModule, GMapModule, CheckboxModule, GrowlModule
+} from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
-import {FlightOfferModule} from "../flightOffer/flightOffer.module";
-import {FlightLoadService} from "../services/FlightLoad.service";
+import {FlightMapComponent} from "./flightMap.component";
 
 @NgModule({
-  imports: [FlightPanelRoutingModule,
+  imports: [
             SharedModule,
             CommonModule,
             RouterModule,
@@ -20,20 +20,21 @@ import {FlightLoadService} from "../services/FlightLoad.service";
             ToolbarModule,
             ButtonModule,
             TooltipModule,
-            CalendarModule,
             AutoCompleteModule,
             SliderModule,
-            FlightOfferModule
+            GMapModule,
+            DialogModule,
+            GrowlModule,
+            CheckboxModule
             ],
-  declarations: [FlightPanelComponent],
-  exports: [FlightPanelComponent],
-  providers: [NameListService,
-              FlightLoadService]
+  declarations: [FlightMapComponent],
+  exports: [FlightMapComponent],
+  providers: [NameListService]
 })
-export class FlightPanelModule {
+export class FlightMapModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FlightPanelModule,
+      ngModule: FlightMapModule,
       providers: [NameListService]
     };
   }

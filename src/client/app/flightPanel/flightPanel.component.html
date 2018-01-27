@@ -39,11 +39,20 @@
 
       </td>
       <td>
-        <ul *ngIf="flights">
-          <li *ngFor="let flight of flights" class="main">
-            <sd-flightOffer [flight]="flight"></sd-flightOffer>
-          </li>
-        </ul>
+        <p-tabView class="flightTabPanel" [activeIndex]="tabIndex">
+          <p-tabPanel header="Билеты">
+            <ul *ngIf="flights">
+              <li *ngFor="let flight of flights" class="main">
+                <sd-flightOffer [flight]="flight"></sd-flightOffer>
+              </li>
+            </ul>
+          </p-tabPanel>
+          <p-tabPanel header="Карта">
+            <ul *ngIf="flights">
+              <sd-flightMap [flights]="flights"></sd-flightMap>
+            </ul>
+          </p-tabPanel>
+        </p-tabView>
       </td>
     </tr>
   </table>

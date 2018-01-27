@@ -1,5 +1,6 @@
 
-    <table class="flightTicket" (mouseover)="mouseover()" (mouseout)="mouseout()">
+    <div class="flightTicket" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
+
       <tr>
         <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportFromObject.cityName }}</div>
         <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportToObject.cityName }}</div>
@@ -11,16 +12,20 @@
         <div class="flightTicket-text">{{ flight.airportFromObject.name }}</div>
         <div class="flightTicket-text">{{ flight.airportToObject.name }}</div>
       </tr>
-    <p-dialog [(visible)]="dialogVisible" header="Доп. информация" >
-      <div >
+      <p-dialog [(visible)]="dialogVisible" header="Доп. информация" class="addition-infa" [width]="300">
         <div >
-          <!--<h4> доп инфа </h4>-->
-          <p>Цена: {{flight.cost}}</p>
-          <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
-          <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
-          <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+          <div >
+            <!--<h4> доп инфа </h4>-->
+            <p>Цена: {{flight.cost}}</p>
+            <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
+            <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
+            <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+          </div>
         </div>
+      </p-dialog>
+
+      <div class="openMap" *ngIf="openInfoFlag">
+
       </div>
-    </p-dialog>
-    </table>
+    </div>
 

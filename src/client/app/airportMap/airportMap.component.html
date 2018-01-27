@@ -6,7 +6,7 @@
 <button type="button" pButton label="Zoom In" icon="fa-search-plus" (click)="zoomIn(gmap.getMap())" style="margin-top:10px"></button>
 <button type="button" pButton label="Zoom Out" icon="fa-search-minus" (click)="zoomOut(gmap.getMap())" style="margin-top:10px"></button>
 
-<p-dialog showEffect="fade" [(visible)]="dialogVisible" header="Новый аэропорт">
+<p-dialog showEffect="fade" [(visible)]="dialogVisible" header="Новый аэропорт" [width] = "500">
   <div class="ui-g ui-fluid" *ngIf="selectedPosition">
     <div class="ui-g-2"><label for="name">Аэропорт</label></div>
     <div class="ui-g-10"><input type="text" pInputText id="name" [(ngModel)]="name" required></div>
@@ -21,7 +21,7 @@
     <div class="ui-g-10"><input id="lng" type="text" readonly pInputText [ngModel]="selectedPosition.lng()"></div>
 
     <div class="ui-g-2"><label for="drg">Перетаскивать</label></div>
-    <div class="ui-g-10"><p-checkbox [(ngModel)]="draggable" binary="true" [style]="{'margin-top':'.25em'}"></p-checkbox></div>
+    <div class="ui-g-10"><p-checkbox [(ngModel)]="draggable" binary="true" [style]="{'margin-top':'.25em', 'margin-left':'50px'}"></p-checkbox></div>
   </div>
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">

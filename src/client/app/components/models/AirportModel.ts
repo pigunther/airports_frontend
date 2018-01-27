@@ -6,7 +6,8 @@ export  class AirportModel {
   meridian: number;
   cityName: string;
 
-  constructor(name: string, cityName:string, parallel:number, meridian:number) {
+
+  addAll(name: string, cityName:string, parallel:number, meridian:number) {
     this.name = name;
     this.cityName = cityName;
     this.parallel = parallel;

@@ -1,0 +1,25 @@
+<div class="p-toolbar">
+
+  <p-toolbar>
+    <button type="button" (click)="airport()" class="flightPanel-in flightPanel-first btn btn-white">Добавить аэропорт</button>
+    <button type="button" (click)="city()" class="flightPanel-in flightPanel-first btn btn-white">Города</button>
+
+  </p-toolbar>
+
+  <div *ngIf="airportFlag">
+    <sd-airportMap></sd-airportMap>
+  </div>
+
+  <div *ngIf="cityFlag">
+      <form (submit)="addCity()">
+        <input [(ngModel)]="cityName" name="cityName" placeholder="Название">
+        <button type="submit">Добавить</button>
+      </form>
+
+      <ul *ngIf="cities">
+        <li *ngFor="let city of cities">
+          {{city}}
+        </li>
+      </ul>
+  </div>
+</div>

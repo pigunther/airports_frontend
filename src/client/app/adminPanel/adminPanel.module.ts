@@ -1,21 +1,17 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import { FlightPanelComponent } from './flightPanel.component';
-import { FlightPanelRoutingModule } from './flightPanel-routing.module';
+import {AdminPanelComponent} from './adminPanel.component';
+import { AdminPanelRoutingModule } from './adminPanel-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
-import {
-  PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule,
-  TabViewModule
-} from 'primeng/primeng';
+import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule } from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
-import {FlightOfferModule} from "../flightOffer/flightOffer.module";
 import {FlightLoadService} from "../services/FlightLoad.service";
-import {FlightMapModule} from "../flightMap/flightMap.module";
+import {AirportMapModule} from "../airportMap/airportMap.module";
 
 @NgModule({
-  imports: [FlightPanelRoutingModule,
+  imports: [AdminPanelRoutingModule,
             SharedModule,
             CommonModule,
             RouterModule,
@@ -27,19 +23,17 @@ import {FlightMapModule} from "../flightMap/flightMap.module";
             CalendarModule,
             AutoCompleteModule,
             SliderModule,
-            FlightOfferModule,
-            FlightMapModule,
-            TabViewModule
+            AirportMapModule
             ],
-  declarations: [FlightPanelComponent],
-  exports: [FlightPanelComponent],
+  declarations: [AdminPanelComponent],
+  exports: [AdminPanelComponent],
   providers: [NameListService,
               FlightLoadService]
 })
-export class FlightPanelModule {
+export class AdminPanelModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FlightPanelModule,
+      ngModule: AdminPanelModule,
       providers: [NameListService]
     };
   }

@@ -4,6 +4,8 @@ import {Message} from "primeng/primeng";
 import {AirportModel} from "../components/models/AirportModel";
 import {FlightLoadService} from "../services/FlightLoad.service";
 
+declare const google: any;
+
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
@@ -29,8 +31,8 @@ export class AirportMapComponent {
 
   ngOnInit() {
     this.options = {
-      center: {lat: 36.890257, lng: 30.707417},
-      zoom: 12
+      center: {lat: 55.929613, lng: 37.519050},
+      zoom: 5
     };
 
     this.initOverlays();
@@ -61,7 +63,7 @@ export class AirportMapComponent {
   }
 
   addMarker() {
-    if (this.name != undefined) {
+    if (this.name) {
 
       this.addAirport();
 
@@ -80,7 +82,8 @@ export class AirportMapComponent {
 
   addAirport() {
     //todo
-    let airport = new AirportModel(this.name, this.cityName, this.selectedPosition.lat(), this.selectedPosition.lng());
+    let airport = new AirportModel();
+    airport.addAll(this.name, this.cityName, this.selectedPosition.lat(), this.selectedPosition.lng());
     this.flightService.addAirport(airport);
     console.log(airport);
   }
@@ -114,12 +117,3 @@ export class AirportMapComponent {
   // }
 }
 
-
-/*
-TODO
-create AdminPanel
-add this and real city addition (by name) to AdminPanel
-
-
-
- */

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { PanelToolbarComponent } from './panelToolbar/panelToolbar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PanelComponent } from './panel/panel.component';
@@ -34,12 +33,11 @@ import { AccordionModule } from 'primeng/primeng';
     ToolbarComponent,
     NavbarComponent,
     PanelComponent,
-    PanelToolbarComponent],
+    ],
   exports: [
     ToolbarComponent,
     NavbarComponent,
     PanelComponent,
-    PanelToolbarComponent,
     CommonModule,
     FormsModule,
     RouterModule]

@@ -15,6 +15,7 @@ import { FlightModel } from '../components/models/FlightModel';
 export class FlightOfferComponent {
 
   dialogVisible: boolean;
+  openInfoFlag = false;
 
   @Input() flight: FlightModel;
 
@@ -26,9 +27,8 @@ export class FlightOfferComponent {
     this.dialogVisible = false;
   }
 
-/*
+  openInfo() {
+    //this.openInfoFlag = true;
+  }
 
-TODO
-добавить окно внизу с картой
- */
 }
