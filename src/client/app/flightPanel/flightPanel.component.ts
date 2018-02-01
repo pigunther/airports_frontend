@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FlightModel } from '../components/models/FlightModel';
 import {FlightLoadService} from "../services/FlightLoad.service";
+import {AirportCitiesService} from "../services/AirportCities.service";
 
 
 
@@ -17,11 +18,13 @@ export class FlightPanelComponent {
   flights: FlightModel[];
   price: number;
   tabIndex: number;
+  tipCities: string[];
 
   flightQuery = new FlightModel();
 
   constructor (
-    private flightService: FlightLoadService
+    private flightService: FlightLoadService,
+    private cityService: AirportCitiesService
   ) {};
 
   search(): void {
@@ -38,10 +41,24 @@ export class FlightPanelComponent {
     });
 
     console.log(this.flights);
+
   }
 
-  /*
-  TODO
-  добавить подсказки к поиску города
-   */
+  cityTip(event: any) {
+    //todo убрать TMP потом
+    this.cityService.getCitiesTMP().then( (cities) => {
+      this.tipCities = this.filterCities(cities, event.query);
+    });
+  }
+
+  filterCities(allCities: string[], query: string) : string[] {
+    let foundCities: string[] = [];
+
+    allCities.forEach(function (tmpCity) {
+      if (tmpCity.search(new RegExp(query, "i")) == 0)
+        foundCities.push(tmpCity);
+    });
+
+    return foundCities;
+  }
 }

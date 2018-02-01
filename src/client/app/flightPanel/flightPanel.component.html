@@ -1,8 +1,8 @@
 <div class="p-toolbar">
   <p-toolbar>
     <div class="flightPanel">
-      <input type="text" pInputText placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" class="flightPanel-first flightPanel-input"/>
-      <input type="text" pInputText placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" class="flightPanel-input"/>
+      <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel-first flightPanel-input"></p-autoComplete>
+      <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel-input"></p-autoComplete>
 
       <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel-first" styleClass="p-calendar-style"></p-calendar>
       <p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalTime" [minDate]="flightQuery.departureTime" styleClass="p-calendar-style"></p-calendar>
