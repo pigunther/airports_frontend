@@ -3,12 +3,14 @@ import {AdminPanelComponent} from './adminPanel.component';
 import { AdminPanelRoutingModule } from './adminPanel-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
-import { PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule } from 'primeng/primeng';
+import { PanelModule, ToolbarModule, ButtonModule, TooltipModule,
+  CalendarModule, AutoCompleteModule, SliderModule, KeyFilterModule } from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {FlightLoadService} from "../services/FlightLoad.service";
 import {AirportMapModule} from "../airportMap/airportMap.module";
+import {AirportCitiesService} from "../services/AirportCities.service";
 
 @NgModule({
   imports: [AdminPanelRoutingModule,
@@ -23,12 +25,13 @@ import {AirportMapModule} from "../airportMap/airportMap.module";
             CalendarModule,
             AutoCompleteModule,
             SliderModule,
-            AirportMapModule
+            AirportMapModule,
+            KeyFilterModule
             ],
   declarations: [AdminPanelComponent],
   exports: [AdminPanelComponent],
   providers: [NameListService,
-              FlightLoadService]
+              AirportCitiesService]
 })
 export class AdminPanelModule {
   static forRoot(): ModuleWithProviders {
