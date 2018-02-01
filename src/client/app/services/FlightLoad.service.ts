@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 import {FlightModel} from "../components/models/FlightModel";
 import {HttpClient} from "@angular/common/http";
-import {AirportModel} from "../components/models/AirportModel";
-import {parallel} from "async";
 
 @Injectable()
 export  class FlightLoadService {
@@ -30,29 +28,5 @@ export  class FlightLoadService {
 
   }
 
-  addAirport(airport: AirportModel) {
-    console.log("Add airport");
-    this.result=`/api/airport/new?name=${airport.name}&cityName=${airport.cityName}&parallel=${airport.parallel}&meridian=${airport.meridian}`;
 
-
-
-    return this.http.post(this.BaseUrl+'/api/airport/new', airport).subscribe();
-    // {
-    //   name: airport.name,
-    //     cityName: airport.cityName,
-    //   parallel: airport.parallel,
-    //   meridian: airport.meridian
-    // }
-  }
-
-
-  getCities() {
-
-    return this.http.get(this.BaseUrl+'/getCities').toPromise().
-        then(response => response as string[]);
-  }
-
-  postData() {
-    this.http.post("", {});
-  }
 }
