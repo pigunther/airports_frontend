@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Message} from "primeng/primeng";
 import {AirportModel} from "../components/models/AirportModel";
 import {FlightLoadService} from "../services/FlightLoad.service";
+import {AirportCitiesService} from "../services/AirportCities.service";
 
 declare const google: any;
 
@@ -26,7 +27,7 @@ export class AirportMapComponent {
   msgs: Message[] = [];
 
   constructor (
-    private flightService: FlightLoadService
+    private airportCitiesService: AirportCitiesService
   ) {};
 
   ngOnInit() {
@@ -84,7 +85,7 @@ export class AirportMapComponent {
     //todo
     let airport = new AirportModel();
     airport.addAll(this.name, this.cityName, this.selectedPosition.lat(), this.selectedPosition.lng());
-    this.flightService.addAirport(airport);
+    this.airportCitiesService.addAirport(airport);
     console.log(airport);
   }
 
@@ -111,9 +112,5 @@ export class AirportMapComponent {
   zoomOut(map: any) {
     map.setZoom(map.getZoom()-1);
   }
-
-  // clear() {
-  //   this.overlays = [];
-  // }
 }
 
