@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FlightModel } from '../components/models/FlightModel';
 import {FlightLoadService} from "../services/FlightLoad.service";
+import {AirportCitiesService} from "../services/AirportCities.service";
 
 
 
@@ -13,22 +14,24 @@ import {FlightLoadService} from "../services/FlightLoad.service";
   // styleUrls: ['adminPanel.component.css'],
 })
 export class AdminPanelComponent {
-
+//todo убрать TMP
   airportFlag: boolean;
   cityFlag: boolean;
 
   cityName: string;
   cities: string[] = [];
 
+  blockSpecial: RegExp = /(^[^<>*!./,]*$)/;
+
   constructor (
-    private flightService: FlightLoadService
+    private airportCitiesService: AirportCitiesService
   ) {};
 
   ngOnInit() {
-    //this.flightService.getCities().then((c) => {
-    //  this.cities = c;
-    //  }
-    //)
+    this.airportCitiesService.getCitiesTMP().then((c) => {
+      this.cities = c;
+      }
+    )
 
   }
 
@@ -43,8 +46,13 @@ export class AdminPanelComponent {
   }
 
   addCity(): boolean {
-    this.cities.push(this.cityName);
-    this.cityName='';
+    if (this.cityName) {
+      this.airportCitiesService.addCityTMP(this.cityName);
+      this.airportCitiesService.getCitiesTMP().then((c) => {
+        this.cities = c;
+      });
+      this.cityName = '';
+    }
     return false;
   }
 

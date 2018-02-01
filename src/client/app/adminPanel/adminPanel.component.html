@@ -12,7 +12,7 @@
 
   <div *ngIf="cityFlag">
       <form (submit)="addCity()">
-        <input [(ngModel)]="cityName" name="cityName" placeholder="Название">
+        <input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial">
         <button type="submit">Добавить</button>
       </form>
 
