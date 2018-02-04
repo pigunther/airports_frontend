@@ -25,6 +25,9 @@ export class AirportMapComponent {
   infoWindow: any;
   draggable: boolean;
   msgs: Message[] = [];
+  tipCities: string[];
+  headerDialog: string;
+  buttonDialog: string;
 
   constructor (
     private airportCitiesService: AirportCitiesService
@@ -36,12 +39,19 @@ export class AirportMapComponent {
       zoom: 5
     };
 
-    this.initOverlays();
+    if(!this.overlays||!this.overlays.length) {
+      this.overlays = [];
+    }
 
     this.infoWindow = new google.maps.InfoWindow();
+
+    this.initOverlays();
+
   }
 
   handleMapClick(event: any) {
+    this.headerDialog = "Новый аэропорт";
+    this.buttonDialog = "Добавить аэропорт";
     this.dialogVisible = true;
     this.selectedPosition = event.latLng;
   }
@@ -51,12 +61,36 @@ export class AirportMapComponent {
     let isMarker = event.overlay.getTitle != undefined;
 
     if(isMarker) {
-      let title = event.overlay.getTitle();
-      this.infoWindow.setContent('' + title + '');
-      this.infoWindow.open(event.map, event.overlay);
-      event.map.setCenter(event.overlay.getPosition());
 
-      this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
+      console.log(event.overlay.getTitle());
+      console.log(event.overlay);
+      let str = event.overlay.getTitle().toString();
+      this.name = str.split(',')[0];
+      this.headerDialog = "Изменение аэропорт";
+      this.buttonDialog = "Изменить аэропорт";
+      this.dialogVisible = true;
+
+      this.airportCitiesService.getAllAirports().then((allAirports) => {
+
+        let chosenAirport = this.airportCitiesService.getAirportByName(allAirports, this.name);
+        console.log(chosenAirport);
+        this.cityName = chosenAirport.cityName;
+        this.selectedPosition = {
+          lat() {return chosenAirport.parallel;},
+          lng() {return chosenAirport.meridian;}
+        };
+        //this.selectedPosition.lat().set(chosenAirport.parallel);
+        //this.selectedPosition.lng().set(chosenAirport.meridian);
+        //todo update function
+        let title = event.overlay.getTitle();
+        this.infoWindow.setContent('' +title + '');
+        this.infoWindow.open(event.map, event.overlay);
+        event.map.setCenter(event.overlay.getPosition());
+
+        this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
+
+      });
+
     }
     else {
       this.msgs.push({severity:'info', summary:'Shape Selected', detail: ''});
@@ -64,10 +98,11 @@ export class AirportMapComponent {
   }
 
   addMarker() {
+
     if (this.name) {
 
       this.addAirport();
-
+      console.log(this.selectedPosition.lat(), this.name);
       this.overlays.push(new google.maps.Marker(
         { position:
           { lat: this.selectedPosition.lat(),
@@ -78,15 +113,22 @@ export class AirportMapComponent {
       this.name = null;
       this.cityName = null;
       this.dialogVisible = false;
+
     }
   }
 
   addAirport() {
     //todo
     let airport = new AirportModel();
-    airport.addAll(this.name, this.cityName, this.selectedPosition.lat(), this.selectedPosition.lng());
+    airport.set(this.name, this.cityName, this.selectedPosition.lat(), this.selectedPosition.lng());
     this.airportCitiesService.addAirport(airport);
     console.log(airport);
+  }
+
+  cityTip(event: any) {
+    this.airportCitiesService.getCities().then((c) => {
+      this.tipCities = this.airportCitiesService.filterCityForTips(c, event.query);
+    })
   }
 
 
@@ -99,9 +141,20 @@ export class AirportMapComponent {
   }
 
   initOverlays() {
-    if(!this.overlays||!this.overlays.length) {
-      this.overlays = [];
-    }
+
+    this.airportCitiesService.getAllAirports().then((airports) => {
+      for (let airport of airports) {
+        //console.log(airport.parallel,  airport.meridian, airport.name);
+
+        this.overlays.push(new google.maps.Marker(
+          {
+            position: { lat: airport.parallel, lng: airport.meridian},
+            title:airport.name+', '+airport.cityName,
+            draggable: false
+          }))
+      }
+    });
+
   }
 
 

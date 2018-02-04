@@ -6,13 +6,15 @@
 <button type="button" pButton label="Zoom In" icon="fa-search-plus" (click)="zoomIn(gmap.getMap())" style="margin-top:10px"></button>
 <button type="button" pButton label="Zoom Out" icon="fa-search-minus" (click)="zoomOut(gmap.getMap())" style="margin-top:10px"></button>
 
-<p-dialog showEffect="fade" [(visible)]="dialogVisible" header="Новый аэропорт" [width] = "500">
+<p-dialog showEffect="fade" [(visible)]="dialogVisible" header={{headerDialog}} [width] = "500">
   <div class="ui-g ui-fluid" *ngIf="selectedPosition">
     <div class="ui-g-2"><label for="name">Аэропорт</label></div>
     <div class="ui-g-10"><input type="text" pInputText id="name" [(ngModel)]="name" required></div>
 
     <div class="ui-g-2"><label for="cityName">Город</label></div>
-    <div class="ui-g-10"><input type="text" pInputText id="cityName" [(ngModel)]="cityName" required></div>
+    <div class="ui-g-10">
+    <p-autoComplete pInputText  id="cityName" [(ngModel)]="cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" required></p-autoComplete>
+    </div>
 
     <div class="ui-g-2"><label for="lat">Широта</label></div>
     <div class="ui-g-10"><input id="lat" type="text" readonly pInputText [ngModel]="selectedPosition.lat()"></div>
@@ -25,7 +27,9 @@
   </div>
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-      <button type="button" pButton label="Добавить аэропорт" icon="fa-plus" (click)="addMarker()"></button>
+      <button type="button" pButton label={{buttonDialog}} icon="fa-plus" (click)="addMarker()"></button>
     </div>
   </p-footer>
 </p-dialog>
+
+
