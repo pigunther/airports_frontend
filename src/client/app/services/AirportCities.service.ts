@@ -1,7 +1,10 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Http, Response} from "@angular/http";
 import {AirportModel} from "../components/models/AirportModel";
 import {parallel} from "async";
+import {CityModel} from "../components/models/CityModel";
+import "rxjs/add/operator/toPromise";
 
 @Injectable()
 export class AirportCitiesService {
@@ -9,10 +12,17 @@ export class AirportCitiesService {
 
   constructor(private http: HttpClient) {}
 
+  private static handleError(error: any): Promise<any> {
+    console.error('HandleError: An error occured', error);
+    return Promise.reject(error.message || error);
+  };
+
   private JSONUrl = '/assets/flights.json';
   private result = '';
   //private BaseUrl = 'http://80.93.177.22:8080';
-  private BaseUrl = 'http://80.93.177.22:1234';
+  //private BaseUrl = 'http://80.93.177.22:1234';
+  private BaseUrl = 'http://localhost:8080';
+
   //private BaseUrl = 'http://localhost:5555';
 
   private cities: Promise<string[]> = new Promise((resolve, reject) => {
@@ -22,23 +32,52 @@ export class AirportCitiesService {
 
   addAirport(airport: AirportModel) {
     console.log("Add airport");
-    this.result=`/api/airport/new?name=${airport.name}&cityName=${airport.cityName}&parallel=${airport.parallel}&meridian=${airport.meridian}`;
+    //this.result=`/api/airport/new?name=${airport.name}&cityName=${airport.cityName}&parallel=${airport.parallel}&meridian=${airport.meridian}`;
 
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    // return this.http.post( this.BaseUrl+'/api/airport',
+    //   {
+    //     "name": "S2",
+    //     "parallel": 0.012,
+    //     "meridian": 2.222,
+    //     "cityName": "Москва"
+    //   },
+    //   httpOptions).subscribe();
 
-    return this.http.post(this.BaseUrl+'/api/airport/new', airport).subscribe();
-    // {
-    //   name: airport.name,
-    //     cityName: airport.cityName,
-    //   parallel: airport.parallel,
-    //   meridian: airport.meridian
-    // }
+    return this.http.post(this.BaseUrl+'/api/airport',
+       {
+      "name": airport.name,
+      "cityName": airport.cityName,
+      "parallel": airport.parallel,
+      "meridian": airport.meridian
+    }
+    ).subscribe();
+
   }
 
+  getAllAirports() {
+    return this.http.get(this.BaseUrl + "/api/airport/").toPromise().
+    then(response => response as AirportModel[]);
+  }
 
-  getCities(): Promise<string[]> {
+  updateAirport(airport: AirportModel) {
+    return this.http.put(this.BaseUrl+'/api/airport/', {
+      name: airport.name,
+      cityName: airport.cityName,
+      parallel: airport.parallel,
+      meridian: airport.meridian
+    }).subscribe();
+
+  }
+
+  getCities(): Promise<CityModel[]> {
 
     return this.http.get(this.BaseUrl+'/getCities').toPromise().
-    then(response => response as string[]);
+    then(response => response as CityModel[]);
 
   }
 
@@ -46,9 +85,22 @@ export class AirportCitiesService {
     return this.cities;
   }
 
-  addCity(cityName: string) {
-    //кажется такой url нет todo - нормально написать это
-    return this.http.post(this.BaseUrl+'/api/city/new', cityName).subscribe();
+  addCity(cityName: string): Promise<void> {
+     return this.http.post(this.BaseUrl+'/api/city', cityName)
+       .toPromise()
+       .then(() => null)
+       .catch(AirportCitiesService.handleError);
+  }
+
+  deleteCity(cityName: string) {
+    console.log(cityName);
+    return this.http.request('delete', this.BaseUrl+'/api/city', {body: cityName, headers: new HttpHeaders({
+      'Cache-Control':  'no-cache'
+    })})
+      //.subscribe();
+      .toPromise()
+      .then(() => null)
+      .catch(AirportCitiesService.handleError);
   }
 
   addCityTMP(cityName: string) {
@@ -58,7 +110,7 @@ export class AirportCitiesService {
       tmpCities.push(cityName);
       console.log("c: ", c);
       console.log("tmpin: ", tmpCities);
-      this.cities = new Promise((resolve, reject) => {
+      this.cities  = new Promise((resolve, reject) => {
         resolve(tmpCities);
       })
     });
@@ -67,5 +119,27 @@ export class AirportCitiesService {
 
   postData() {
     this.http.post("", {});
+  }
+
+
+  filterCityForTips(allCities: CityModel[], query: string) : string[] {
+    let foundCities: string[] = [];
+    allCities.forEach(function (tmpCity) {
+
+      if (tmpCity.name.search(new RegExp(query, "i")) == 0) {
+        console.log(tmpCity.name);
+        foundCities.push(tmpCity.name);
+      }
+    });
+    return foundCities;
+  }
+
+
+  getAirportByName(allAirports: AirportModel[], name: string) : AirportModel {
+    for (let airport of allAirports) {
+      if (airport.name === name)
+        return airport;
+    }
+    return null;
   }
 }
