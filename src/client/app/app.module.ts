@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlightPanelModule } from './flightPanel/flightPanel.module';
 import { AirportMapModule } from './airportMap/airportMap.module';
 import {AdminPanelModule} from "./adminPanel/adminPanel.module";
+import {CityAdditionPanelModule} from "./cityAdditionPanel/cityAdditionPanel.module";
 
 @NgModule({
   imports: [BrowserModule,
@@ -26,6 +27,7 @@ import {AdminPanelModule} from "./adminPanel/adminPanel.module";
             FlightPanelModule,
             AirportMapModule,
             AdminPanelModule,
+            CityAdditionPanelModule,
             PanelModule,
             ToolbarModule,
             SharedModule.forRoot(),
