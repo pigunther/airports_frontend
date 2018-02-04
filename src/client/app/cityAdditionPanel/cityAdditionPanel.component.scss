@@ -1,0 +1,19 @@
+$blue-color: #106cc8;
+$blue-color-darker: #0f478e;
+$border-radius: 5px;
+
+:host {
+  display: block;
+  padding: 0 16px;
+}
+
+.cityDeleteButton {
+  background-color: #e7e7e7;
+  colot : black;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px 10px 10px 10px;
+}
