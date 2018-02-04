@@ -1,10 +1,11 @@
 import {AirportModel} from "./AirportModel";
+import {CityModel} from "./CityModel";
 
 export class FlightModel {
   departureTime: Date;
   arrivalTime: Date;
-  cityFrom: string;
-  cityTo: string;
+  cityFrom: CityModel;
+  cityTo: CityModel;
   cost: number;
   id: number;
   airline: string;

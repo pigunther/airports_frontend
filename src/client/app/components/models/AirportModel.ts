@@ -1,3 +1,5 @@
+import {CityModel} from "./CityModel";
+
 export  class AirportModel {
   id: number;
   name: string;
@@ -5,11 +7,12 @@ export  class AirportModel {
   parallel: number;
   meridian: number;
   cityName: string;
+  city: CityModel;
 
 
-  addAll(name: string, cityName:string, parallel:number, meridian:number) {
+  set(name: string, cityName:string, parallel:number, meridian:number) {
     this.name = name;
-    this.cityName = cityName;
+    this.city = new CityModel(cityName);
     this.parallel = parallel;
     this.meridian = meridian;
   }
