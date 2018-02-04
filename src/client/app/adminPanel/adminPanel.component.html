@@ -11,15 +11,19 @@
   </div>
 
   <div *ngIf="cityFlag">
-      <form (submit)="addCity()">
-        <input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial">
-        <button type="submit">Добавить</button>
-      </form>
-
-      <ul *ngIf="cities">
-        <li *ngFor="let city of cities">
-          {{city}}
-        </li>
-      </ul>
+    <sd-cityAddition></sd-cityAddition>
   </div>
+
+    <!--<div *ngIf="cityFlag">-->
+      <!--<form (submit)="addCity()">-->
+        <!--<input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial">-->
+        <!--<button type="submit">Добавить</button>-->
+      <!--</form>-->
+
+      <!--<ul *ngIf="cities">-->
+        <!--<li *ngFor="let city of cities">-->
+          <!--<button type="button" (click)="deleteCity($event)" class="cityDeleteButton">{{city.name}}</button>-->
+        <!--</li>-->
+      <!--</ul>-->
+  <!--</div>-->
 </div>

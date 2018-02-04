@@ -11,6 +11,7 @@ import {CommonModule} from "@angular/common";
 import {FlightLoadService} from "../services/FlightLoad.service";
 import {AirportMapModule} from "../airportMap/airportMap.module";
 import {AirportCitiesService} from "../services/AirportCities.service";
+import {CityAdditionPanelModule} from "../cityAdditionPanel/cityAdditionPanel.module";
 
 @NgModule({
   imports: [AdminPanelRoutingModule,
@@ -26,6 +27,7 @@ import {AirportCitiesService} from "../services/AirportCities.service";
             AutoCompleteModule,
             SliderModule,
             AirportMapModule,
+            CityAdditionPanelModule,
             KeyFilterModule
             ],
   declarations: [AdminPanelComponent],
