@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FlightModel } from '../components/models/FlightModel';
 import {FlightLoadService} from "../services/FlightLoad.service";
 import {AirportCitiesService} from "../services/AirportCities.service";
+import {CityModel} from "../components/models/CityModel";
 
 
 
@@ -45,20 +46,9 @@ export class FlightPanelComponent {
   }
 
   cityTip(event: any) {
-    //todo убрать TMP потом
-    this.cityService.getCitiesTMP().then( (cities) => {
-      this.tipCities = this.filterCities(cities, event.query);
-    });
+   this.cityService.getCities().then((c) => {
+     this.tipCities = this.cityService.filterCityForTips(c, event.query);
+   })
   }
 
-  filterCities(allCities: string[], query: string) : string[] {
-    let foundCities: string[] = [];
-
-    allCities.forEach(function (tmpCity) {
-      if (tmpCity.search(new RegExp(query, "i")) == 0)
-        foundCities.push(tmpCity);
-    });
-
-    return foundCities;
-  }
 }
