@@ -10,7 +10,7 @@ import {CityModel} from "../components/models/CityModel";
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
-  selector: 'sd-airportMap',
+  selector: 'sd-flightPanel',
   templateUrl: 'flightPanel.component.html',
   styleUrls: ['flightPanel.component.css'],
 })
@@ -25,8 +25,12 @@ export class FlightPanelComponent {
 
   constructor (
     private flightService: FlightLoadService,
-    private cityService: AirportCitiesService
+    private airportCitiesService: AirportCitiesService
   ) {};
+
+  ngOnInit(){
+    this.search();
+  }
 
   search(): void {
 
@@ -37,17 +41,18 @@ export class FlightPanelComponent {
       for (let flighti of this.flights) {
                flighti.departureTime = new Date(flighti.departureTime);
                flighti.arrivalTime = new Date(flighti.arrivalTime);
+               //flighti.airportFrom = this.airportCitiesService.getAirportByName(flighti.airportFrom);
                console.log(flighti);
       }
     });
-
+    console.log('these are flights:');
     console.log(this.flights);
 
   }
 
   cityTip(event: any) {
-   this.cityService.getCities().then((c) => {
-     this.tipCities = this.cityService.filterCityForTips(c, event.query);
+   this.airportCitiesService.getCities().then((c) => {
+     this.tipCities = this.airportCitiesService.filterCityForTips(c, event.query);
    })
   }
 
