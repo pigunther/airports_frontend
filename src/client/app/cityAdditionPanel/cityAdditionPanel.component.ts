@@ -12,7 +12,7 @@ import {CityModel} from "../components/models/CityModel";
   encapsulation: ViewEncapsulation.None,
   selector: 'sd-cityAddition',
   templateUrl: 'cityAdditionPanel.component.html',
-  // styleUrls: ['adminPanel.component.css'],
+  styleUrls: ['cityAdditionPanel.component.css'],
 })
 export class CityAdditionPanelComponent {
 
@@ -41,8 +41,10 @@ export class CityAdditionPanelComponent {
 
   addCity(): boolean {
     if (this.cityName) {
+      console.log('Добавляем город ' + this.cityName);
       this.airportCitiesService.addCity(this.cityName).then(() =>{
         this.getCities();
+        console.log('--------')
       });
 
       this.cityName = '';
@@ -51,10 +53,11 @@ export class CityAdditionPanelComponent {
   }
 
   deleteCity(event: any) {
-    console.log(event.target.innerHTML);
-    this.airportCitiesService.deleteCity(event.target.innerHTML).then(() => {
-      console.log("--------------")
+    // console.log(event);
+    console.log('Удаляем город '+event.target.value);
+    this.airportCitiesService.deleteCity(event.target.value).then(() => {
       this.getCities();
+      console.log("--------------");
     });
 
   }
