@@ -12,7 +12,7 @@ div.p-toolbar .ui-toolbar{
   background-color: lightblue;
   background-image: url(../../assets/img/10665_big.jpg);
   background-repeat: no-repeat;
-  background-position-y: -550px;
+  background-position-y: 67%;
   background-size: cover;
   background-attachment: scroll;
 }
@@ -29,7 +29,7 @@ p-calendar .p-calendar-style .ui-datepicker {
   //border: groove;
 }
 
-.flightPanel-input {
+.flightPanel__input {
   color: black;
   font-weight: normal;
   border-radius: $border-radius;
@@ -37,12 +37,12 @@ p-calendar .p-calendar-style .ui-datepicker {
   height: 29px;
   width: 200px;
 }
-.flightPanel-in {
+.flightPanel_in {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.flightPanel-first {
+.flightPanel_first {
   margin-left: 20px;
 }
 
@@ -51,26 +51,26 @@ p-calendar .p-calendar-style .ui-datepicker {
   color: white;
 }
 
-.btn-white {
+.btn_white {
   border: 1px solid #bfd7f2;
 }
 
-
 .mainTable {
-  margin-top: 40px;
-  width: 100%;
+  margin-top: 20px;
+  width: 1300px;
 }
 
 .flightFilter {
-  border-right: 1px solid $blue-color;
-  width: 250px;
+  display: inline-block;
+  //border-right: 1px solid $blue-color;
+  width: 20%;
   height: 200px;
   padding-top: 10px;
   vertical-align: text-top;
 }
 
-.flightFilter-divs {
-  width: 75%;
+.flightFilter__content {
+  width: 70%;
   margin-left: 10%  ;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -86,16 +86,21 @@ h4 {
   padding-top: 10px;
   padding-left: 20px;
   vertical-align: text-top;
-  top:160px;
-  width: 1000px;
-  position: absolute;
   overflow: auto;
 }
 
-//table.flightTicket:nth-child(2) div{
-//  margin-bottom: 20px;
-//}
+.column {
+  vertical-align: top;
+}
 
+
+.column__tab {
+  display: inline-block;
+  //display: table-cell;
+  margin-left: 10px;
+  width: 53%;
+  margin-top: -20px;
+}
 
 
 

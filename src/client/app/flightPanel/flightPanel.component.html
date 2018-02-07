@@ -1,14 +1,14 @@
 <div class="p-toolbar">
   <p-toolbar>
     <div class="flightPanel">
-      <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel-first flightPanel-input"></p-autoComplete>
-      <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel-input"></p-autoComplete>
+      <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel_first flightPanel__input"></p-autoComplete>
+      <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__input"></p-autoComplete>
 
-      <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel-first" styleClass="p-calendar-style"></p-calendar>
+      <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel_first" styleClass="p-calendar-style"></p-calendar>
       <p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalTime" [minDate]="flightQuery.departureTime" styleClass="p-calendar-style"></p-calendar>
 
 
-      <button type="button" (click)="search()" class="flightPanel-in flightPanel-first btn btn-white">Поиск</button>
+      <button type="button" (click)="search()" class="flightPanel_in flightPanel_first btn btn_white">Поиск</button>
 
 
     </div>
@@ -19,26 +19,26 @@
 <!--</div>-->
 
 
-  <table class="mainTable">
-    <tr>
-      <td class="flightFilter">
-        <div class="flightFilter-divs">
+  <div class="mainTable">
+
+      <div class="column flightFilter">
+        <div class="flightFilter__content">
           <h4>Фильтры</h4>
         </div>
-        <div class="flightFilter-price flightFilter-divs ">
+        <div class="flightFilter__content ">
           <p>Максимальная цена: {{flightQuery.cost}}</p>
           <p-slider [(ngModel)]="flightQuery.cost" [min]="100" [max]="100000"></p-slider>
           <!--<p-slider [(ngModel)]="price"></p-slider>-->
         </div>
 
-        <div class="flightFilter-divs">
+        <div class="flightFilter__content">
           <button type="button" (click)="search()" class="btn">Обновить</button>
         </div>
 
 
 
-      </td>
-      <td>
+      </div>
+      <div class="column__tab">
         <p-tabView class="flightTabPanel" [activeIndex]="tabIndex">
           <p-tabPanel header="Билеты">
             <ul *ngIf="flights">
@@ -53,6 +53,6 @@
             </ul>
           </p-tabPanel>
         </p-tabView>
-      </td>
-    </tr>
-  </table>
+      </div>
+
+  </div>

@@ -2,99 +2,91 @@ $blue-color: #106cc8;
 $blue-color-darker: #0f478e;
 $border-radius: 5px;
 $flightTicket-height: 120px;
+$image-color: #6e6e6e;
 
 :host {
   display: block;
   padding: 0 16px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0 0 0 8px;
-}
+//ul {
+//  list-style-type: none;
+//  padding: 0 0 0 8px;
+//}
 
-p-calendar .p-calendar-style input{
-  width: 200px;
-}
 
-p-calendar .p-calendar-style .ui-datepicker {
-  background-color: white;
-}
 
-.flightTicket {
+
+.ticketTable {
   border-radius: 5px;
   margin-top: 10px;
   background-color: beige;
   margin-left: 1%;
   display: block;
   height: $flightTicket-height !important;
-  width: 95%;
-}
-
-div.flightTicket-text{
-  margin-left: 20px;
-  width: 200px;
-  float: left;
-  margin-bottom: 10px;
-  /*display: inline-block;*/
-}
-
-table.flightTicket tr div:first-child,
-table.flightTicket tr div:nth-child(2){
-  width: 100px;
-}
-
-div.flightTicket-text_margin{
-  margin-top: 40px;
-  //margin-bottom: -20px;
+  width: 100%;
+  text-align: center;
 }
 
 
-.flightTicket .flightTicket-addition {
-  visibility: hidden;
-  opacity: 1;
+.ticketColumn {
+ // border: 1px solid yellow;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 20px;
+  height: 120px;
+  border-radius: 5px;
 }
 
-
-.flightTicket:hover .flightTicket-addition {
-  visibility: visible;
+.ticketColumn_three-fourth {
+  width: 74%;
+  border: 1px solid $blue-color-darker;
+  border-right: 1px dashed $blue-color-darker;
 }
 
-.addition-container {
-  height: $flightTicket-height;
-  width: 200px;
-  position: fixed;
-  top: -100px;
-  margin-left: 700px;
-  padding-top: 10px;
-  padding-left: 20px;
-  border-left: 1px solid $blue-color;
-}
-
-.addition-infa {
-  position: relative;
-  top: -200px;
-  left: -50px;
-  //margin-left: 350px;
+.ticketColumn_one-fourth {
+  width: 25%;
+  border: 1px solid $blue-color-darker;
+  border-left: 1px dashed $blue-color-darker;
+  vertical-align: middle;
 
 }
 
-.btn, .btn:hover, .btn:focus {
-  background-color: $blue-color;
-  color: white;
-
+div.ui-tabview {
+  border-left: 1px solid $blue-color !important;
 }
 
-.btn-white {
-  border: 1px solid #bfd7f2;
+.ticketNameColumn, .middleColumn {
+  //border: 1px solid gray;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  height: 80px;
 }
 
+.ticketColumn__infa {
+  width: 39%;
+  text-align: center  ;
+}
+.ticketColumn__image {
+  width: 20%;
+}
 
+.middleColumn__row {
+  //border: 1px solid green;
+  display: block;
+  height: 30px;
+  color: $image-color;
+}
 
-.ui-dialog {
-  position: relative !important;
-  //width: 300px !important;
-  //left: -500px;
+.middleColumn__icone {
+ // border: 1px solid black;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 180%;
+  height: 20px;
+  margin-top: 20px;
+  margin-left: -30px;
 }
 
 
@@ -103,3 +95,5 @@ div.flightTicket-text_margin{
   border: 20px solid black;
   display: block;
 }
+
+

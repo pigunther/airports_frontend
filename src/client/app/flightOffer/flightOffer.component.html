@@ -1,28 +1,41 @@
 
-    <div class="flightTicket" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
+    <div class="ticketTable" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
 
-      <tr>
-        <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportFromObject.cityName }}</div>
-        <div class="flightTicket-text flightTicket-text_margin">{{ flight.airportToObject.cityName }}</div>
-        <div class="flightTicket-text flightTicket-text_margin">{{ flight.departureTime | date:'short' }}</div>
-        <div class="flightTicket-text flightTicket-text_margin">{{ flight.arrivalTime | date:'short'}}</div>
+      <div class="ticketColumn ticketColumn_three-fourth">
 
-      </tr>
-      <tr>
-        <div class="flightTicket-text">{{ flight.airportFromObject.name }}</div>
-        <div class="flightTicket-text">{{ flight.airportToObject.name }}</div>
-      </tr>
-      <p-dialog [(visible)]="dialogVisible" header="Доп. информация" class="addition-infa" [width]="300">
-        <div >
-          <div >
-            <!--<h4> доп инфа </h4>-->
-            <p>Цена: {{flight.cost}}</p>
-            <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
-            <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
-            <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+        <div class="ticketNameColumn ticketColumn__infa">
+          <div >{{ flight.airportFromObject.cityName }}</div>
+          <div >{{ flight.departureTime | date:'short' }}</div>
+          <div >{{ flight.airportFromObject.name }}</div>
+
+        </div>
+        <div class="middleColumn ticketColumn__image">
+          <!--<div class="ticketNameColumn__row">-->
+            <img class="middleColumn__row middleColumn__icone" src="../../assets/img/airplane.png"/>
+
+          <!--</div>-->
+          <div class="middleColumn__row">
+            <div class="middleColumn__row_infa">{{(flight.arrivalTime - flight.departureTime) | date: 'h:mm'}}</div>
           </div>
         </div>
-      </p-dialog>
+        <div class="ticketNameColumn ticketColumn__infa">
+          <div >{{ flight.airportToObject.cityName }}</div>
+          <div >{{ flight.arrivalTime | date:'short'}}</div>
+          <div >{{ flight.airportToObject.name }}</div>
+
+        </div>
+
+
+      </div>
+      <div class="ticketColumn ticketColumn_one-fourth">
+        <div >
+        <!--<h4> доп инфа </h4>-->
+        <p>Цена: {{flight.cost}}</p>
+        <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
+        <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
+        <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+        </div>
+      </div>
 
       <div class="openMap" *ngIf="openInfoFlag">
 
