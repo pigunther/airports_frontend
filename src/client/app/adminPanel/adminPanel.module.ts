@@ -3,8 +3,10 @@ import {AdminPanelComponent} from './adminPanel.component';
 import { AdminPanelRoutingModule } from './adminPanel-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
-import { PanelModule, ToolbarModule, ButtonModule, TooltipModule,
-  CalendarModule, AutoCompleteModule, SliderModule, KeyFilterModule } from 'primeng/primeng';
+import {
+  PanelModule, ToolbarModule, ButtonModule, TooltipModule,
+  CalendarModule, AutoCompleteModule, SliderModule, KeyFilterModule, TabViewModule
+} from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -28,7 +30,8 @@ import {CityAdditionPanelModule} from "../cityAdditionPanel/cityAdditionPanel.mo
             SliderModule,
             AirportMapModule,
             CityAdditionPanelModule,
-            KeyFilterModule
+            KeyFilterModule,
+            TabViewModule
             ],
   declarations: [AdminPanelComponent],
   exports: [AdminPanelComponent],
