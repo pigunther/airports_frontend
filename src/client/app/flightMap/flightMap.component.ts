@@ -39,7 +39,7 @@ export class FlightMapComponent {
 
     this.infoWindow = new google.maps.InfoWindow();
 
-    for (var i = 0; i < this.flights.length; i++) {
+    for (let i = 0; i < this.flights.length; i++) {
       this.flight = this.flights[i];
       console.log(this.flight);
       this.addMarkerByAirport(this.flight.airportFromObject, this.flight.airportToObject);
@@ -47,14 +47,20 @@ export class FlightMapComponent {
   }
 
   addMarkerByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
-    var addFrom = new google.maps.Marker({position:
-      {lat: airportFrom.parallel, lng: airportFrom.meridian},
-      title: airportFrom.cityName + " " + airportFrom.name});
-    var addTo = new google.maps.Marker({position:
-      {lat: airportTo.parallel, lng: airportTo.meridian},
-      title: airportTo.cityName + " " + airportTo.name});
-    var findFrom = this.overlays.findIndex(find => find==addFrom);
-    var findTo = this.overlays.findIndex(find => find==addFrom);
+    console.log(airportFrom);
+    console.log(airportTo);
+    let addFrom = new google.maps.Marker({
+      position:
+        {lat: airportFrom.parallel, lng: airportFrom.meridian},
+      title: airportFrom.cityName + " " + airportFrom.name
+    });
+    let addTo = new google.maps.Marker({
+      position:
+        {lat: airportTo.parallel, lng: airportTo.meridian},
+      title: airportTo.cityName + " " + airportTo.name
+    });
+    let findFrom = this.overlays.findIndex(find => find == addFrom);
+    let findTo = this.overlays.findIndex(find => find == addFrom);
 
     if (findFrom === -1) {
       this.overlays.push(addFrom);
