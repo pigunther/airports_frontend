@@ -32,30 +32,20 @@ export class AirportCitiesService {
 
   addAirport(airport: AirportModel) {
     console.log("Add airport");
-    //this.result=`/api/airport/new?name=${airport.name}&cityName=${airport.cityName}&parallel=${airport.parallel}&meridian=${airport.meridian}`;
-
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    // return this.http.post( this.BaseUrl+'/api/airport',
-    //   {
-    //     "name": "S2",
-    //     "parallel": 0.012,
-    //     "meridian": 2.222,
-    //     "cityName": "Москва"
-    //   },
-    //   httpOptions).subscribe();
-
-    return this.http.post(this.BaseUrl+'/api/airport',
-       {
-      "name": airport.name,
-      "cityName": airport.cityName,
-      "parallel": airport.parallel,
-      "meridian": airport.meridian
-    }
-    ).subscribe();
+    console.log('Оптравляем http.post на добавление аэропорта ' + airport.name + ', ' + airport.cityName);
+    return this.http.post( this.BaseUrl+'/api/airport',
+      {
+        "name": airport.name,
+        "parallel": airport.parallel,
+        "meridian": airport.meridian,
+        "cityName": airport.cityName
+      },
+      {headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),responseType: 'text'})
+      .toPromise()
+      .then(()=> null)
+      .catch(AirportCitiesService.handleError);
 
   }
 
@@ -65,13 +55,19 @@ export class AirportCitiesService {
   }
 
   updateAirport(airport: AirportModel) {
-    return this.http.put(this.BaseUrl+'/api/airport/', {
-      name: airport.name,
-      cityName: airport.cityName,
-      parallel: airport.parallel,
-      meridian: airport.meridian
-    }).subscribe();
+    return this.http.put(this.BaseUrl+'/api/airport/'+airport.id.toString(), airport)
+      .toPromise()
+      .then(()=>null)
+      .catch(AirportCitiesService.handleError);
 
+  }
+
+  deleteAirport(airport: AirportModel) {
+    console.log('Отправляем http.request на удаление аэропорта '+airport.name);
+    return this.http.request('delete', this.BaseUrl+'/api/airport',{body: airport.name, responseType: 'text'})
+      .toPromise()
+      .then(() => null)
+      .catch(AirportCitiesService.handleError);
   }
 
   getCities(): Promise<CityModel[]> {
@@ -86,18 +82,16 @@ export class AirportCitiesService {
   }
 
   addCity(cityName: string): Promise<void> {
-     return this.http.post(this.BaseUrl+'/api/city', cityName)
+    console.log('Отправляем http.post на добавление города ' + cityName);
+     return this.http.post(this.BaseUrl+'/api/city', cityName, {responseType: 'text'})
        .toPromise()
        .then(() => null)
        .catch(AirportCitiesService.handleError);
   }
 
   deleteCity(cityName: string) {
-    console.log(cityName);
-    return this.http.request('delete', this.BaseUrl+'/api/city', {body: cityName, headers: new HttpHeaders({
-      'Cache-Control':  'no-cache'
-    })})
-      //.subscribe();
+    console.log('Отпрвляем http.delete на удаление '+cityName);
+    return this.http.request('delete', this.BaseUrl+'/api/city', {body: cityName, responseType: 'text'})
       .toPromise()
       .then(() => null)
       .catch(AirportCitiesService.handleError);
@@ -141,5 +135,20 @@ export class AirportCitiesService {
         return airport;
     }
     return null;
+  }
+
+  checkCityByName(cityName: string) {
+    console.log('Проверяем город ' + cityName);
+    this.getCities().then((allCities) => {
+      console.log('filtered:' + allCities.filter((city)=> city.name === cityName) + '|');
+      console.log( allCities.filter((city)=> city.name === cityName));
+      console.log( allCities.filter((city)=> city.name === cityName).length);
+
+      if (allCities.filter((city)=> city.name === cityName).length === 0) {
+        console.log('Не найден город ' + cityName);
+        return false;
+      }
+      return true;
+    });
   }
 }
