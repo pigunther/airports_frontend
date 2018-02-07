@@ -1,14 +1,15 @@
 
-  <form (submit)="addCity()">
-    <input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial">
-    <button type="submit">Добавить</button>
+  <form (submit)="addCity()" class="mainForm">
+    <input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial" class="mainForm__input">
+    <button type="submit" class="mainForm__button">Добавить</button>
   </form>
 
   <ul *ngIf="cities">
     <li *ngFor="let city of cities">
       <!-- нажатие на кнопку - удаление города -->
       <!--<button type="button" (click)="deleteCity($event)" class="cityDeleteButton">{{city.name}}</button>-->
-      <button type="button" class="cityDeleteButton">{{city.name}}</button>
+      <div class="city">{{city.name}}</div>
+      <button type="button" (click)="deleteCity($event)" class="delete__button" [value]="city.name">Удалить</button>
 
     </li>
   </ul>

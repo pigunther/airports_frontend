@@ -8,8 +8,24 @@ $border-radius: 5px;
 }
 
 
-//p-dialog.p-dialog_style div {
-//  width: 700px;
-//}
+p-dialog.ng-tns-c5-0>div.ui-widget.ui-widget-content {
+  width: 400px !important;
+}
+
+div.ui-dialog-content  {
+  height: 250px !important;
+}
+
+.text>span>input.ui-inputtext, input {
+  width: 200px;
+}
+
+.ui-g-10 {
+  width: 75% !important;
+}
+
+.ui-g-2 {
+  width: 25% !important;
+}
 
 

@@ -1,19 +1,59 @@
 $blue-color: #106cc8;
 $blue-color-darker: #0f478e;
 $border-radius: 5px;
+$button-color:#e7e7e7;
+$string-width: 200px;
 
 :host {
   display: block;
   padding: 0 16px;
 }
 
-.cityDeleteButton {
-  background-color: #e7e7e7;
-  colot : black;
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin-left: 25px;
+  padding-left: 0;
+}
+
+.mainForm {
+  margin: 10px 10px 10px 25px;
+}
+
+.mainForm__input {
+  width: $string-width;
+  padding: 2px 0;
+}
+
+.city {
+  border-bottom: 1px solid $button-color;
+  display: inline-block;
+  width: $string-width;
+  padding-bottom: 10px;
+
+}
+
+.delete__button, .mainForm__button {
+  background-color: $button-color;
+  color : black;
   border: none;
-  padding: 15px 32px;
+  display: inline;
+  padding: 10px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 0;
+}
+
+.mainForm__button {
+  background-color: $blue-color;
+  color: white;
+  padding: 5px 32px;
+}
+
+li {
+  margin-top: 15px;
+  margin-right: 15px;
 }
