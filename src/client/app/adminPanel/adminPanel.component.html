@@ -1,29 +1,24 @@
-<div class="p-toolbar">
 
-  <p-toolbar>
-    <button type="button" (click)="airport()" class="flightPanel-in flightPanel-first btn btn-white">Добавить аэропорт</button>
-    <button type="button" (click)="city()" class="flightPanel-in flightPanel-first btn btn-white">Города</button>
+  <!--<p-toolbar>-->
+    <!--<button type="button" (click)="airport()" class="flightPanel-in flightPanel-first btn btn-white">Добавить аэропорт</button>-->
+    <!--<button type="button" (click)="city()" class="flightPanel-in flightPanel-first btn btn-white">Города</button>-->
 
-  </p-toolbar>
+  <!--</p-toolbar>-->
 
-  <div *ngIf="airportFlag">
-    <sd-airportMap></sd-airportMap>
-  </div>
-
-  <div *ngIf="cityFlag">
-    <sd-cityAddition></sd-cityAddition>
-  </div>
-
-    <!--<div *ngIf="cityFlag">-->
-      <!--<form (submit)="addCity()">-->
-        <!--<input [(ngModel)]="cityName" name="cityName" placeholder="Название" [pKeyFilter]="blockSpecial">-->
-        <!--<button type="submit">Добавить</button>-->
-      <!--</form>-->
-
-      <!--<ul *ngIf="cities">-->
-        <!--<li *ngFor="let city of cities">-->
-          <!--<button type="button" (click)="deleteCity($event)" class="cityDeleteButton">{{city.name}}</button>-->
-        <!--</li>-->
-      <!--</ul>-->
+  <!--<div *ngIf="airportFlag">-->
+    <!--<sd-airportMap></sd-airportMap>-->
   <!--</div>-->
-</div>
+
+  <!--<div *ngIf="cityFlag">-->
+    <!--<sd-cityAddition></sd-cityAddition>-->
+  <!--</div>-->
+
+
+  <p-tabView class="tabs">
+    <p-tabPanel header="Изменить аэропорт">
+      <sd-airportMap></sd-airportMap>
+    </p-tabPanel>
+    <p-tabPanel header="Именить город">
+      <sd-cityAddition></sd-cityAddition>
+    </p-tabPanel>
+  </p-tabView>
