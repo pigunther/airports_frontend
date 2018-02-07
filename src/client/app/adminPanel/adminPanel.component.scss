@@ -7,82 +7,94 @@ $border-radius: 5px;
   padding: 0 16px;
 }
 
-
-div.p-toolbar .ui-toolbar{
-  background-color: lightblue;
-  background-image: url(../../assets/img/10665_big.jpg);
-  background-repeat: no-repeat;
-  background-position-y: -480px;
-  background-size: cover;
-  background-attachment: fixed;
+p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav {
+  padding-top: 20px;
 }
-
-p-calendar .p-calendar-style input{
-  width: 200px;
+p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav>li.ui-state-default a{
+  padding-top: 15px;
 }
-p-calendar .p-calendar-style .ui-datepicker {
-  background-color: white;
-}
-
-.flightPanel {
-  margin: 20px 20px 20px 20px;
-  //border: groove;
-}
-
-.flightPanel-input {
-  color: black;
-  font-weight: normal;
-  border-radius: $border-radius;
-  border: none;
-  height: 29px;
-  width: 200px;
-}
-.flightPanel-in {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.flightPanel-first {
-  margin-left: 20px;
-}
-
-.btn, .btn:hover, .btn:focus {
-  background-color: $blue-color;
-  color: white;
-}
-
-.btn-white {
-  border: 1px solid #bfd7f2;
-}
-
-
-.mainTable {
-  margin-top: 40px;
-  width: 100%;
-}
-
-.flightFilter {
-  border-right: 1px solid $blue-color;
-  width: 250px;
-  height: 200px;
-  padding-top: 10px;
-  vertical-align: text-top;
-}
-
-.flightFilter-divs {
-  width: 75%;
-  margin-left: 10%  ;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid $blue-color;
-}
-
-h4 {
-  color: $blue-color-darker;
-  font-family: Geneva, Arial, sans-serif;
-}
-
-
+//
+//
+//div.ptoolbar .ui-toolbar{
+//  background-position-y: -550px;
+//  background-size: cover;
+//  //background: lightblue url(../../assets/img/10665_big.jpg) no-repeat fixed;
+//  background-color: lightblue;
+//  background-image: url(../../assets/img/10665_big.jpg);
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//  background-attachment: scroll;
+//  padding: 20px 0;
+//
+//}
+//
+//
+//p-calendar .p-calendar-style input{
+//  width: 200px;
+//}
+//p-calendar .p-calendar-style .ui-datepicker {
+//  background-color: white;
+//}
+//
+//.flightPanel {
+//  margin: 20px 20px 20px 20px;
+//  //border: groove;
+//}
+//
+//.flightPanel-input {
+//  color: black;
+//  font-weight: normal;
+//  border-radius: $border-radius;
+//  border: none;
+//  height: 29px;
+//  width: 200px;
+//}
+//.flightPanel-in {
+//  margin-top: 10px;
+//  margin-bottom: 10px;
+//}
+//
+//.flightPanel-first {
+//  margin-left: 20px;
+//}
+//
+//.btn, .btn:hover, .btn:focus {
+//  background-color: $blue-color;
+//  color: white;
+//}
+//
+//.btn-white {
+//  border: 1px solid #bfd7f2;
+//}
+//
+//
+//.mainTable {
+//  margin-top: 40px;
+//  width: 100%;
+//}
+//
+//.flightFilter {
+//  border-right: 1px solid $blue-color;
+//  width: 250px;
+//  height: 200px;
+//  padding-top: 10px;
+//  vertical-align: text-top;
+//}
+//
+//.flightFilter-divs {
+//  width: 75%;
+//  margin-left: 10%  ;
+//  margin-bottom: 20px;
+//  padding-bottom: 20px;
+//  border-bottom: 1px solid $blue-color;
+//}
+//
+//h4 {
+//  color: $blue-color-darker;
+//  font-family: Geneva, Arial, sans-serif;
+//}
+//
+//
 
 //table.flightTicket:nth-child(2) div{
 //  margin-bottom: 20px;
