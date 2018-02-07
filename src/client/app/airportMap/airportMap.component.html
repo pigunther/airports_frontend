@@ -7,27 +7,30 @@
 <button type="button" pButton label="Zoom Out" icon="fa-search-minus" (click)="zoomOut(gmap.getMap())" style="margin-top:10px"></button>
 
 <p-dialog showEffect="fade" [(visible)]="dialogVisible" header={{headerDialog}} [width] = "500">
-  <div class="ui-g ui-fluid" *ngIf="selectedPosition">
+  <div class="ui-g ui-fluid" *ngIf="airportForView.meridian">
     <div class="ui-g-2"><label for="name">Аэропорт</label></div>
-    <div class="ui-g-10"><input type="text" pInputText id="name" [(ngModel)]="name" required></div>
+    <div class="ui-g-10"><input type="text" pInputText id="name" [(ngModel)]="airportForView.name" required></div>
 
     <div class="ui-g-2"><label for="cityName">Город</label></div>
     <div class="ui-g-10">
-    <p-autoComplete pInputText  id="cityName" [(ngModel)]="cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" required></p-autoComplete>
+    <p-autoComplete pInputText  id="cityName" [(ngModel)]="airportForView.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" required class="text"></p-autoComplete>
     </div>
 
     <div class="ui-g-2"><label for="lat">Широта</label></div>
-    <div class="ui-g-10"><input id="lat" type="text" readonly pInputText [ngModel]="selectedPosition.lat()"></div>
+    <div class="ui-g-10"><input id="lat" type="text" readonly pInputText [ngModel]="airportForView.parallel"></div>
 
     <div class="ui-g-2"><label for="lng">Долгота</label></div>
-    <div class="ui-g-10"><input id="lng" type="text" readonly pInputText [ngModel]="selectedPosition.lng()"></div>
+    <div class="ui-g-10"><input id="lng" type="text" readonly pInputText [ngModel]="airportForView.meridian"></div>
 
     <div class="ui-g-2"><label for="drg">Перетаскивать</label></div>
-    <div class="ui-g-10"><p-checkbox [(ngModel)]="draggable" binary="true" [style]="{'margin-top':'.25em', 'margin-left':'50px'}"></p-checkbox></div>
+    <div class="ui-g-10"><p-checkbox [(ngModel)]="draggable" binary="true" [style]="{'margin-top':'.25em', 'margin-left':'50px'}" ></p-checkbox></div>
   </div>
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-      <button type="button" pButton label={{buttonDialog}} icon="fa-plus" (click)="addMarker()"></button>
+      <button type="button" pButton label={{buttonDialog}} icon="fa-plus" (click)="changeButton()"></button>
+      <div *ngIf="buttonDialog == changeAirportString" >
+        <button type="button" (click)="deleteAirport()">Удалить</button>
+      </div>
     </div>
   </p-footer>
 </p-dialog>
