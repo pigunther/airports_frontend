@@ -86,7 +86,6 @@ export class AirportMapComponent {
         // this.cityName = chosenAirport.cityName;
         this.airportForView = chosenAirport;
 
-        //todo update function
         let title = event.overlay.getTitle();
         this.infoWindow.setContent('' +title + '');
         this.infoWindow.open(event.map, event.overlay);
@@ -157,7 +156,7 @@ export class AirportMapComponent {
   }
 
   addAirport() {
-    //todo
+
     let airport = new AirportModel();
     console.log(this.airportForView);
     if (this.airportCitiesService.checkCityByName(this.airportForView.cityName)) {

@@ -13,22 +13,5 @@ import { FlightModel } from '../components/models/FlightModel';
 
 })
 export class FlightOfferComponent {
-
-  dialogVisible: boolean;
-  openInfoFlag = false;
-
   @Input() flight: FlightModel;
-
-  mouseover() {
-    this.dialogVisible = true;
-  }
-
-  mouseout() {
-    this.dialogVisible = false;
-  }
-
-  openInfo() {
-    //this.openInfoFlag = true;
-  }
-
 }

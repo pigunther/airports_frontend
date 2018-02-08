@@ -44,7 +44,7 @@ export class AirportCitiesService {
         'Content-Type': 'application/json'
       }),responseType: 'text'})
       .toPromise()
-      .then(()=> null)
+      //.then(()=> null)
       .catch(AirportCitiesService.handleError);
 
   }
@@ -57,7 +57,7 @@ export class AirportCitiesService {
   updateAirport(airport: AirportModel) {
     return this.http.put(this.BaseUrl+'/api/airport/'+airport.id.toString(), airport)
       .toPromise()
-      .then(()=>null)
+      //.then(()=>null)
       .catch(AirportCitiesService.handleError);
 
   }
@@ -66,7 +66,7 @@ export class AirportCitiesService {
     console.log('Отправляем http.request на удаление аэропорта '+airport.name);
     return this.http.request('delete', this.BaseUrl+'/api/airport',{body: airport.name, responseType: 'text'})
       .toPromise()
-      .then(() => null)
+      //.then(() => null)
       .catch(AirportCitiesService.handleError);
   }
 
@@ -85,7 +85,7 @@ export class AirportCitiesService {
     console.log('Отправляем http.post на добавление города ' + cityName);
      return this.http.post(this.BaseUrl+'/api/city', cityName, {responseType: 'text'})
        .toPromise()
-       .then(() => null)
+       //.then(() => null)
        .catch(AirportCitiesService.handleError);
   }
 
@@ -93,7 +93,7 @@ export class AirportCitiesService {
     console.log('Отпрвляем http.delete на удаление '+cityName);
     return this.http.request('delete', this.BaseUrl+'/api/city', {body: cityName, responseType: 'text'})
       .toPromise()
-      .then(() => null)
+      //.then(() => null)
       .catch(AirportCitiesService.handleError);
   }
 
@@ -118,6 +118,13 @@ export class AirportCitiesService {
 
   filterCityForTips(allCities: CityModel[], query: string) : string[] {
     let foundCities: string[] = [];
+    // allCities.filter( (tmpCity) =>
+    //   tmpCity.name.search(new RegExp(query, "i")) == 0
+    //     // console.log(tmpCity.name);
+    //     // foundCities.push(tmpCity.name);
+    // );
+
+
     allCities.forEach(function (tmpCity) {
 
       if (tmpCity.name.search(new RegExp(query, "i")) == 0) {
