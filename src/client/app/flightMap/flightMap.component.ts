@@ -25,8 +25,6 @@ export class FlightMapComponent {
   draggable: boolean;
   msgs: Message[] = [];
 
-  flight: FlightModel;
-
   @Input() flights: FlightModel[];
 
   ngOnInit() {
@@ -39,11 +37,16 @@ export class FlightMapComponent {
 
     this.infoWindow = new google.maps.InfoWindow();
 
-    for (let i = 0; i < this.flights.length; i++) {
-      this.flight = this.flights[i];
-      console.log(this.flight);
-      this.addMarkerByAirport(this.flight.airportFromObject, this.flight.airportToObject);
+    // for (let i = 0; i < this.flights.length; i++) {
+    //   this.flight = this.flights[i];
+    //   console.log(this.flight);
+    //   this.addMarkerByAirport(this.flight.airportFromObject, this.flight.airportToObject);
+    // }
+
+    for (let flight of this.flights) {
+      this.addMarkerByAirport(flight.airportFromObject, flight.airportToObject);
     }
+
   }
 
   addMarkerByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
