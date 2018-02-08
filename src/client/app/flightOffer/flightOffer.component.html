@@ -1,24 +1,24 @@
 
-    <div class="ticketTable" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
+    <div class="flightOffer" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
 
-      <div class="ticketColumn ticketColumn_three-fourth">
+      <div class="flightOffer__ticketColumn flightOffer__ticketColumn_three-fourth">
 
-        <div class="ticketNameColumn ticketColumn__infa">
+        <div class="flightOffer__ticketNameColumn">
           <div >{{ flight.airportFromObject.cityName }}</div>
           <div >{{ flight.departureTime | date:'short' }}</div>
           <div >{{ flight.airportFromObject.name }}</div>
 
         </div>
-        <div class="middleColumn ticketColumn__image">
+        <div class="flightOffer__middleColumn">
           <!--<div class="ticketNameColumn__row">-->
-            <img class="middleColumn__row middleColumn__icone" src="../../assets/img/airplane.png"/>
+            <img class="flgithOffer__row flightOffer__icone" src="../../assets/img/airplane.png"/>
 
           <!--</div>-->
-          <div class="middleColumn__row">
-            <div class="middleColumn__row_infa">{{(flight.arrivalTime - flight.departureTime) | date: 'h:mm'}}</div>
+          <div class="flightOffer__row">
+            {{(flight.arrivalTime - flight.departureTime) | date: 'hч mm'}}
           </div>
         </div>
-        <div class="ticketNameColumn ticketColumn__infa">
+        <div class="flightOffer__ticketNameColumn ">
           <div >{{ flight.airportToObject.cityName }}</div>
           <div >{{ flight.arrivalTime | date:'short'}}</div>
           <div >{{ flight.airportToObject.name }}</div>
@@ -27,7 +27,7 @@
 
 
       </div>
-      <div class="ticketColumn ticketColumn_one-fourth">
+      <div class="flightOffer__ticketColumn flightOffer__ticketColumn_one-fourth">
         <div >
         <!--<h4> доп инфа </h4>-->
         <p>Цена: {{flight.cost}}</p>
@@ -37,8 +37,8 @@
         </div>
       </div>
 
-      <div class="openMap" *ngIf="openInfoFlag">
+      <!--<div class="openMap" *ngIf="openInfoFlag">-->
 
-      </div>
+      <!--</div>-->
     </div>
 

@@ -8,13 +8,73 @@ $border-radius: 5px;
 }
 
 
-div.p-toolbar .ui-toolbar{
-  background-color: lightblue;
-  background-image: url(../../assets/img/10665_big.jpg);
-  background-repeat: no-repeat;
-  background-position-y: 67%;
-  background-size: cover;
-  background-attachment: scroll;
+.flightPanel {
+  .ui-toolbar {
+    background-color: lightblue;
+    background-image: url(../../assets/img/10665_big.jpg);
+    background-repeat: no-repeat;
+    background-position-y: 67%;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+
+  &__container {
+    margin: 20px 20px 20px 20px;
+
+    &_in {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    &_first {
+      margin-left: 20px;
+    }
+  }
+
+  &__input {
+    color: black;
+    font-weight: normal;
+    border-radius: $border-radius;
+    border: none;
+    height: 29px;
+    width: 200px;
+  }
+
+  &__table {
+    margin-top: 20px;
+    width: 1300px;
+  }
+
+  &__tab {
+    display: inline-block;
+    margin-left: 10px;
+    width: 53%;
+    margin-top: -20px;
+  }
+
+  &__tabView {
+    padding-top: 10px;
+    padding-left: 20px;
+    vertical-align: text-top;
+    overflow: auto;
+  }
+
+  &__filter {
+    display: inline-block;
+    width: 20%;
+    height: 200px;
+    padding-top: 10px;
+    //vertical-align: text-top;
+    vertical-align: top;
+
+    &_content {
+      width: 70%;
+      margin-left: 10%  ;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid $blue-color;
+    }
+  }
 }
 
 p-calendar .p-calendar-style input{
@@ -22,28 +82,6 @@ p-calendar .p-calendar-style input{
 }
 p-calendar .p-calendar-style .ui-datepicker {
   background-color: white;
-}
-
-.flightPanel {
-  margin: 20px 20px 20px 20px;
-  //border: groove;
-}
-
-.flightPanel__input {
-  color: black;
-  font-weight: normal;
-  border-radius: $border-radius;
-  border: none;
-  height: 29px;
-  width: 200px;
-}
-.flightPanel_in {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.flightPanel_first {
-  margin-left: 20px;
 }
 
 .btn, .btn:hover, .btn:focus {
@@ -55,55 +93,8 @@ p-calendar .p-calendar-style .ui-datepicker {
   border: 1px solid #bfd7f2;
 }
 
-.mainTable {
-  margin-top: 20px;
-  width: 1300px;
-}
-
-.flightFilter {
-  display: inline-block;
-  //border-right: 1px solid $blue-color;
-  width: 20%;
-  height: 200px;
-  padding-top: 10px;
-  vertical-align: text-top;
-}
-
-.flightFilter__content {
-  width: 70%;
-  margin-left: 10%  ;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid $blue-color;
-}
-
 h4 {
   color: $blue-color-darker;
   font-family: Geneva, Arial, sans-serif;
 }
-
-.flightTabPanel {
-  padding-top: 10px;
-  padding-left: 20px;
-  vertical-align: text-top;
-  overflow: auto;
-}
-
-.column {
-  vertical-align: top;
-}
-
-
-.column__tab {
-  display: inline-block;
-  //display: table-cell;
-  margin-left: 10px;
-  width: 53%;
-  margin-top: -20px;
-}
-
-
-
-
-
 
