@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {Message} from "primeng/primeng";
 import {FlightModel} from "../components/models/FlightModel";
 import {AirportModel} from "../components/models/AirportModel";
@@ -24,8 +24,14 @@ export class FlightMapComponent {
   infoWindow: any;
   draggable: boolean;
   msgs: Message[] = [];
+  marker: any = {
+    url: '../assets/img/marker.png',
+    size: new google.maps.Size(28, 39),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(11, 28)
+  };
 
-  @Input() flights: FlightModel[];
+  @Input() flightsArray: FlightModel[][];
 
   ngOnInit() {
     this.options = {
@@ -37,47 +43,98 @@ export class FlightMapComponent {
 
     this.infoWindow = new google.maps.InfoWindow();
 
-    // for (let i = 0; i < this.flights.length; i++) {
-    //   this.flight = this.flights[i];
-    //   console.log(this.flight);
-    //   this.addMarkerByAirport(this.flight.airportFromObject, this.flight.airportToObject);
-    // }
+    this.addMarkerByAirport(this.flightsArray[0][0].airportFromObject, this.flightsArray[0][this.flightsArray[0].length-1].airportToObject);
 
-    for (let flight of this.flights) {
-      this.addMarkerByAirport(flight.airportFromObject, flight.airportToObject);
+    for (let flights of this.flightsArray) {
+      for (let flight of flights) {
+        this.addMarkerAndLineByAirport(flight.airportFromObject, flight.airportToObject);
+        }
     }
-
   }
 
-  addMarkerByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('--------- какие-то изменения на карте -----------')
+    this.ngOnInit();
+  }
+
+  addMarkerAndLineByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
     console.log(airportFrom);
     console.log(airportTo);
+
     let addFrom = new google.maps.Marker({
       position:
         {lat: airportFrom.parallel, lng: airportFrom.meridian},
-      title: airportFrom.cityName + " " + airportFrom.name
+      title: airportFrom.cityName + ", " + airportFrom.name,
+      icon: this.marker
     });
     let addTo = new google.maps.Marker({
       position:
         {lat: airportTo.parallel, lng: airportTo.meridian},
-      title: airportTo.cityName + " " + airportTo.name
+      title: airportTo.cityName + ", " + airportTo.name,
+      icon: this.marker
     });
-    let findFrom = this.overlays.findIndex(find => find == addFrom);
-    let findTo = this.overlays.findIndex(find => find == addFrom);
+    let findFrom = this.overlays.findIndex(find => find.title === addFrom.title);
+    let findTo = this.overlays.findIndex(find => find.title === addTo.title);
 
     if (findFrom === -1) {
       this.overlays.push(addFrom);
+      console.log('запушали откуда ');
     }
     if (findTo === -1) {
       this.overlays.push(addTo);
+      console.log('запушали куда')
     }
-    if (findFrom === -1 || findTo === -1) {
+    if (findFrom === -1 || findTo === -1 || this.overlays[findFrom].icon || this.overlays[findTo].icon) {
+      let lineSymbol = {
+        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+      };
       this.overlays.push(
         new google.maps.Polyline({path: [{lat: airportFrom.parallel, lng: airportFrom.meridian},
           {lat: airportTo.parallel, lng: airportTo.meridian}],
+          icons:[{
+            icon: lineSymbol,
+            offset: '50%'
+          }],
           geodesic: true, strokeColor: '#0000FF', strokeOpacity: 0.5, strokeWeight: 2}),
       );
     }
+  }
+
+
+  addMarkerByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
+    console.log(airportFrom);
+    console.log(airportTo);
+    console.log('начальный и конечный маркеры ')
+    let startMarker = {
+      url: '../assets/img/startMarker.png',
+      size: new google.maps.Size(28, 39),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(14, 39)
+    };
+
+    let finishMarker = {
+      url: '../assets/img/finishMarker.png',
+      size: new google.maps.Size(28, 39),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(14, 39)
+    };
+
+    let addFrom = new google.maps.Marker({
+      position:
+        {lat: airportFrom.parallel, lng: airportFrom.meridian},
+      title: airportFrom.cityName + ", " + airportFrom.name,
+      icon: startMarker
+    });
+    let addTo = new google.maps.Marker({
+      position:
+        {lat: airportTo.parallel, lng: airportTo.meridian},
+      title: airportTo.cityName + ", " + airportTo.name,
+      icon: finishMarker
+    });
+    this.overlays.push(addFrom);
+
+    this.overlays.push(addTo);
+
   }
 
   handleMapClick(event: any) {
@@ -90,15 +147,13 @@ export class FlightMapComponent {
     let isMarker = event.overlay.getTitle != undefined;
 
     if(isMarker) {
-      let title = event.overlay.getTitle();
-      this.infoWindow.setContent('' + title + '');
-      this.infoWindow.open(event.map, event.overlay);
-      event.map.setCenter(event.overlay.getPosition());
+      // let title = event.overlay.getTitle();
+      // this.infoWindow.setContent('' + title + '');
+      // this.infoWindow.open(event.map, event.overlay);
+      // event.map.setCenter(event.overlay.getPosition());
 
-      this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
-    }
-    else {
-      this.msgs.push({severity:'info', summary:'Shape Selected', detail: ''});
+
+      //this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
     }
   }
 
@@ -111,8 +166,9 @@ export class FlightMapComponent {
   }
 
   initOverlays() {
-    if(!this.overlays||!this.overlays.length) {
+    if(!this.overlays||this.overlays.length) {
       this.overlays = [];
+      console.log('обнулили слои -----------')
     }
   }
 
