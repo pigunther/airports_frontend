@@ -1,0 +1,217 @@
+[
+  [
+    {
+      "id":1,
+      "departureTime":33096028393000,
+      "arrivalTime":33096038393000,
+      "cost":1313.13,
+      "airline":"аэрофлот",
+      "alwaysLate":false,
+      "freePlace":15,
+      "airportFromObject":
+      {
+        "id": 33,
+        "name": "Стригино",
+        "cityId": 72,
+        "parallel": 56.230119,
+        "meridian": 43.784042,
+        "city": {
+          "id": 72,
+          "name": "Нижний Новгород"
+        },
+        "cityName": "Нижний Новгород"
+      },
+      "airportToObject":
+      {
+        "id": 35,
+        "name": "Ханты-Мансийск",
+        "cityId": 125,
+        "parallel": 61.028611111111,
+        "meridian": 69.091944444444,
+        "city": {
+          "id": 125,
+          "name": "Ханты-Мансийск"
+        },
+        "cityName": "Ханты-Мансийск"
+      }
+    },
+    {
+      "id":2,
+      "departureTime":33096048393000,
+      "arrivalTime":33096208393000,
+      "cost":1313.13,
+      "airline":null,
+      "alwaysLate":false,
+      "freePlace":34,
+      "airportFromObject":
+      {
+        "id": 35,
+        "name": "Ханты-Мансийск",
+        "cityId": 125,
+        "parallel": 61.028611111111,
+        "meridian": 69.091944444444,
+        "city": {
+          "id": 125,
+          "name": "Ханты-Мансийск"
+        },
+        "cityName": "Ханты-Мансийск"
+      },
+      "airportToObject":
+      {
+        "id": 36,
+        "name": "Чита",
+        "cityId": 131,
+        "parallel": 52.026317,
+        "meridian": 113.30555600000001,
+        "city": {
+          "id": 131,
+          "name": "Чита"
+        },
+        "cityName": "Чита"
+      }
+    },
+    {
+      "id":3,
+      "departureTime":33096208393000,
+      "arrivalTime":33096228393000,
+      "cost":1313.13,
+      "airline":null,
+      "alwaysLate":true,
+      "freePlace":1,
+      "airportFromObject":
+      {
+        "id": 36,
+        "name": "Чита",
+        "cityId": 131,
+        "parallel": 52.026317,
+        "meridian": 113.30555600000001,
+        "city": {
+          "id": 131,
+          "name": "Чита"
+        },
+        "cityName": "Чита"
+      },
+      "airportToObject":
+      {
+        "id": 34,
+        "name": "Грозный",
+        "cityId": 29,
+        "parallel": 43.388056,
+        "meridian": 45.699444,
+        "city": {
+          "id": 29,
+          "name": "Грозный"
+        },
+        "cityName": "Грозный"
+      }
+    }
+  ],
+  [ {
+    "id":1,
+    "departureTime":33096028393000,
+    "arrivalTime":33096075193000,
+    "cost":1313.13,
+    "airline":null,
+    "alwaysLate":null,
+    "freePlace":4,
+    "airportFromObject":
+    {
+      "id": 33,
+      "name": "Стригино",
+      "cityId": 72,
+      "parallel": 56.230119,
+      "meridian": 43.784042,
+      "city": {
+        "id": 72,
+        "name": "Нижний Новгород"
+      },
+      "cityName": "Нижний Новгород"
+    },
+    "airportToObject":
+    {
+      "id": 37,
+      "name": "Хатанга",
+      "cityId": 126,
+      "parallel": 71.977,
+      "meridian": 102.49,
+      "city": {
+        "id": 126,
+        "name": "Хатанга"
+      },
+      "cityName": "Хатанга"
+    }
+  },
+    {
+      "id":3,
+      "departureTime":33096028393000,
+      "arrivalTime":33096075193000,
+      "cost":1313.13,
+      "airline":null,
+      "alwaysLate":null,
+      "freePlace":56,
+      "airportFromObject":
+      {
+        "id": 37,
+        "name": "Хатанга",
+        "cityId": 126,
+        "parallel": 71.977,
+        "meridian": 102.49,
+        "city": {
+          "id": 126,
+          "name": "Хатанга"
+        },
+        "cityName": "Хатанга"
+      },
+      "airportToObject":
+      {
+        "id": 34,
+        "name": "Грозный",
+        "cityId": 29,
+        "parallel": 43.388056,
+        "meridian": 45.699444,
+        "city": {
+          "id": 29,
+          "name": "Грозный"
+        },
+        "cityName": "Грозный"
+      }
+    }],
+  [ {
+    "id":1,
+    "departureTime":33096028393000,
+    "arrivalTime":33096075193000,
+    "cost":1313.13,
+    "airline":null,
+    "alwaysLate":null,
+    "freePlace":null,
+    "airportFromObject":
+    {
+      "id": 33,
+      "name": "Стригино",
+      "cityId": 72,
+      "parallel": 56.230119,
+      "meridian": 43.784042,
+      "city": {
+        "id": 72,
+        "name": "Нижний Новгород"
+      },
+      "cityName": "Нижний Новгород"
+    },
+      "airportToObject":
+      {
+        "id": 34,
+        "name": "Грозный",
+        "cityId": 29,
+        "parallel": 43.388056,
+        "meridian": 45.699444,
+        "city": {
+          "id": 29,
+          "name": "Грозный"
+        },
+        "cityName": "Грозный"
+      }
+    }]
+]
+
+
+
