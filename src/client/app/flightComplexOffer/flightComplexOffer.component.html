@@ -1,0 +1,83 @@
+
+<div class="flightOffer">
+
+  <div class="flightOffer__ticketColumn flightOffer__ticketColumn_three-fourth">
+
+    <div class="flightOffer__ticketNameColumn">
+      <div >{{ flight.airportFromObject.cityName }}</div>
+      <div >{{ flight.departureTime | date:'short' }}</div>
+      <div >{{ flight.airportFromObject.name}}</div>
+
+    </div>
+    <div class="flightOffer__middleColumn"  >
+      <!--<div class="ticketNameColumn__row">-->
+      <div class="flightOffer__middleColumn_row" (click)="transferBtn()" >
+        {{timeCounter(flight)}}
+      </div>
+        <img class="flgithOffer__middleColumn_row flightOffer__icone" src="../../assets/img/airplane.png"/>
+
+      <!--</div>-->
+      <div class="flightOffer__middleColumn_row" (click)="transferBtn()" >
+        {{textTransfer}}
+      </div>
+    </div>
+    <div class="flightOffer__ticketNameColumn ">
+      <div >{{ flight.airportToObject.cityName }}</div>
+      <div >{{ flight.arrivalTime | date:'short' }}</div>
+      <div >{{ flight.airportToObject.name}}</div>
+    </div>
+
+  </div>
+  <div class="flightOffer__ticketColumn flightOffer__ticketColumn_one-fourth">
+    <div >
+        <!--<h4> доп инфа </h4>-->
+        <p>Цена: {{flight.cost.toFixed(2)}}</p>
+        <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
+        <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
+        <p *ngIf="(flight.alwayslate !== null)">Опоздания: {{lateFunction(flight.alwayslate)}}</p>
+    </div>
+  </div>
+
+</div>
+
+<ul *ngIf="transferFlag">
+  <li *ngFor="let flighti of flights">
+    <div class="flightComplexOffer">
+
+      <div class="flightComplexOffer__ticketColumn flightComplexOffer__ticketColumn_three-fourth">
+
+        <div class="flightComplexOffer__ticketNameColumn">
+          <div >{{ flighti.airportFromObject.cityName }}</div>
+          <div >{{ flighti.departureTime | date:'short' }}</div>
+          <div >{{ flighti.airportFromObject.name}}</div>
+
+        </div>
+        <div class="flightComplexOffer__middleColumn">
+          <!--<div class="ticketNameColumn__row">-->
+          <img class="flgithComplexOffer__row flightComplexOffer__icone" src="../../assets/img/airplane.png"/>
+
+          <!--</div>-->
+          <div class="flightComplexOffer__row">
+            {{timeCounter(flighti)}}
+          </div>
+        </div>
+        <div class="flightComplexOffer__ticketNameColumn ">
+          <div >{{ flighti.airportToObject.cityName }}</div>
+          <div >{{ flighti.arrivalTime | date:'short' }}</div>
+          <div >{{ flighti.airportToObject.name}}</div>
+        </div>
+
+
+      </div>
+      <div class="flightComplexOffer__ticketColumn flightComplexOffer__ticketColumn_one-fourth">
+        <div >
+          <!--<h4> доп инфа </h4>-->
+          <p>Цена: {{flighti.cost.toFixed(2)}}</p>
+          <p *ngIf="flighti.freePlace">Свободные места: {{flighti.freePlace}}</p>
+          <p *ngIf="flighti.airline">Авиакомпания: {{flighti.airline}}</p>
+          <p *ngIf="flighti.alwayslate">Опоздания: {{flighti.alwayslate}}</p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

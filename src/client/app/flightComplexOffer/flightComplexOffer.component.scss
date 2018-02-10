@@ -1,0 +1,164 @@
+$blue-color: #106cc8;
+$blue-color-darker: #0f478e;
+$border-radius: 5px;
+$flightTicket-height: 120px;
+$flightComplexTicket-height: 100px;
+$image-color: #6e6e6e;
+
+:host {
+  display: block;
+  padding: 0 16px;
+}
+
+
+.flightComplexOffer {
+  border-radius: 5px;
+  //margin-top: 10px;
+  //background-color: beige;
+  margin-left: 5%;
+  //display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  //height: $flightComplexTicket-height !important;
+  width: 90%;
+  text-align: center;
+
+
+  &__ticketColumn {
+    // border: 1px solid yellow;
+    //display: inline-block;
+    //vertical-align: top;
+    padding: 10px;
+    //height: 100px;
+    //border-radius: 5px;
+
+    &_three-fourth {
+      width: 74%;
+      border-left: 1px solid $blue-color-darker;
+      border-bottom: 1px solid $blue-color-darker;
+      //border-right: 1px dashed $blue-color-darker;
+    }
+
+    &_one-fourth {
+      width: 25%;
+      border-right: 1px solid $blue-color-darker;
+      border-bottom: 1px solid $blue-color-darker;
+      border-left: 1px dashed $blue-color-darker;
+      vertical-align: middle;
+      padding: 10px 0 ;
+    }
+  }
+
+
+  &__ticketNameColumn, &__middleColumn {
+    //border: 1px solid gray;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    height: 80px;
+  }
+
+  &__ticketNameColumn {
+    width: 39%;
+  }
+  &__middleColumn {
+    width: 20%;
+  }
+
+
+  &__icone {
+    // border: 1px solid black;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 180%;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+
+  &__row {
+    //border: 1px solid green;
+    //display: block;
+    height: 30px;
+    color: $image-color;
+  }
+}
+
+
+.flightOffer {
+  border-radius: 5px;
+  margin-top: 10px;
+
+  margin-left: 1%;
+  display: block;
+  height: $flightTicket-height !important;
+  width: 100%;
+  text-align: center;
+
+
+  &__ticketColumn {
+    background-color: beige;
+    // border: 1px solid yellow;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 20px;
+    height: 120px;
+    border-radius: 5px;
+
+    &_three-fourth {
+      width: 74%;
+      border: 1px solid $blue-color-darker;
+      border-right: 1px dashed $blue-color-darker;
+    }
+
+    &_one-fourth {
+      width: 25%;
+      border: 1px solid $blue-color-darker;
+      border-left: 1px dashed $blue-color-darker;
+      vertical-align: middle;
+      padding: 10px 0 ;
+    }
+  }
+
+
+  &__ticketNameColumn, &__middleColumn {
+    //border: 1px solid gray;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    height: 80px;
+  }
+
+  &__ticketNameColumn {
+    width: 39%;
+  }
+  &__middleColumn {
+    width: 20%;
+    //color: $image-color;
+    &_row {
+      //border: 1px solid green;
+      display: block;
+      height: 0;
+      color: $image-color;
+      &:hover {
+        color: $blue-color-darker;
+      }
+    }
+
+  }
+
+
+
+  &__icone {
+    // border: 1px solid black;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 180%;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+
+
+}
