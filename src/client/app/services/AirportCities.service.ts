@@ -19,8 +19,6 @@ export class AirportCitiesService {
 
   private JSONUrl = '/assets/flights.json';
   private result = '';
-  //private BaseUrl = 'http://80.93.177.22:8080';
-  //private BaseUrl = 'http://80.93.177.22:1234';
   private BaseUrl = 'http://localhost:1234';
 
   private cities: Promise<CityModel[]>;
@@ -42,7 +40,6 @@ export class AirportCitiesService {
         'Content-Type': 'application/json'
       }),responseType: 'text'})
       .toPromise()
-      //.then(()=> null)
       .catch(AirportCitiesService.handleError);
 
   }
@@ -61,7 +58,6 @@ export class AirportCitiesService {
         "name" : airport.cityName
       }})
       .toPromise()
-      //.then(()=>null)
       .catch(AirportCitiesService.handleError);
 
   }
@@ -81,10 +77,6 @@ export class AirportCitiesService {
     return this.cities;
   }
 
-  // getCitiesTMP(): Promise<string[]> {
-  //   return this.cities;
-  // }
-
   addCity(cityName: string): Promise<void> {
     this.cities = null;
     console.log('Отправляем http.post на добавление города ' + cityName);
@@ -101,19 +93,6 @@ export class AirportCitiesService {
       .catch(AirportCitiesService.handleError);
   }
 
-  // addCityTMP(cityName: string) {
-  //   let tmpCities: string[] = [];
-  //   this.cities.then((c) => {
-  //     tmpCities = c;
-  //     tmpCities.push(cityName);
-  //     console.log("c: ", c);
-  //     console.log("tmpin: ", tmpCities);
-  //     this.cities  = new Promise((resolve, reject) => {
-  //       resolve(tmpCities);
-  //     })
-  //   });
-  //
-  // }
 
   postData() {
     this.http.post("", {});
@@ -122,11 +101,6 @@ export class AirportCitiesService {
 
   filterCityForTips(allCities: CityModel[], query: string) : string[] {
     let foundCities: string[] = [];
-    // allCities.filter( (tmpCity) =>
-    //   tmpCity.name.search(new RegExp(query, "i")) == 0
-    //     // console.log(tmpCity.name);
-    //     // foundCities.push(tmpCity.name);
-    // );
 
 
     allCities.forEach(function (tmpCity) {
