@@ -12,14 +12,17 @@ import {CityModel} from "../components/models/CityModel";
   encapsulation: ViewEncapsulation.None,
   selector: 'sd-flightPanel',
   templateUrl: 'flightPanel.component.html',
-  styleUrls: ['flightPanel.component.css'],
+  styleUrls: ['flightPanel.component.css', '../normalize.css'],
 })
 export class FlightPanelComponent {
 
   flights: FlightModel[];
+  flightsArray: FlightModel[][];
   price: number;
   tabIndex: number;
   tipCities: string[];
+
+  selectTransfer: string = 'no';
 
   flightQuery = new FlightModel();
 
@@ -28,15 +31,11 @@ export class FlightPanelComponent {
     private airportCitiesService: AirportCitiesService
   ) {};
 
-  ngOnInit(){
-    this.search();
-  }
 
   search(): void {
-
     console.log(this.flightQuery);
-    this.flightService.getTotalJson().then((f)=> {
-    //this.flightService.getJsonByStringQuery(this.flightQuery).then((f)=>  {
+    //this.flightService.getTotalJson().then((f)=> {
+    this.flightService.getFlights(this.flightQuery).then((f)=>  {
       this.flights = f;
       for (let flighti of this.flights) {
                flighti.departureTime = new Date(flighti.departureTime);
@@ -47,6 +46,42 @@ export class FlightPanelComponent {
     });
     console.log('these are flights:');
     console.log(this.flights);
+  }
+
+  searchComplex() {
+
+    if (this.selectTransfer === 'yes') {
+      console.log('ищем с пересадками');
+      //this.flightService.getTotalJson().then((f)=> {
+      this.flightService.getComplexFlights(this.flightQuery).then((flightsArray) => {
+        this.flightsArray = flightsArray;
+        for (this.flights of flightsArray) {
+          for (let flighti of this.flights) {
+            flighti.departureTime = new Date(flighti.departureTime);
+            flighti.arrivalTime = new Date(flighti.arrivalTime);
+            console.log(flighti);
+          }
+        }
+
+      });
+    } else {
+      console.log('ищем без пересадок');
+      this.flightService.getFlightsTmp(this.flightQuery).then((flights) => {
+        //this.flightsArray = [flights];
+        this.flightsArray = [];
+        //for (this.flight of flights) {
+          for (let flighti of flights) {
+            this.flightsArray.push([flighti]);
+            flighti.departureTime = new Date(flighti.departureTime);
+            flighti.arrivalTime = new Date(flighti.arrivalTime);
+            console.log(flighti);
+          }
+        // }
+        console.log(this.flightsArray);
+        console.log('массив билетов')
+
+      });
+    }
 
   }
 
