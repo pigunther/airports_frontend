@@ -1,12 +1,12 @@
 
-    <div class="flightOffer" (mouseover)="mouseover()" (mouseout)="mouseout()" (click)="openInfo()">
+    <div class="flightOffer">
 
       <div class="flightOffer__ticketColumn flightOffer__ticketColumn_three-fourth">
 
         <div class="flightOffer__ticketNameColumn">
           <div >{{ flight.airportFromObject.cityName }}</div>
           <div >{{ flight.departureTime | date:'short' }}</div>
-          <div >{{ flight.airportFromObject.name }}</div>
+          <div >{{ flight.airportFromObject.name}}</div>
 
         </div>
         <div class="flightOffer__middleColumn">
@@ -20,9 +20,8 @@
         </div>
         <div class="flightOffer__ticketNameColumn ">
           <div >{{ flight.airportToObject.cityName }}</div>
-          <div >{{ flight.arrivalTime | date:'short'}}</div>
-          <div >{{ flight.airportToObject.name }}</div>
-
+          <div >{{ flight.arrivalTime | date:'short' }}</div>
+          <div >{{ flight.airportToObject.name}}</div>
         </div>
 
 
@@ -30,7 +29,7 @@
       <div class="flightOffer__ticketColumn flightOffer__ticketColumn_one-fourth">
         <div >
         <!--<h4> доп инфа </h4>-->
-        <p>Цена: {{flight.cost}}</p>
+        <p>Цена: {{flight.cost.toFixed(2)}}</p>
         <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
         <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
         <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
@@ -41,4 +40,5 @@
 
       <!--</div>-->
     </div>
+
 
