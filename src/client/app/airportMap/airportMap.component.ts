@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Message} from "primeng/primeng";
 import {AirportModel} from "../components/models/AirportModel";
@@ -16,6 +16,8 @@ declare const google: any;
 })
 export class AirportMapComponent {
 
+  @Input() changesCheck: number;
+
   options: any;
   overlays: any[];
   overlayForUpdate: any;
@@ -29,7 +31,7 @@ export class AirportMapComponent {
   buttonDialog: string;
   changeAirportString: string = 'Изменить аэропорт';
 
-  airportForView: AirportModel = new AirportModel();
+    airportForView: AirportModel = new AirportModel();
 
   constructor (
     private airportCitiesService: AirportCitiesService
@@ -51,6 +53,10 @@ export class AirportMapComponent {
 
   }
 
+  ngOnChanges(){
+    this.initOverlays();
+  }
+
   handleMapClick(event: any) {
     this.headerDialog = "Новый аэропорт";
     this.buttonDialog = "Добавить аэропорт";
@@ -64,7 +70,7 @@ export class AirportMapComponent {
 
   handleOverlayClick(event: any) {
     this.msgs = [];
-    let isMarker = event.overlay.getTitle != undefined;
+    let isMarker = event.overlay.getTitle() != undefined;
     console.log('in hangleOverlayClick');
     console.log(this.overlays[137]);
     if(isMarker) {
@@ -86,19 +92,18 @@ export class AirportMapComponent {
         // this.cityName = chosenAirport.cityName;
         this.airportForView = chosenAirport;
 
-        let title = event.overlay.getTitle();
-        this.infoWindow.setContent('' +title + '');
-        this.infoWindow.open(event.map, event.overlay);
-        event.map.setCenter(event.overlay.getPosition());
-        this.overlayForUpdate = event.overlay;
-        this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
+        // let title = event.overlay.getTitle();
+        // this.infoWindow.setContent('' +title + '');
+        // this.infoWindow.open(event.map, event.overlay);
+        // event.map.setCenter(event.overlay.getPosition());
+         this.overlayForUpdate = event.overlay;
+        // this.msgs.push({severity:'info', summary:'Marker Selected', detail: title});
 
       });
-
     }
-    else {
-      this.msgs.push({severity:'info', summary:'Shape Selected', detail: ''});
-    }
+    // else {
+    //   this.msgs.push({severity:'info', summary:'Shape Selected', detail: ''});
+    // }
   }
 
   changeButton() {
@@ -117,9 +122,10 @@ export class AirportMapComponent {
     console.log('Обновляем аэропорт ' + this.airportForView.name + ', ' + this.airportForView.cityName)
     if (this.airportCitiesService.checkCityByName(this.airportForView.cityName)) {
       this.airportCitiesService.updateAirport(this.airportForView).then(() => {
+        //this.initOverlays();
         this.updateAllOverlays(this.airportForView.id, this.overlayForUpdate);
         console.log('---------Обновлено------------');
-        this.airportForView = new AirportModel();
+        //this.airportForView = new AirportModel();
         this.draggable = false;
         this.dialogVisible = false;
       })
@@ -127,15 +133,16 @@ export class AirportMapComponent {
     else {
       this.airportCitiesService.addCity(this.airportForView.cityName).then(() => {
         this.airportCitiesService.updateAirport(this.airportForView).then(() => {
+          //this.initOverlays();
           this.updateAllOverlays(this.airportForView.id, this.overlayForUpdate);
           console.log('---------Обновлено------------');
-          this.airportForView = new AirportModel();
+          //this.airportForView = new AirportModel();
           this.draggable = false;
           this.dialogVisible = false;
         })
       })
     }
-
+    console.log('--------------endendend---------------');
   }
 
   updateOverlay() {
@@ -208,7 +215,7 @@ export class AirportMapComponent {
   }
 
   initOverlays() {
-    console.log('Загружаем слои с нуля ')
+    console.log('Загружаем слои аэропорта с нуля ')
     this.overlays = [];
     this.airportCitiesService.getAllAirports().then((airports) => {
       for (let airport of airports) {
@@ -228,13 +235,36 @@ export class AirportMapComponent {
   updateAllOverlays(id: number, overlay: any) {
     overlay.draggable = this.draggable;
     console.log(overlay.position.lat(), overlay.position.lng());
-    console.log('Загружаем все слои с одним определенным')
+    console.log('Загружаем все слои с одним определенным');
+    console.log(new google.maps.Marker({
+      position: {
+        lat: overlay.position.lat(),
+        lng: overlay.position.lng()
+      },
+      title: this.airportForView.name  + ', ' + this.airportForView.cityName,
+      draggable: overlay.draggable
+    }));
+    console.log((new google.maps.Marker(
+      {
+        position: {lat: 23, lng: 23},
+        title:  'name name',
+        draggable: false
+      })));
     this.overlays = [];
     this.airportCitiesService.getAllAirports().then((airports) => {
       for (let airport of airports) {
         //console.log(airport.parallel,  airport.meridian, airport.name);
         if (airport.id === id) {
-          this.overlays.push(overlay);
+          //this.overlays.push(overlay);
+          this.overlays.push(
+            new google.maps.Marker({
+              position: {
+                lat: overlay.position.lat(),
+                lng: overlay.position.lng()
+              },
+              title: this.airportForView.name  + ', ' + this.airportForView.cityName,
+              draggable: overlay.draggable
+            }))
         } else {
           this.overlays.push(new google.maps.Marker(
             {
@@ -242,8 +272,11 @@ export class AirportMapComponent {
               title: airport.name + ', ' + airport.cityName,
               draggable: false
             }))
+
         }
       }
+
+      console.log('------ Слои с одним определенным загружены --------');
     });
   }
 
