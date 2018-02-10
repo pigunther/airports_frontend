@@ -5,10 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AboutModule } from './about/about.module';
-import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-
 
 import { PanelModule, ToolbarModule } from 'primeng/primeng';
 
@@ -22,8 +19,6 @@ import {CityAdditionPanelModule} from "./cityAdditionPanel/cityAdditionPanel.mod
   imports: [BrowserModule,
             HttpClientModule,
             AppRoutingModule,
-            AboutModule,
-            HomeModule,
             FlightPanelModule,
             AirportMapModule,
             AdminPanelModule,

@@ -21,14 +21,10 @@ export class AirportCitiesService {
   private result = '';
   //private BaseUrl = 'http://80.93.177.22:8080';
   //private BaseUrl = 'http://80.93.177.22:1234';
-  private BaseUrl = 'http://localhost:8080';
+  private BaseUrl = 'http://localhost:1234';
 
-  //private BaseUrl = 'http://localhost:5555';
+  private cities: Promise<CityModel[]>;
 
-  private cities: Promise<string[]> = new Promise((resolve, reject) => {
-    resolve(["Moscow", "Madagaskar", "M", "ma", "Mq", "Mo", "Moo"]);
-
-  });
 
   addAirport(airport: AirportModel) {
     console.log("Add airport");
@@ -38,7 +34,9 @@ export class AirportCitiesService {
         "name": airport.name,
         "parallel": airport.parallel,
         "meridian": airport.meridian,
-        "cityName": airport.cityName
+        "city": {
+          "name" : airport.cityName
+        }
       },
       {headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -55,7 +53,13 @@ export class AirportCitiesService {
   }
 
   updateAirport(airport: AirportModel) {
-    return this.http.put(this.BaseUrl+'/api/airport/'+airport.id.toString(), airport)
+    return this.http.put(this.BaseUrl+'/api/airport/'+airport.id.toString(), {
+      "name": airport.name,
+      "parallel": airport.parallel,
+      "meridian": airport.meridian,
+      "city": {
+        "name" : airport.cityName
+      }})
       .toPromise()
       //.then(()=>null)
       .catch(AirportCitiesService.handleError);
@@ -66,50 +70,50 @@ export class AirportCitiesService {
     console.log('Отправляем http.request на удаление аэропорта '+airport.name);
     return this.http.request('delete', this.BaseUrl+'/api/airport',{body: airport.name, responseType: 'text'})
       .toPromise()
-      //.then(() => null)
       .catch(AirportCitiesService.handleError);
   }
 
   getCities(): Promise<CityModel[]> {
-
-    return this.http.get(this.BaseUrl+'/getCities').toPromise().
-    then(response => response as CityModel[]);
-
-  }
-
-  getCitiesTMP(): Promise<string[]> {
+    if (!this.cities) {
+      this.cities = this.http.get(this.BaseUrl+'/getCities').toPromise().
+      then(response => response as CityModel[]);
+    }
     return this.cities;
   }
 
+  // getCitiesTMP(): Promise<string[]> {
+  //   return this.cities;
+  // }
+
   addCity(cityName: string): Promise<void> {
+    this.cities = null;
     console.log('Отправляем http.post на добавление города ' + cityName);
      return this.http.post(this.BaseUrl+'/api/city', cityName, {responseType: 'text'})
        .toPromise()
-       //.then(() => null)
        .catch(AirportCitiesService.handleError);
   }
 
   deleteCity(cityName: string) {
+    this.cities = null;
     console.log('Отпрвляем http.delete на удаление '+cityName);
     return this.http.request('delete', this.BaseUrl+'/api/city', {body: cityName, responseType: 'text'})
       .toPromise()
-      //.then(() => null)
       .catch(AirportCitiesService.handleError);
   }
 
-  addCityTMP(cityName: string) {
-    let tmpCities: string[] = [];
-    this.cities.then((c) => {
-      tmpCities = c;
-      tmpCities.push(cityName);
-      console.log("c: ", c);
-      console.log("tmpin: ", tmpCities);
-      this.cities  = new Promise((resolve, reject) => {
-        resolve(tmpCities);
-      })
-    });
-
-  }
+  // addCityTMP(cityName: string) {
+  //   let tmpCities: string[] = [];
+  //   this.cities.then((c) => {
+  //     tmpCities = c;
+  //     tmpCities.push(cityName);
+  //     console.log("c: ", c);
+  //     console.log("tmpin: ", tmpCities);
+  //     this.cities  = new Promise((resolve, reject) => {
+  //       resolve(tmpCities);
+  //     })
+  //   });
+  //
+  // }
 
   postData() {
     this.http.post("", {});
