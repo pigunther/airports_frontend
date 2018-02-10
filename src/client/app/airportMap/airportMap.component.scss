@@ -6,6 +6,7 @@ $border-radius: 5px;
   display: block;
   padding: 0 16px;
 }
+//todo вынести общие стили в normalize
 
 
 p-dialog.ng-tns-c5-0>div.ui-widget.ui-widget-content {
@@ -28,4 +29,16 @@ div.ui-dialog-content  {
   width: 25% !important;
 }
 
-
+.airportMap {
+  &__delete{
+    border-radius: 5px;
+    height: 31px;
+    border: none;
+    background-color: red;
+    color: white;
+    float: left !important;
+    &:hover {
+      background-color: #d91800;
+    }
+  }
+}

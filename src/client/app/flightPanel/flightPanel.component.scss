@@ -2,23 +2,36 @@ $blue-color: #106cc8;
 $blue-color-darker: #0f478e;
 $border-radius: 5px;
 
+
 :host {
   display: block;
   padding: 0 16px;
 }
 
+.center-container {
+  max-width: 1024px;
+  min-width: 480px;
+  margin: 0 auto;
+}
+
 
 .flightPanel {
+  //display: flex;
+  //align-items: center;
+
   .ui-toolbar {
     background-color: lightblue;
     background-image: url(../../assets/img/10665_big.jpg);
     background-repeat: no-repeat;
     background-position-y: 67%;
-    background-size: cover;
+    //background-size: cover;
     background-attachment: scroll;
   }
 
   &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px 20px 20px 20px;
 
     &_in {
@@ -41,31 +54,36 @@ $border-radius: 5px;
   }
 
   &__table {
+    display: flex;
+    align-items: stretch;
+
     margin-top: 20px;
     width: 1300px;
   }
 
   &__tab {
-    display: inline-block;
+    //display: inline-block;
     margin-left: 10px;
-    width: 53%;
-    margin-top: -20px;
+    width: 75%;
+    border-left: 1px solid $blue-color;
+    //margin-top: -5px;
   }
 
   &__tabView {
-    padding-top: 10px;
-    padding-left: 20px;
-    vertical-align: text-top;
+    //padding-top: 10px;
+    //padding-left: 20px;
+    //vertical-align: text-top;
     overflow: auto;
   }
 
   &__filter {
-    display: inline-block;
+    //display: inline-block;
     width: 20%;
-    height: 200px;
-    padding-top: 10px;
+    //height: 200px;
+    //padding-top: 10px;
     //vertical-align: text-top;
     vertical-align: top;
+    //border-right: 1px solid $blue-color;
 
     &_content {
       width: 70%;
@@ -74,15 +92,47 @@ $border-radius: 5px;
       padding-bottom: 20px;
       border-bottom: 1px solid $blue-color;
     }
+
+    &_listbox {
+
+      width: 70%;
+    }
+
+    & p {
+      //font-weight: 600;
+      font-size: larger;
+    }
   }
+
+  &_notFound {
+    //border: 1px solid black;
+    width: 100%;
+    color: #898989;
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  &__transfers {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+
+    & label {
+      font-weight: normal;
+      margin-top: 5px;
+    }
+  }
+
+
 }
 
-p-calendar .p-calendar-style input{
-  width: 200px;
-}
-p-calendar .p-calendar-style .ui-datepicker {
-  background-color: white;
-}
+//p-calendar .p-calendar-style input{
+//  width: 200px;
+//}
+//p-calendar .p-calendar-style .ui-datepicker {
+//  background-color: white;
+//}
 
 .btn, .btn:hover, .btn:focus {
   background-color: $blue-color;
@@ -92,9 +142,9 @@ p-calendar .p-calendar-style .ui-datepicker {
 .btn_white {
   border: 1px solid #bfd7f2;
 }
-
-h4 {
-  color: $blue-color-darker;
-  font-family: Geneva, Arial, sans-serif;
-}
+//
+//h4 {
+//  color: $blue-color-darker;
+//  font-family: Geneva, Arial, sans-serif;
+//}
 

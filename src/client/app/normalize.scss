@@ -1,0 +1,48 @@
+$blue-color-darker: #0f478e;
+
+h4 {
+  color: $blue-color-darker;
+  font-family: Geneva, Arial, sans-serif;
+}
+
+p-calendar .p-calendar-style input{
+  width: 200px;
+}
+p-calendar .p-calendar-style .ui-datepicker {
+  background-color: white;
+}
+ul {
+  list-style-type: none;
+  padding: 0 0 0 8px;
+}
+
+p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav {
+  padding-top: 20px;
+}
+p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav>li.ui-state-default a{
+  padding-top: 15px;
+}
+
+//div.ui-tabview {
+//  border-left: 1px solid $blue-color-darker !important;
+//}
+
+//p-dialog.ng-tns-c5-0>div.ui-widget.ui-widget-content {
+//  width: 400px !important;
+//}
+//
+//div.ui-dialog-content  {
+//  height: 250px !important;
+//}
+//
+//.text>span>input.ui-inputtext, input {
+//  width: 200px;
+//}
+//
+//.ui-g-10 {
+//  width: 75% !important;
+//}
+//
+//.ui-g-2 {
+//  width: 25% !important;
+//}
