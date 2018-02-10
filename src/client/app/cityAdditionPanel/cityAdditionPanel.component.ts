@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FlightModel } from '../components/models/FlightModel';
 import {FlightLoadService} from "../services/FlightLoad.service";
@@ -16,6 +16,7 @@ import {CityModel} from "../components/models/CityModel";
 })
 export class CityAdditionPanelComponent {
 
+  @Input() changesCheck: number;
 
   cityName: string;
 
@@ -28,6 +29,10 @@ export class CityAdditionPanelComponent {
   ) {};
 
   ngOnInit() {
+    this.getCities();
+  }
+
+  ngOnChanges() {
     this.getCities();
   }
 

@@ -14,11 +14,12 @@
   <!--</div>-->
 
 
-  <p-tabView class="tabs">
+  <p-tabView class="tabs" [activeIndex] = "index" (onChange) = "changeIndex()">
     <p-tabPanel header="Изменить аэропорт">
-      <sd-airportMap></sd-airportMap>
+
+      <sd-airportMap [changesCheck]="index"></sd-airportMap>
     </p-tabPanel>
     <p-tabPanel header="Именить город">
-      <sd-cityAddition></sd-cityAddition>
+      <sd-cityAddition [changesCheck]="index"></sd-cityAddition>
     </p-tabPanel>
   </p-tabView>
