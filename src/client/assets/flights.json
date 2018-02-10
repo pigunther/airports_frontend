@@ -1,6 +1,6 @@
 [
   {
-    "id":7,
+    "id":1,
     "departureTime":33096028393000,
     "arrivalTime":33096075193000,
     "cost":1313.13,
@@ -8,76 +8,65 @@
     "alwaysLate":null,
     "freePlace":null,
     "airportFromObject":
-      {
-        "id":11,
-        "name":"Быково",
-        "cityId":62,
-        "parallel":55.617222,
-        "meridian":38.059999,
-        "cityName": "Москва"
-      },
-    "airportToObject":
-      {
-        "id":1,
-        "name":"Витязево",
-        "cityId":6,
-        "parallel":45.00209699999999912733983364887535572052001953125,
-        "meridian":37.347272,
-        "cityName":"Анапа"
-      }
-  },
-  {
-    "id":7,
-    "departureTime":33096028395000,
-    "arrivalTime":33096075193000,
-    "cost":1313.13,
-    "airline":"A",
-    "alwaysLate":true,
-    "freePlace":10,
-    "airportFromObject":
     {
-      "id":11,
-      "name":"Быково",
-      "cityId":62,
-      "parallel":55.617222,
-      "meridian":38.059999,
-      "cityName": "Москва"
+      "id": 33,
+      "name": "Стригино",
+      "cityId": 72,
+      "parallel": 56.230119,
+      "meridian": 43.784042,
+      "city": {
+        "id": 72,
+        "name": "Нижний Новгород"
+      },
+      "cityName": "Нижний Новгород"
     },
     "airportToObject":
     {
-      "id":1,
-      "name":"Витязево",
-      "cityId":6,
-      "parallel":45.00209699999999912733983364887535572052001953125,
-      "meridian":37.347272,
-      "cityName":"Анапа"
+      "id": 34,
+      "name": "Грозный",
+      "cityId": 29,
+      "parallel": 43.388056,
+      "meridian": 45.699444,
+      "city": {
+        "id": 29,
+        "name": "Грозный"
+      },
+      "cityName": "Грозный"
     }
   },
   {
-    "id":7,
-    "departureTime":33096028393000,
-    "arrivalTime":33096075193000,
+    "id":1,
+    "departureTime":33096089783000,
+    "arrivalTime":33096090003000,
     "cost":1313.13,
     "airline":null,
     "alwaysLate":null,
     "freePlace":null,
     "airportFromObject":
     {
-      "id":11,
-      "name":"Быково",
-      "cityId":62,
-      "parallel":55.617222,
-      "meridian":38.059999,
-      "cityName": "Москва"
+      "id": 33,
+      "name": "Стригино",
+      "cityId": 72,
+      "parallel": 56.230119,
+      "meridian": 43.784042,
+      "city": {
+        "id": 72,
+        "name": "Нижний Новгород"
+      },
+      "cityName": "Нижний Новгород"
     },
     "airportToObject":
     {
-      "id":1,
-      "name":"Витязево",
-      "cityId":6,
-      "parallel":45.00209699999999912733983364887535572052001953125,
-      "meridian":37.347272,
-      "cityName":"Анапа"
+      "id": 34,
+      "name": "Грозный",
+      "cityId": 29,
+      "parallel": 43.388056,
+      "meridian": 45.699444,
+      "city": {
+        "id": 29,
+        "name": "Грозный"
+      },
+      "cityName": "Грозный"
     }
   }
 ]
