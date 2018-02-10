@@ -9,8 +9,6 @@ export  class FlightLoadService {
 
   private JSONUrl = '/assets/flights.json';
   private result = '';
-  //private BaseUrl = 'http://80.93.177.22:8080';
-  //private BaseUrl = 'http://80.93.177.22:1234';
   //private BaseUrl = 'http://localhost:5555';
   private BaseUrl = 'http://localhost:1234';
 
