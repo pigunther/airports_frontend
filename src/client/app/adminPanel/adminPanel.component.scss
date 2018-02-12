@@ -1,6 +1,4 @@
-$blue-color: #106cc8;
-$blue-color-darker: #0f478e;
-$border-radius: 5px;
+@import "../constants.scss";
 
 :host {
   display: block;

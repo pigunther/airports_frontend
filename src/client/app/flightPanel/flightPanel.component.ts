@@ -12,7 +12,7 @@ import {CityModel} from "../components/models/CityModel";
   encapsulation: ViewEncapsulation.None,
   selector: 'sd-flightPanel',
   templateUrl: 'flightPanel.component.html',
-  styleUrls: ['flightPanel.component.css', '../normalize.css'],
+  styleUrls: ['flightPanel.component.css'],
 })
 export class FlightPanelComponent {
 
