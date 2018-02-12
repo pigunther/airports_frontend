@@ -96,18 +96,18 @@
     // border: 1px solid yellow;
     display: inline-block;
     vertical-align: top;
-    padding-top: 20px;
-    height: 120px;
+    padding-top: 30px;
+    height: $flightTicket-height;
     border-radius: 5px;
 
     &_three-fourth {
-      width: 74%;
+      width: 73%;
       border: 1px solid $blue-color-darker;
       border-right: 1px dashed $blue-color-darker;
     }
 
     &_one-fourth {
-      width: 25%;
+      width: 26%;
       border: 1px solid $blue-color-darker;
       border-left: 1px dashed $blue-color-darker;
       vertical-align: middle;
