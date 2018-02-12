@@ -9,7 +9,7 @@ export class FlightModel {
   cost: number;
   id: number;
   airline: string;
-  alwayslate: boolean;
+  alwaysLate: boolean;
   freePlace: number;
 
   airportFromObject: AirportModel;

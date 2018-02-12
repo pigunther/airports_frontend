@@ -33,9 +33,11 @@ export class FlightComplexOfferComponent {
       return cost+f.cost;
     }, 0);
     this.flight.id = this.flights[0].id;
-    this.flight.alwayslate = this.flights.some((f) => {
-      return (f.alwayslate === true);
+    this.flight.alwaysLate = this.flights.some((f) => {
+      return (f.alwaysLate === true);
     });
+    console.log('in always lat ' + this.flight.alwaysLate);
+
     this.flight.freePlace = this.flights.reduce(function(min:number, f) {
       return (min < f.freePlace)? min : f.freePlace;
     }, 100000000);
@@ -74,7 +76,10 @@ export class FlightComplexOfferComponent {
     return hours + 'ч '+ minutes;
   }
 
-  lateFunction(el: any) {
+  lateFunction(el: boolean)
+  {
+    console.log('опоздания : ');
+    console.log(el);
     return (el===true)? 'частые' : 'нет';
   }
 
