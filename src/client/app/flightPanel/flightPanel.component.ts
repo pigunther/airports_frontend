@@ -66,7 +66,7 @@ export class FlightPanelComponent {
       });
     } else {
       console.log('ищем без пересадок');
-      this.flightService.getFlightsTmp(this.flightQuery).then((flights) => {
+      this.flightService.getFlights(this.flightQuery).then((flights) => {
         //this.flightsArray = [flights];
         this.flightsArray = [];
         //for (this.flight of flights) {
