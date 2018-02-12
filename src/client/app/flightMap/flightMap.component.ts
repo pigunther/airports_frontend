@@ -43,12 +43,15 @@ export class FlightMapComponent {
 
     this.infoWindow = new google.maps.InfoWindow();
 
-    this.addMarkerByAirport(this.flightsArray[0][0].airportFromObject, this.flightsArray[0][this.flightsArray[0].length-1].airportToObject);
+
+    for (let flights of this.flightsArray) {
+      this.addMarkerByAirport(flights[0].airportFromObject, flights[flights.length-1].airportToObject);
+    }
 
     for (let flights of this.flightsArray) {
       for (let flight of flights) {
         this.addMarkerAndLineByAirport(flight.airportFromObject, flight.airportToObject);
-        }
+      }
     }
   }
 
@@ -64,13 +67,13 @@ export class FlightMapComponent {
     let addFrom = new google.maps.Marker({
       position:
         {lat: airportFrom.parallel, lng: airportFrom.meridian},
-      title: airportFrom.cityName + ", " + airportFrom.name,
+      title: airportFrom.city.name + ", " + airportFrom.name,
       icon: this.marker
     });
     let addTo = new google.maps.Marker({
       position:
         {lat: airportTo.parallel, lng: airportTo.meridian},
-      title: airportTo.cityName + ", " + airportTo.name,
+      title: airportTo.city.name + ", " + airportTo.name,
       icon: this.marker
     });
     let findFrom = this.overlays.findIndex(find => find.title === addFrom.title);
@@ -122,19 +125,27 @@ export class FlightMapComponent {
     let addFrom = new google.maps.Marker({
       position:
         {lat: airportFrom.parallel, lng: airportFrom.meridian},
-      title: airportFrom.cityName + ", " + airportFrom.name,
+      title: airportFrom.city.name + ", " + airportFrom.name,
       icon: startMarker
     });
     let addTo = new google.maps.Marker({
       position:
         {lat: airportTo.parallel, lng: airportTo.meridian},
-      title: airportTo.cityName + ", " + airportTo.name,
+      title: airportTo.city.name + ", " + airportTo.name,
       icon: finishMarker
     });
-    this.overlays.push(addFrom);
 
-    this.overlays.push(addTo);
+    let findFrom = this.overlays.findIndex(find => find.title === addFrom.title);
+    let findTo = this.overlays.findIndex(find => find.title === addTo.title);
 
+    if (findFrom === -1) {
+      this.overlays.push(addFrom);
+      console.log('запушали откуда начало');
+    }
+    if (findTo === -1) {
+      this.overlays.push(addTo);
+      console.log('запушали куда конец')
+    }
   }
 
   handleMapClick(event: any) {
