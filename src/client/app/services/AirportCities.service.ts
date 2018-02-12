@@ -33,7 +33,7 @@ export class AirportCitiesService {
         "parallel": airport.parallel,
         "meridian": airport.meridian,
         "city": {
-          "name" : airport.cityName
+          "name" : airport.city.name
         }
       },
       {headers: new HttpHeaders({
@@ -55,8 +55,10 @@ export class AirportCitiesService {
       "parallel": airport.parallel,
       "meridian": airport.meridian,
       "city": {
-        "name" : airport.cityName
-      }})
+        "name" : airport.city.name
+      }}, {headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),responseType: 'text'})
       .toPromise()
       .catch(AirportCitiesService.handleError);
 
@@ -122,9 +124,9 @@ export class AirportCitiesService {
     return null;
   }
 
-  checkCityByName(cityName: string) {
-    console.log('Проверяем город ' + cityName);
-    this.getCities().then((allCities) => {
+  checkCityByName(cityName: string) : Promise<boolean>
+  {
+    return this.getCities().then((allCities) => {
       console.log('filtered:' + allCities.filter((city)=> city.name === cityName) + '|');
       console.log( allCities.filter((city)=> city.name === cityName));
       console.log( allCities.filter((city)=> city.name === cityName).length);
@@ -134,6 +136,6 @@ export class AirportCitiesService {
         return false;
       }
       return true;
-    });
+    })
   }
 }
