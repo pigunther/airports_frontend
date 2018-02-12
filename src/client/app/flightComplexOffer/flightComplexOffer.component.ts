@@ -41,13 +41,25 @@ export class FlightComplexOfferComponent {
     }, 100000000);
     this.flight.airline = this.flights[0].airline;
 
-    if (this.flights.length === 1) {
-      this.textTransfer = 'Без пересадок';
-    } else if (this.flights.length === 2) {
-      this.textTransfer = '1 пересадка';
-    } else {
-      this.textTransfer = '2 пересадки';
+    // if (this.flights.length === 1) {
+    //   this.textTransfer = 'Без пересадок';
+    // } else if (this.flights.length === 2) {
+    //   this.textTransfer = '1 пересадка';
+    // } else {
+    //   this.textTransfer = '2 пересадки';
+    // }
+
+    switch(this.flights.length) {
+      case 1:
+        this.textTransfer = 'Без пересадок';
+        break;
+      case 2:
+        this.textTransfer = '1 пересадка';
+        break;
+      default:
+        this.textTransfer = '2 пересадки';
     }
+
   }
 
   transferBtn() {
