@@ -55,6 +55,7 @@
     "npm": ">=3.10.3"
   },
   "devDependencies": {
+    "@angular/cli": "^1.6.8",
     "@angular/compiler-cli": "^5.0.1",
     "@angular/language-service": "^5.0.1",
     "@angular/platform-server": "^5.0.1",
@@ -142,7 +143,7 @@
     "traceur": "^0.0.111",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1",
+    "typescript": "^2.4.2",
     "walk": "^2.3.9",
     "yargs": "^10.0.3"
   },
