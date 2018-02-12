@@ -28,13 +28,13 @@
     </div>
     <div class="flightPanel__filter_content ">
       <p>Максимальная цена: {{flightQuery.cost}}</p>
-      <p-slider [(ngModel)]="flightQuery.cost" [min]="100" [max]="100000"></p-slider>
+      <p-slider [(ngModel)]="flightQuery.cost" [min]="100" [max]="150000"></p-slider>
     </div>
 
     <div class="flightPanel__filter_content flightPanel__transfers">
       <p>Пересадки</p>
       <p-radioButton name="groupname" value="no" label="Без пересадок" [(ngModel)]="selectTransfer"></p-radioButton>
-      <p-radioButton name="groupname" value="yes" label="0-2 пересадки" [(ngModel)]="selectTransfer"></p-radioButton>
+      <p-radioButton name="groupname" value="yes" label="1-2 пересадки" [(ngModel)]="selectTransfer"></p-radioButton>
 
       <!--<p-listbox [options]="transfers" [(ngModel)]="selectTransfer" class="flightPanel__filter_listbox"></p-listbox>-->
     </div>
