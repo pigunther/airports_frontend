@@ -10,6 +10,10 @@ export  class AirportModel {
   city: CityModel;
 
 
+  constructor() {
+    this.city = new CityModel('');
+  }
+
   set(name: string, cityName:string, parallel:number, meridian:number) {
     this.name = name;
     this.city = new CityModel(cityName);

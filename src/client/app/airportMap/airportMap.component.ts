@@ -4,6 +4,7 @@ import {Message} from "primeng/primeng";
 import {AirportModel} from "../components/models/AirportModel";
 import {FlightLoadService} from "../services/FlightLoad.service";
 import {AirportCitiesService} from "../services/AirportCities.service";
+import {CityModel} from "../components/models/CityModel";
 
 declare const google: any;
 
@@ -107,7 +108,7 @@ export class AirportMapComponent {
   }
 
   changeButton() {
-    if (this.airportForView.cityName && this.airportForView.name) {
+    if (this.airportForView.city.name && this.airportForView.name) {
       if (this.buttonDialog === this.changeAirportString) {
         this.updateAirport();
       } else {
@@ -119,19 +120,10 @@ export class AirportMapComponent {
   updateAirport() {
     this.airportForView.parallel = this.overlayForUpdate.position.lat();
     this.airportForView.meridian = this.overlayForUpdate.position.lng();
-    console.log('Обновляем аэропорт ' + this.airportForView.name + ', ' + this.airportForView.cityName)
-    if (this.airportCitiesService.checkCityByName(this.airportForView.cityName)) {
-      this.airportCitiesService.updateAirport(this.airportForView).then(() => {
-        //this.initOverlays();
-        this.updateAllOverlays(this.airportForView.id, this.overlayForUpdate);
-        console.log('---------Обновлено------------');
-        //this.airportForView = new AirportModel();
-        this.draggable = false;
-        this.dialogVisible = false;
-      })
-    }
-    else {
-      this.airportCitiesService.addCity(this.airportForView.cityName).then(() => {
+    console.log('Обновляем аэропорт ' + this.airportForView.name + ', ' + this.airportForView.city.name);
+
+    this.airportCitiesService.checkCityByName(this.airportForView.city.name).then((result)=> {
+      if (result) {
         this.airportCitiesService.updateAirport(this.airportForView).then(() => {
           //this.initOverlays();
           this.updateAllOverlays(this.airportForView.id, this.overlayForUpdate);
@@ -140,9 +132,21 @@ export class AirportMapComponent {
           this.draggable = false;
           this.dialogVisible = false;
         })
-      })
-    }
-    console.log('--------------endendend---------------');
+      }
+      else {
+        this.airportCitiesService.addCity(this.airportForView.city.name).then(() => {
+          this.airportCitiesService.updateAirport(this.airportForView).then(() => {
+            //this.initOverlays();
+            this.updateAllOverlays(this.airportForView.id, this.overlayForUpdate);
+            console.log('---------Обновлено------------');
+            //this.airportForView = new AirportModel();
+            this.draggable = false;
+            this.dialogVisible = false;
+          })
+        })
+      }
+      console.log('--------------endendend---------------');
+    });
   }
 
   updateOverlay() {
@@ -165,26 +169,34 @@ export class AirportMapComponent {
   addAirport() {
 
     let airport = new AirportModel();
+    let cityName = this.airportForView.city.name;
+
     console.log(this.airportForView);
-    if (this.airportCitiesService.checkCityByName(this.airportForView.cityName)) {
-      console.log('Добавляем аэропорт ' + this.airportForView.name + ', ' + this.airportForView.cityName);
-      this.airportForView.setCity(this.airportForView.cityName);
-      this.airportCitiesService.addAirport(this.airportForView).then(() => {
-        this.initOverlays();
-        console.log('---------Добавлено--------');
-        this.airportForView = new AirportModel();
-        this.dialogVisible = false;
-      });
-    } else {
-      this.airportCitiesService.addCity(this.airportForView.cityName).then(() => {
+
+
+    this.airportCitiesService.checkCityByName(this.airportForView.city.name).then((result)=>{
+      if (result) {
+        console.log('Добавляем аэропорт ' + this.airportForView.name + ', ' + this.airportForView.city.name);
+        this.airportForView.setCity(this.airportForView.city.name);
         this.airportCitiesService.addAirport(this.airportForView).then(() => {
           this.initOverlays();
           console.log('---------Добавлено--------');
           this.airportForView = new AirportModel();
           this.dialogVisible = false;
         });
-      })
-    }
+      } else {
+        this.airportCitiesService.addCity(this.airportForView.city.name).then(() => {
+          this.airportCitiesService.addAirport(this.airportForView).then(() => {
+            this.initOverlays();
+            console.log('---------Добавлено--------');
+            this.airportForView = new AirportModel();
+            this.dialogVisible = false;
+          });
+        })
+      }
+    })
+
+
 
   }
 
@@ -195,6 +207,7 @@ export class AirportMapComponent {
       this.initOverlays();
       console.log('---------Удалено--------');
       this.dialogVisible = false;
+      //this.airportForView.city = new CityModel('');
 
     })
   }
@@ -224,7 +237,7 @@ export class AirportMapComponent {
         this.overlays.push(new google.maps.Marker(
           {
             position: { lat: airport.parallel, lng: airport.meridian},
-            title:airport.name+', '+airport.cityName,
+            title:airport.name+', '+airport.city.name,
             draggable: false
           }))
       }
@@ -241,7 +254,7 @@ export class AirportMapComponent {
         lat: overlay.position.lat(),
         lng: overlay.position.lng()
       },
-      title: this.airportForView.name  + ', ' + this.airportForView.cityName,
+      title: this.airportForView.name  + ', ' + this.airportForView.city.name,
       draggable: overlay.draggable
     }));
     console.log((new google.maps.Marker(
@@ -262,14 +275,14 @@ export class AirportMapComponent {
                 lat: overlay.position.lat(),
                 lng: overlay.position.lng()
               },
-              title: this.airportForView.name  + ', ' + this.airportForView.cityName,
+              title: this.airportForView.name  + ', ' + this.airportForView.city.name,
               draggable: overlay.draggable
             }))
         } else {
           this.overlays.push(new google.maps.Marker(
             {
               position: {lat: airport.parallel, lng: airport.meridian},
-              title: airport.name + ', ' + airport.cityName,
+              title: airport.name + ', ' + airport.city.name,
               draggable: false
             }))
 

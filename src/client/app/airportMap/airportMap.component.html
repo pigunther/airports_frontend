@@ -14,7 +14,7 @@
 
     <div class="ui-g-2"><label for="cityName">Город</label></div>
     <div class="ui-g-10">
-    <p-autoComplete pInputText  id="cityName" [(ngModel)]="airportForView.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" required class="text"></p-autoComplete>
+    <p-autoComplete pInputText  id="cityName" [(ngModel)]="airportForView.city.name" [suggestions]="tipCities" (completeMethod)="cityTip($event)" required class="text"></p-autoComplete>
     </div>
 
     <div class="ui-g-2"><label for="lat">Широта</label></div>
