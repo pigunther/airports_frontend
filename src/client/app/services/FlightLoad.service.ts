@@ -21,7 +21,7 @@ export  class FlightLoadService {
 
     //this.result = `/api/search?cityFrom=${flightQuery.cityFrom}&cityTo=${flightQuery.cityTo}&date=${flightQuery.departureTime.valueOf()}&cost=${flightQuery.cost}`;
     // this.result = `/api/search?cityFrom=${flightQuery.airportFrom.cityName}&cityTo=${flightQuery.airportTo.cityName}&date=1970-01-01 06:21:00&cost=${flightQuery.cost}`;
-    this.result = `/api/search?cityFrom=${flightQuery.airportFromObject.cityName}&cityTo=${flightQuery.airportToObject.cityName}&date=1970-01-01 00:00:00&cost=10000000`;
+    this.result = `/api/search?cityFrom=${flightQuery.airportFromObject.cityName}&cityTo=${flightQuery.airportToObject.cityName}&date=1970-01-01 00:00:00&cost=${flightQuery.cost}`;
 
     console.log(this.result);
 
@@ -31,11 +31,12 @@ export  class FlightLoadService {
   }
 
   getComplexFlights(flightQuery: FlightModel) : Promise<FlightModel[][]> {
-    //this.result = `/api/search?cityFrom=${flightQuery.airportFromObject.cityName}&cityTo=${flightQuery.airportToObject.cityName}&date=1970-01-01 00:00:00&cost=10000000`;
-    this.result = '/assets/complexFlights.json';
+    this.result = `/api/search/complex?cityFrom=${flightQuery.airportFromObject.cityName}&cityTo=${flightQuery.airportToObject.cityName}&date=1970-01-01 00:00:00&cost=${flightQuery.cost}`;
+    //this.result = '/assets/complexFlights.json';
     console.log(this.result);
 
-    return this.http.get('http://localhost:5555' + this.result).toPromise().
+    //return this.http.get('http://localhost:5555' + this.result).toPromise().
+    return this.http.get(this.BaseUrl+this.result).toPromise().
     then(response => response as Array<FlightModel[]>);
 
   }
