@@ -7,8 +7,8 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export class SearchService implements OnInit{
   //private JSONUrl = 'file:///home/natasha/workspace/js/angular-seed-master/src/client/app/flights.json';
-  private JSONUrl = 'flights.json';
-  constructor (private http: HttpClient) {};
+  public JSONUrl = 'flights.json';
+  constructor (public http: HttpClient) {};
 
   ngOnInit(): void {
     // Make the HTTP request:

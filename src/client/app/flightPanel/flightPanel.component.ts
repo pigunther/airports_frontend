@@ -27,8 +27,8 @@ export class FlightPanelComponent {
   flightQuery = new FlightModel();
 
   constructor (
-    private flightService: FlightLoadService,
-    private airportCitiesService: AirportCitiesService
+    public flightService: FlightLoadService,
+    public airportCitiesService: AirportCitiesService
   ) {};
 
 

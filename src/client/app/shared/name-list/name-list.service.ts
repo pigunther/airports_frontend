@@ -14,7 +14,7 @@ export class NameListService {
    * @param {HttpClient} http - The injected HttpClient.
    * @constructor
    */
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   /**
    * Returns an Observable for the HTTP GET request for the JSON resource.
