@@ -70,9 +70,9 @@ export class FlightComplexOfferComponent {
   }
 
   timeCounter(flight: FlightModel): string {
-    let time = new Date(flight.arrivalTime - flight.departureTime);
-    let hours = Math.floor(time/24/60/60/60);
-    let minutes = Math.floor((time - hours*24*60*60*60)/24/60/60);
+    let time = new Date(flight.arrivalTime.getTime() - flight.departureTime.getTime());
+    let hours = Math.floor(time.getTime()/24/60/60/60);
+    let minutes = Math.floor((time.getTime() - hours*24*60*60*60)/24/60/60);
     return hours + 'ч '+ minutes;
   }
 

@@ -15,7 +15,7 @@
 
           <!--</div>-->
           <div class="flightOffer__row">
-            {{(flight.arrivalTime - flight.departureTime) | date: 'hч mm'}}
+            {{(flight.arrivalTime.getTime() - flight.departureTime.getTime()) | date: 'hч mm'}}
           </div>
         </div>
         <div class="flightOffer__ticketNameColumn ">
@@ -32,7 +32,7 @@
         <p>Цена: {{flight.cost.toFixed(2)}}</p>
         <p *ngIf="flight.freePlace">Свободные места: {{flight.freePlace}}</p>
         <p *ngIf="flight.airline">Авиакомпания: {{flight.airline}}</p>
-        <p *ngIf="flight.alwayslate">Опоздания: {{flight.alwayslate}}</p>
+        <p *ngIf="flight.alwaysLate">Опоздания: {{flight.alwaysLate}}</p>
         </div>
       </div>
 
