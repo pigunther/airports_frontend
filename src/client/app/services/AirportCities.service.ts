@@ -10,18 +10,19 @@ import "rxjs/add/operator/toPromise";
 export class AirportCitiesService {
 
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
-  private static handleError(error: any): Promise<any> {
+  public static handleError(error: any): Promise<any> {
     console.error('HandleError: An error occured', error);
     return Promise.reject(error.message || error);
   };
 
-  private JSONUrl = '/assets/flights.json';
-  private result = '';
-  private BaseUrl = 'http://localhost:1234';
+  public JSONUrl = '/assets/flights.json';
+  public result = '';
 
-  private cities: Promise<CityModel[]>;
+  public BaseUrl = 'http://localhost:1234';
+
+  public cities: Promise<CityModel[]>;
 
 
   addAirport(airport: AirportModel) {
@@ -66,7 +67,16 @@ export class AirportCitiesService {
 
   deleteAirport(airport: AirportModel) {
     console.log('Отправляем http.request на удаление аэропорта '+airport.name);
-    return this.http.request('delete', this.BaseUrl+'/api/airport',{body: airport.name, responseType: 'text'})
+    return this.http.request('delete', this.BaseUrl+'/api/airport',{body:
+      {
+        "name": airport.name,
+        "parallel": airport.parallel,
+        "meridian": airport.meridian,
+        "city": {
+          "name" : airport.city.name
+      }}, headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }), responseType: 'text'})
       .toPromise()
       .catch(AirportCitiesService.handleError);
   }
