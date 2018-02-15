@@ -35,7 +35,7 @@ export class AirportMapComponent {
     airportForView: AirportModel = new AirportModel();
 
   constructor (
-    public airportCitiesService: AirportCitiesService
+    private airportCitiesService: AirportCitiesService
   ) {};
 
   ngOnInit() {

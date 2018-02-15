@@ -25,7 +25,7 @@ export class CityAdditionPanelComponent {
   blockSpecial: RegExp = /(^[^<>*!./,]*$)/;
 
   constructor (
-    public airportCitiesService: AirportCitiesService
+    private airportCitiesService: AirportCitiesService
   ) {};
 
   ngOnInit() {

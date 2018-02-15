@@ -27,8 +27,8 @@ export class FlightPanelComponent {
   flightQuery = new FlightModel();
 
   constructor (
-    public flightService: FlightLoadService,
-    public airportCitiesService: AirportCitiesService
+    private flightService: FlightLoadService,
+    private airportCitiesService: AirportCitiesService
   ) {};
 
 
@@ -77,8 +77,8 @@ export class FlightPanelComponent {
             console.log(flighti);
           }
         // }
-        console.log(this.flightsArray);
-        console.log('массив билетов')
+        //console.log(this.flightsArray);
+        //console.log('массив билетов')
 
       });
     }

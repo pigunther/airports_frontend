@@ -5,12 +5,12 @@ import {HttpClient} from "@angular/common/http";
 @Injectable()
 export  class FlightLoadService {
 
-  constructor(public http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  public JSONUrl = '/assets/flights.json';
-  public result = '';
+  private JSONUrl = '/assets/flights.json';
+  private result = '';
   //private BaseUrl = 'http://localhost:5555';
-  public BaseUrl = 'http://localhost:1234';
+  private BaseUrl = 'http://localhost:1234';
 
   getFlightsTmp(flightQuery: FlightModel) : Promise<FlightModel[]>{
     return this.http.get('http://localhost:5555'+this.JSONUrl).toPromise().

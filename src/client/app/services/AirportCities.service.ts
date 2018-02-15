@@ -12,17 +12,17 @@ export class AirportCitiesService {
 
   constructor(public http: HttpClient) {}
 
-  public static handleError(error: any): Promise<any> {
+  private static handleError(error: any): Promise<any> {
     console.error('HandleError: An error occured', error);
     return Promise.reject(error.message || error);
   };
 
-  public JSONUrl = '/assets/flights.json';
-  public result = '';
+  private JSONUrl = '/assets/flights.json';
+  private result = '';
 
-  public BaseUrl = 'http://localhost:1234';
+  private BaseUrl = 'http://localhost:1234';
 
-  public cities: Promise<CityModel[]>;
+  private cities: Promise<CityModel[]>;
 
 
   addAirport(airport: AirportModel) {
@@ -83,7 +83,7 @@ export class AirportCitiesService {
 
   getCities(): Promise<CityModel[]> {
     if (!this.cities) {
-      this.cities = this.http.get(this.BaseUrl+'/getCities').toPromise().
+      this.cities = this.http.get(this.BaseUrl+'/api/getCities').toPromise().
       then(response => response as CityModel[]);
     }
     return this.cities;
@@ -118,7 +118,7 @@ export class AirportCitiesService {
     allCities.forEach(function (tmpCity) {
 
       if (tmpCity.name.search(new RegExp(query, "i")) == 0) {
-        console.log(tmpCity.name);
+        //console.log(tmpCity.name);
         foundCities.push(tmpCity.name);
       }
     });
@@ -137,12 +137,12 @@ export class AirportCitiesService {
   checkCityByName(cityName: string) : Promise<boolean>
   {
     return this.getCities().then((allCities) => {
-      console.log('filtered:' + allCities.filter((city)=> city.name === cityName) + '|');
-      console.log( allCities.filter((city)=> city.name === cityName));
-      console.log( allCities.filter((city)=> city.name === cityName).length);
+      //console.log('filtered:' + allCities.filter((city)=> city.name === cityName) + '|');
+      //console.log( allCities.filter((city)=> city.name === cityName));
+      //console.log( allCities.filter((city)=> city.name === cityName).length);
 
       if (allCities.filter((city)=> city.name === cityName).length === 0) {
-        console.log('Не найден город ' + cityName);
+        //console.log('Не найден город ' + cityName);
         return false;
       }
       return true;
