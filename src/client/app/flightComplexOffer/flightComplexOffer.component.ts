@@ -36,7 +36,7 @@ export class FlightComplexOfferComponent {
     this.flight.alwaysLate = this.flights.some((f) => {
       return (f.alwaysLate === true);
     });
-    console.log('in always lat ' + this.flight.alwaysLate);
+    //console.log('in always lat ' + this.flight.alwaysLate);
 
     this.flight.freePlace = this.flights.reduce(function(min:number, f) {
       return (min < f.freePlace)? min : f.freePlace;
@@ -78,8 +78,8 @@ export class FlightComplexOfferComponent {
 
   lateFunction(el: boolean)
   {
-    console.log('опоздания : ');
-    console.log(el);
+    //console.log('опоздания : ');
+    //console.log(el);
     return (el===true)? 'частые' : 'нет';
   }
 

@@ -105,8 +105,8 @@ export class FlightMapComponent {
 
 
   addMarkerByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
-    console.log(airportFrom);
-    console.log(airportTo);
+    //console.log(airportFrom);
+    //console.log(airportTo);
     console.log('начальный и конечный маркеры ')
     let startMarker = {
       url: '../assets/img/startMarker.png',
