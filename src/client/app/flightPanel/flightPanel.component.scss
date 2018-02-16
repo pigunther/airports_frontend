@@ -51,6 +51,10 @@
     height: 29px;
     width: 200px;
     margin-right: 30px;
+
+    & .svg-inline--fa {
+      display: none;
+    }
   }
 
   &__table {
@@ -124,6 +128,10 @@
     }
   }
 
+  //&__search-icone {
+  //  margin-left: -20px;
+  //  margin-right: 20px;
+  //}
 
 }
 
@@ -137,6 +145,7 @@
 .btn, .btn:hover, .btn:focus {
   background-color: $blue-color;
   color: white;
+
 }
 
 .btn_white {
@@ -147,4 +156,5 @@
 //  color: $blue-color-darker;
 //  font-family: Geneva, Arial, sans-serif;
 //}
+
 

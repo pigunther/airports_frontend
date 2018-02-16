@@ -11,7 +11,9 @@
 
 
       <!--<button type="button" (click)="search()" class="flightPanel__container_in flightPanel__container_first btn btn_white">Поиск</button>-->
-      <button type="button" (click)="searchComplex()" class="flightPanel__container_in flightPanel__container_first btn btn_white">Поиск</button>
+      <button type="button" (click)="searchComplex()" class="flightPanel__container_in flightPanel__container_first btn btn_white">
+        <i class="fas fa-search flightPanel__search-icone"></i>
+        Поиск</button>
 
 
     </div>
@@ -28,20 +30,22 @@
     </div>
     <div class="flightPanel__filter_content ">
       <p>Максимальная цена: {{flightQuery.cost}}</p>
-      <p-slider [(ngModel)]="flightQuery.cost" [min]="100" [max]="150000"></p-slider>
+      <p-slider [(ngModel)]="flightQuery.cost" [min]="100" [max]="150000" (onSlideEnd)="searchComplex()" ></p-slider>
     </div>
 
     <div class="flightPanel__filter_content flightPanel__transfers">
       <p>Пересадки</p>
-      <p-radioButton name="groupname" value="no" label="Без пересадок" [(ngModel)]="selectTransfer"></p-radioButton>
-      <p-radioButton name="groupname" value="yes" label="1-2 пересадки" [(ngModel)]="selectTransfer"></p-radioButton>
+      <p-radioButton name="groupname" value="no" label="Без пересадок" [(ngModel)]="selectTransfer" ></p-radioButton>
+      <p-radioButton name="groupname" value="yes" label="1-2 пересадки" [(ngModel)]="selectTransfer" ></p-radioButton>
 
       <!--<p-listbox [options]="transfers" [(ngModel)]="selectTransfer" class="flightPanel__filter_listbox"></p-listbox>-->
     </div>
 
     <div class="flightPanel__filter_content">
       <!--<button type="button" (click)="search()" class="btn">Обновить</button>-->
-      <button type="button" (click)="searchComplex()" class="btn">Обновить</button>
+      <button type="button" (click)="searchComplex()" class="btn">
+        <i class="fas fa-search flightPanel__search-icone"></i>
+        Обновить</button>
 
     </div>
   </div>
@@ -54,11 +58,25 @@
             <!--<sd-flightOffer [flight]="flight"></sd-flightOffer>-->
           <!--</li>-->
         <!--</ul>-->
-        <ul *ngIf="flightsArray">
-          <li *ngFor="let flights of flightsArray">
+        <!--<ul *ngIf="flightsArray">-->
+          <!--<li *ngFor="let flights of flightsArray">-->
+            <!--<sd-flightComplexOffer [flights]="flights"></sd-flightComplexOffer>-->
+          <!--</li>-->
+        <!--</ul>-->
+
+        <p-dataList *ngIf="flightsArray.length" [value]="flightsArray" [paginator]="true" [rows]="4">
+          <ng-template let-flights pTemplate="item">
             <sd-flightComplexOffer [flights]="flights"></sd-flightComplexOffer>
-          </li>
-        </ul>
+          </ng-template>
+        </p-dataList>
+
+        <!--<virtual-scroll [items]="flightsArray" #scroll>-->
+          <!--<sd-flightComplexOffer *ngFor="let item of scroll.viewPortItems" [flights]="item">-->
+            <!--&lt;!&ndash;<sd-flightComplexOffer [flights]="flights"></sd-flightComplexOffer>&ndash;&gt;-->
+          <!--</sd-flightComplexOffer>-->
+        <!--</virtual-scroll>-->
+
+
         <div *ngIf="!flightsArray || flightsArray.length === 0" class="flightPanel_notFound">
           По данному запросу ничего не найдено
         </div>
@@ -67,6 +85,8 @@
         <ul *ngIf="flightsArray">
           <sd-flightMap [flightsArray]="flightsArray"></sd-flightMap>
         </ul>
+
+
       </p-tabPanel>
     </p-tabView>
   </div>
