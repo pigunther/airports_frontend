@@ -39,8 +39,9 @@ export class FlightComplexOfferComponent {
     //console.log('in always lat ' + this.flight.alwaysLate);
 
     this.flight.freePlace = this.flights.reduce(function(min:number, f) {
-      return (min < f.freePlace)? min : f.freePlace;
-    }, 100000000);
+      //return (min < f.freePlace)? min : f.freePlace;
+      return Math.min(min, f.freePlace);
+    }, Number.MAX_SAFE_INTEGER);
     this.flight.airline = this.flights[0].airline;
 
     // if (this.flights.length === 1) {
