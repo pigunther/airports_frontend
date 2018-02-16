@@ -1,10 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FlightModel } from '../components/models/FlightModel';
-import {FlightLoadService} from "../services/FlightLoad.service";
-import {AirportCitiesService} from "../services/AirportCities.service";
-import {CityModel} from "../components/models/CityModel";
-
+import {FlightModel} from '../components/models/FlightModel';
+import {FlightLoadService} from '../services/FlightLoad.service';
+import {AirportCitiesService} from '../services/AirportCities.service';
+import {PropertyHandler} from '../utils/property-handler';
 
 
 @Component({
@@ -21,8 +19,13 @@ export class FlightPanelComponent {
   price: number;
   tabIndex: number;
   tipCities: string[];
+  // tipCities2: string[];
 
-  selectTransfer: string = 'no';
+  @PropertyHandler({
+    afterChange() {
+      this.searchComplex();
+    }
+  }) selectTransfer: string = 'no';
 
   flightQuery = new FlightModel();
 
@@ -38,10 +41,10 @@ export class FlightPanelComponent {
     this.flightService.getFlights(this.flightQuery).then((f)=>  {
       this.flights = f;
       for (let flighti of this.flights) {
-               flighti.departureTime = new Date(flighti.departureTime);
-               flighti.arrivalTime = new Date(flighti.arrivalTime);
-               //flighti.airportFrom = this.airportCitiesService.getAirportByName(flighti.airportFrom);
-               console.log(flighti);
+        flighti.departureTime = new Date(flighti.departureTime);
+        flighti.arrivalTime = new Date(flighti.arrivalTime);
+        //flighti.airportFrom = this.airportCitiesService.getAirportByName(flighti.airportFrom);
+        console.log(flighti);
       }
     });
     console.log('these are flights:');
@@ -50,45 +53,60 @@ export class FlightPanelComponent {
 
   searchComplex() {
 
-    if (this.selectTransfer === 'yes') {
-      console.log('ищем с пересадками');
-      //this.flightService.getTotalJson().then((f)=> {
-      this.flightService.getComplexFlights(this.flightQuery).then((flightsArray) => {
-        this.flightsArray = flightsArray;
-        for (this.flights of flightsArray) {
-          for (let flighti of this.flights) {
-            flighti.departureTime = new Date(flighti.departureTime);
-            flighti.arrivalTime = new Date(flighti.arrivalTime);
-            console.log(flighti);
+    if (this.flightQuery && this.flightQuery.airportFromObject.cityName && this.flightQuery.airportToObject.cityName && this.flightQuery.airportToObject.cityName !== this.flightQuery.airportFromObject.cityName) {
+      if (this.selectTransfer === 'yes') {
+        console.log('ищем с пересадками');
+        //this.flightService.getTotalJson().then((f)=> {
+        this.flightService.getComplexFlights(this.flightQuery).then((flightsArray) => {
+          this.flightsArray = flightsArray;
+          for (this.flights of flightsArray) {
+            for (let flighti of this.flights) {
+              flighti.departureTime = new Date(flighti.departureTime);
+              flighti.arrivalTime = new Date(flighti.arrivalTime);
+              console.log(flighti);
+            }
           }
-        }
 
-      });
-    } else {
-      console.log('ищем без пересадок');
-      this.flightService.getFlights(this.flightQuery).then((flights) => {
-        //this.flightsArray = [flights];
-        this.flightsArray = [];
-        //for (this.flight of flights) {
+        }).catch((err) => {console.log(err)});
+      } else {
+        console.log('ищем без пересадок');
+        this.flightService.getFlights(this.flightQuery).then((flights) => {
+          //this.flightsArray = [flights];
+          this.flightsArray = [];
+          //for (this.flight of flights) {
           for (let flighti of flights) {
             this.flightsArray.push([flighti]);
             flighti.departureTime = new Date(flighti.departureTime);
             flighti.arrivalTime = new Date(flighti.arrivalTime);
             console.log(flighti);
           }
-        // }
-        //console.log(this.flightsArray);
-        //console.log('массив билетов')
+          // }
+          //console.log(this.flightsArray);
+          //console.log('массив билетов')
+        }).catch((err) => {
+          this.flightsArray = [];
+          console.log(err)});
+      }
 
-      });
     }
-
   }
 
   cityTip(event: any) {
-   this.airportCitiesService.getCities().then((c) => {
-     this.tipCities = this.airportCitiesService.filterCityForTips(c, event.query);
-   })
+    this.airportCitiesService.getCities().then((c) => {
+      this.tipCities = this.airportCitiesService.filterCityForTips(c, event.query);
+    })
+  }
+  //
+  // cityTip2(event: any) {
+  //   this.airportCitiesService.getCities().then((c) => {
+  //     this.tipCities2 = this.airportCitiesService.filterCityForTips(c, event.query);
+  //   })
+  // }
+
+  handleSliderEvent(event: any) {
+    console.log(event);
   }
 
+  //todo запретить два города одинаковых
+  //todo поиск по enter
 }

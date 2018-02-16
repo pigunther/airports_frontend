@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NameListService } from '../shared/name-list/name-list.service';
 import {
   PanelModule, ToolbarModule, ButtonModule, TooltipModule, CalendarModule, AutoCompleteModule, SliderModule,
-  TabViewModule, RadioButtonModule
+  TabViewModule, RadioButtonModule, DataListModule
 } from 'primeng/primeng';
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
@@ -33,7 +33,8 @@ import {ListboxModule} from "primeng/listbox";
             FlightMapModule,
             FlightComplexOfferModule,
             TabViewModule,
-            RadioButtonModule
+            RadioButtonModule,
+            DataListModule
             ],
   declarations: [FlightPanelComponent],
   exports: [FlightPanelComponent],
