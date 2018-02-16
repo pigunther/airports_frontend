@@ -13,7 +13,8 @@ export class ProjectConfig extends SeedConfig {
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
   FONTS_DEST = `${this.APP_DEST}/fonts`;
   FONTS_SRC = [
-    'node_modules/bootstrap/dist/fonts/**'
+    'node_modules/bootstrap/dist/fonts/**',
+    'node_modules/font-awesome/fonts/**'
   ];
 
   THEME_FONTS_DEST = `${this.APP_DEST}/css/fonts`;
@@ -81,13 +82,22 @@ export class ProjectConfig extends SeedConfig {
 
 
 
-    const additionalPackages: ExtendPackages[] = [{
-      name: 'primeng',
-      path: 'node_modules/primeng',
-      packageMeta: {
-        defaultExtension: 'js'
-      }
-    }];
+    const additionalPackages: ExtendPackages[] = [
+      {
+        name: 'primeng',
+        path: 'node_modules/primeng',
+        packageMeta: {
+          defaultExtension: 'js'
+        }
+    },
+      {
+        name: 'angular2-virtual-scroll',
+        path: 'node_modules/angular2-virtual-scroll',
+        packageMeta: {
+          main: './dist/virtual-scroll.js',
+          defaultExtension: 'js'
+        }
+      }];
 
     this.addPackagesBundles(additionalPackages);
 
