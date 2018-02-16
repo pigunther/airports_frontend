@@ -46,3 +46,10 @@ p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav>li.ui-state-default a{
 //.ui-g-2 {
 //  width: 25% !important;
 //}
+.fa-close:before {
+  content: '\F00D';
+}
+
+.ui-widget-content, .ui-widget-header {
+  border: none !important;
+}
