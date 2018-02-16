@@ -4,6 +4,7 @@ import { FlightModel } from '../components/models/FlightModel';
 import {FlightLoadService} from "../services/FlightLoad.service";
 import {AirportCitiesService} from "../services/AirportCities.service";
 import {CityModel} from "../components/models/CityModel";
+import {ConfirmationService, Message} from 'primeng/api';
 
 
 
@@ -21,11 +22,14 @@ export class CityAdditionPanelComponent {
   cityName: string;
 
   cities: CityModel[] = [];
+  display: boolean = false;
+
 
   blockSpecial: RegExp = /(^[^<>*!./,]*$)/;
 
   constructor (
-    private airportCitiesService: AirportCitiesService
+    private airportCitiesService: AirportCitiesService,
+    private confirmationService: ConfirmationService
   ) {};
 
   ngOnInit() {
@@ -64,6 +68,26 @@ export class CityAdditionPanelComponent {
       this.getCities();
       console.log("--------------");
     });
-
   }
+
+  confirm(event: any) {
+    this.display = true;
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete '+event.target.value,
+      icon: 'fas fa-trash-alt',
+      accept: () => {
+        this.deleteCity(event);
+        this.display = false;
+
+        //Actual logic to perform a confirmation
+
+      },
+      reject: () => {
+        this.display = false;
+      }
+    });
+  }
+
+  //todo добавить popup на подтверждение удаления. и несколько страничек (показать еще), и фильтрацию
 }

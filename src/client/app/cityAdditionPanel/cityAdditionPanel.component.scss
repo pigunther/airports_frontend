@@ -27,8 +27,6 @@ ul {
 
 .cityAddition {
   &__delete, &__add{
-    background-color: $button-color;
-    color : black;
     border: none;
     display: inline;
     padding: 10px 32px;
@@ -38,7 +36,21 @@ ul {
     margin: 10px 10px 10px 0;
   }
 
-  &_add {
+  &__delete{
+    border: none;
+    background-color: #ff541c;
+    color: white;
+    &:hover {
+      background-color: #d91800;
+    }
+
+    &_icone {
+      margin-left: -20px;
+      margin-right: 20px;
+    }
+  }
+
+  &__add {
     background-color: $blue-color;
     color: white;
     padding: 5px 32px;
@@ -54,6 +66,7 @@ ul {
     display: inline-block;
     width: $string-width;
     padding-bottom: 10px;
+    padding-left: 20px;
   }
 
   &__mainForm {
@@ -67,4 +80,8 @@ ul {
     flex-direction: column;
     flex-wrap: nowrap;
   }
+}
+
+.ui-button-text {
+  display: none;
 }

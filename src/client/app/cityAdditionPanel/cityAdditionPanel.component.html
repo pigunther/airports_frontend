@@ -4,13 +4,31 @@
     <button type="submit" class="cityAddition__add">Добавить</button>
   </form>
 
-  <ul *ngIf="cities" class="cityAddition__container">
-    <li *ngFor="let city of cities">
-      <!-- нажатие на кнопку - удаление города -->
-      <!--<button type="button" (click)="deleteCity($event)" class="cityDeleteButton">{{city.name}}</button>-->
-      <div class="cityAddition__city">{{city.name}}</div>
-      <button type="button" (click)="deleteCity($event)" class="cityAddition__delete" [value]="city.name">Удалить</button>
+  <p-dataList [value]="cities" [paginator]="true" [rows]="10">
+    <ng-template let-city pTemplate="item">
 
-    </li>
-  </ul>
+      <div class="cityAddition__city">{{city.name}}</div>
+      <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" [(visible)]="display"></p-confirmDialog>
+
+      <button type="button" (click)="confirm($event)" class="cityAddition__delete" [value]="city.name" >
+        <i class="fas fa-trash-alt cityAddition__delete_icone"></i>
+        Удалить</button>
+
+    </ng-template>
+  </p-dataList>
+
+
+  <!--<ul *ngIf="cities" class="cityAddition__container">-->
+    <!--<li *ngFor="let city of cities">-->
+      <!--&lt;!&ndash; нажатие на кнопку - удаление города &ndash;&gt;-->
+      <!--&lt;!&ndash;<button type="button" (click)="deleteCity($event)" class="cityDeleteButton">{{city.name}}</button>&ndash;&gt;-->
+      <!--<div class="cityAddition__city">{{city.name}}</div>-->
+      <!--<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425" [(visible)]="display"></p-confirmDialog>-->
+
+      <!--<button type="button" (click)="confirm($event)" class="cityAddition__delete" [value]="city.name" >-->
+        <!--<i class="fas fa-trash-alt cityAddition__delete_icone"></i>-->
+        <!--Удалить</button>-->
+
+    <!--</li>-->
+  <!--</ul>-->
 </div>
