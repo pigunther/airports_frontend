@@ -1,22 +1,25 @@
-<div class="flightPanel">
+<div [ngClass]="(!flightsArray)? 'flightPanel__empty' : 'flightPanel'">
+
 
   <p-toolbar>
     <div class="center-container">
-    <div class="flightPanel__container">
-      <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__container_first flightPanel__input"></p-autoComplete>
-      <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__input"></p-autoComplete>
+      <div *ngIf="!flightsArray" class="flightPanel__helloworld">
+        Поиск авиабилетов
+      </div>
+      <div class="flightPanel__container">
+        <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__container_first flightPanel__input"></p-autoComplete>
+        <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__input"></p-autoComplete>
 
-      <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel__container_first"></p-calendar>
-      <!--<p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalTime" [minDate]="flightQuery.departureTime"></p-calendar>-->
-
-
-      <!--<button type="button" (click)="search()" class="flightPanel__container_in flightPanel__container_first btn btn_white">Поиск</button>-->
-      <button type="button" (click)="searchComplex()" class="flightPanel__container_in flightPanel__container_first btn btn_white">
-        <i class="fas fa-search flightPanel__search-icone"></i>
-        Поиск</button>
+        <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel__container_first"></p-calendar>
+        <!--<p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalTime" [minDate]="flightQuery.departureTime"></p-calendar>-->
 
 
-    </div>
+        <!--<button type="button" (click)="search()" class="flightPanel__container_in flightPanel__container_first btn btn_white">Поиск</button>-->
+        <button type="button" (click)="searchComplex()" class="flightPanel__container_in flightPanel__container_first btn btn_white">
+          <i class="fas fa-search flightPanel__search-icone"></i>
+          Поиск</button>
+
+      </div>
     </div>
   </p-toolbar>
 
@@ -77,7 +80,7 @@
         <!--</virtual-scroll>-->
 
 
-        <div *ngIf="!flightsArray || flightsArray.length === 0" class="flightPanel_notFound">
+        <div *ngIf="!flightsArray || flightsArray.length === 0" class="flightPanel__notFound">
           По данному запросу ничего не найдено
         </div>
       </p-tabPanel>

@@ -28,9 +28,11 @@
   </div>
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-      <button type="button" pButton label={{buttonDialog}} icon="fa-plus" (click)="changeButton()"></button>
+      <button type="button" pButton label={{buttonDialog}} icon="fa-plus" (click)="changeButton()" class="airportMap__add"></button>
       <div *ngIf="buttonDialog == changeAirportString" >
-        <button type="button" (click)="deleteAirport()" class="airportMap__delete">Удалить</button>
+        <button type="button" (click)="deleteAirport()" class="airportMap__delete">
+          <i class="fas fa-trash-alt airportMap__delete_icone"></i>
+          Удалить</button>
       </div>
     </div>
   </p-footer>

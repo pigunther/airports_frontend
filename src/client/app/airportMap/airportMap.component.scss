@@ -30,14 +30,34 @@ div.ui-dialog-content  {
 
 .airportMap {
   &__delete{
-    border-radius: 5px;
     height: 31px;
     border: none;
     background-color: red;
     color: white;
     float: left !important;
+    width: 95px;
     &:hover {
       background-color: #d91800;
     }
+    &_icone {
+      margin-left: 0px;
+      margin-right: 10px;
+    }
   }
+  &__add {
+    height: 31px;
+    border: none;
+    background-color: $blue-color;
+    color: white;
+    display: flex;
+    align-items: center;
+    //float: left !important;
+    &:hover {
+      background-color: $blue-color-darker;
+    }
+  }
+}
+body .ui-inputtext {
+  padding: 4px 1px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }

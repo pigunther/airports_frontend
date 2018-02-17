@@ -53,3 +53,7 @@ p-tabView.tabs>div.ui-tabview>ul.ui-tabview-nav>li.ui-state-default a{
 .ui-widget-content, .ui-widget-header {
   border: none !important;
 }
+
+body .ui-corner-all {
+  border-radius: 0 !important;
+}
