@@ -25,7 +25,7 @@ export class FlightPanelComponent {
     afterChange() {
       this.searchComplex();
     }
-  }) selectTransfer: string = 'no';
+  }) selectTransfer: string;
 
   flightQuery = new FlightModel();
 
@@ -63,6 +63,13 @@ export class FlightPanelComponent {
             for (let flighti of this.flights) {
               flighti.departureTime = new Date(flighti.departureTime);
               flighti.arrivalTime = new Date(flighti.arrivalTime);
+              flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+                this.flightQuery.departureTime.getMonth(),
+                this.flightQuery.departureTime.getDate());
+              //todo fixed it for real date
+              flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+                this.flightQuery.departureTime.getMonth(),
+                this.flightQuery.departureTime.getDate());
               console.log(flighti);
             }
           }
@@ -76,8 +83,18 @@ export class FlightPanelComponent {
           //for (this.flight of flights) {
           for (let flighti of flights) {
             this.flightsArray.push([flighti]);
+            //console.log(flighti.departureTime);
             flighti.departureTime = new Date(flighti.departureTime);
+            //console.log(flighti.departureTime);
+            flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+                                              this.flightQuery.departureTime.getMonth(),
+                                              this.flightQuery.departureTime.getDate());
             flighti.arrivalTime = new Date(flighti.arrivalTime);
+            //todo fixed it for real date
+            flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+                                              this.flightQuery.departureTime.getMonth(),
+                                              this.flightQuery.departureTime.getDate());
+
             console.log(flighti);
           }
           // }
@@ -107,6 +124,5 @@ export class FlightPanelComponent {
     console.log(event);
   }
 
-  //todo запретить два города одинаковых
   //todo поиск по enter
 }
