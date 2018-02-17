@@ -32,10 +32,12 @@ export class AirportMapComponent {
   buttonDialog: string;
   changeAirportString: string = 'Изменить аэропорт';
 
-    airportForView: AirportModel = new AirportModel();
+  airportForView: AirportModel = new AirportModel();
+
+
 
   constructor (
-    private airportCitiesService: AirportCitiesService
+    private airportCitiesService: AirportCitiesService,
   ) {};
 
   ngOnInit() {
@@ -203,13 +205,15 @@ export class AirportMapComponent {
   deleteAirport() {
     console.log('Удаляем следующий аэропорт');
     console.log(this.airportForView);
-    this.airportCitiesService.deleteAirport(this.airportForView).then(() => {
-      this.initOverlays();
-      console.log('---------Удалено--------');
-      this.dialogVisible = false;
-      //this.airportForView.city = new CityModel('');
+    if (this.airportForView) {
+      this.airportCitiesService.deleteAirport(this.airportForView).then(() => {
+        this.initOverlays();
+        console.log('---------Удалено--------');
+        this.dialogVisible = false;
+        //this.airportForView.city = new CityModel('');
 
-    })
+      })
+    }
   }
 
   cityTip(event: any) {
@@ -291,10 +295,6 @@ export class AirportMapComponent {
 
       console.log('------ Слои с одним определенным загружены --------');
     });
-  }
-
-  updateCoords(event: any) {
-    console.log(event);
   }
 
 
