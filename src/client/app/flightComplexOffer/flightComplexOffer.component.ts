@@ -22,7 +22,7 @@ export class FlightComplexOfferComponent {
   ngOnInit() {
 
 
-    console.log(this.flights);
+    //console.log(this.flights);
     this.length = this.flights.length;
 
     this.flight.airportFromObject = this.flights[0].airportFromObject;
@@ -62,6 +62,8 @@ export class FlightComplexOfferComponent {
       default:
         this.textTransfer = '2 пересадки';
     }
+    //console.log('in ngOnInit of flight offer (complex)');
+    //console.log(this.flight);
 
   }
 

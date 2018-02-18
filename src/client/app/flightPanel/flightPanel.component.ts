@@ -36,7 +36,7 @@ export class FlightPanelComponent {
 
 
   search(): void {
-    console.log(this.flightQuery);
+    //console.log(this.flightQuery);
     //this.flightService.getTotalJson().then((f)=> {
     this.flightService.getFlights(this.flightQuery).then((f)=>  {
       this.flights = f;
@@ -44,11 +44,11 @@ export class FlightPanelComponent {
         flighti.departureTime = new Date(flighti.departureTime);
         flighti.arrivalTime = new Date(flighti.arrivalTime);
         //flighti.airportFrom = this.airportCitiesService.getAirportByName(flighti.airportFrom);
-        console.log(flighti);
+        //console.log(flighti);
       }
     });
-    console.log('these are flights:');
-    console.log(this.flights);
+    //console.log('these are flights:');
+    //console.log(this.flights);
   }
 
   searchComplex() {
@@ -63,14 +63,13 @@ export class FlightPanelComponent {
             for (let flighti of this.flights) {
               flighti.departureTime = new Date(flighti.departureTime);
               flighti.arrivalTime = new Date(flighti.arrivalTime);
-              flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
-                this.flightQuery.departureTime.getMonth(),
-                this.flightQuery.departureTime.getDate());
-              //todo fixed it for real date
-              flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
-                this.flightQuery.departureTime.getMonth(),
-                this.flightQuery.departureTime.getDate());
-              console.log(flighti);
+              // flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+              //   this.flightQuery.departureTime.getMonth(),
+              //   this.flightQuery.departureTime.getDate());
+              // flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+              //   this.flightQuery.departureTime.getMonth(),
+              //   this.flightQuery.departureTime.getDate());
+              //console.log(flighti);
             }
           }
 
@@ -86,16 +85,15 @@ export class FlightPanelComponent {
             //console.log(flighti.departureTime);
             flighti.departureTime = new Date(flighti.departureTime);
             //console.log(flighti.departureTime);
-            flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
-                                              this.flightQuery.departureTime.getMonth(),
-                                              this.flightQuery.departureTime.getDate());
+            // flighti.departureTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+            //                                   this.flightQuery.departureTime.getMonth(),
+            //                                   this.flightQuery.departureTime.getDate());
             flighti.arrivalTime = new Date(flighti.arrivalTime);
-            //todo fixed it for real date
-            flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
-                                              this.flightQuery.departureTime.getMonth(),
-                                              this.flightQuery.departureTime.getDate());
+            // flighti.arrivalTime.setFullYear(this.flightQuery.departureTime.getFullYear(),
+            //                                   this.flightQuery.departureTime.getMonth(),
+            //                                   this.flightQuery.departureTime.getDate());
 
-            console.log(flighti);
+            //console.log(flighti);
           }
           // }
           //console.log(this.flightsArray);
@@ -123,6 +121,8 @@ export class FlightPanelComponent {
   handleSliderEvent(event: any) {
     console.log(event);
   }
+
+
 
   //todo поиск по enter
 }

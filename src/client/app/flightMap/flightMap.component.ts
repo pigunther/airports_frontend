@@ -61,8 +61,8 @@ export class FlightMapComponent {
   }
 
   addMarkerAndLineByAirport(airportFrom: AirportModel, airportTo: AirportModel) {
-    console.log(airportFrom);
-    console.log(airportTo);
+    //console.log(airportFrom);
+    //console.log(airportTo);
 
     let addFrom = new google.maps.Marker({
       position:
@@ -81,11 +81,11 @@ export class FlightMapComponent {
 
     if (findFrom === -1) {
       this.overlays.push(addFrom);
-      console.log('запушали откуда ');
+      //console.log('запушали откуда ');
     }
     if (findTo === -1) {
       this.overlays.push(addTo);
-      console.log('запушали куда')
+      //console.log('запушали куда')
     }
     if (findFrom === -1 || findTo === -1 || this.overlays[findFrom].icon || this.overlays[findTo].icon) {
       let lineSymbol = {
@@ -140,11 +140,11 @@ export class FlightMapComponent {
 
     if (findFrom === -1) {
       this.overlays.push(addFrom);
-      console.log('запушали откуда начало');
+      //console.log('запушали откуда начало');
     }
     if (findTo === -1) {
       this.overlays.push(addTo);
-      console.log('запушали куда конец')
+      //console.log('запушали куда конец')
     }
   }
 
@@ -179,7 +179,7 @@ export class FlightMapComponent {
   initOverlays() {
     if(!this.overlays||this.overlays.length) {
       this.overlays = [];
-      console.log('обнулили слои -----------')
+      //console.log('обнулили слои -----------')
     }
   }
 

@@ -68,18 +68,18 @@ export class AirportMapComponent {
     // this.selectedPosition = event.latLng;
     this.airportForView.parallel = event.latLng.lat();
     this.airportForView.meridian = event.latLng.lng();
-    console.log(event.latLng);
+    //console.log(event.latLng);
   }
 
   handleOverlayClick(event: any) {
     this.msgs = [];
     let isMarker = event.overlay.getTitle() != undefined;
-    console.log('in hangleOverlayClick');
-    console.log(this.overlays[137]);
+    //console.log('in hangleOverlayClick');
+    //console.log(this.overlays[137]);
     if(isMarker) {
 
-      console.log(event.overlay.getTitle());
-      console.log(event.overlay);
+      //console.log(event.overlay.getTitle());
+      //console.log(event.overlay);
 
       let str = event.overlay.getTitle().toString();
       // this.name = str.split(',')[0];
@@ -91,7 +91,7 @@ export class AirportMapComponent {
       this.airportCitiesService.getAllAirports().then((allAirports) => {
 
         let chosenAirport = this.airportCitiesService.getAirportByName(allAirports, this.airportForView.name);
-        console.log(chosenAirport);
+        //console.log(chosenAirport);
         // this.cityName = chosenAirport.cityName;
         this.airportForView = chosenAirport;
 
@@ -152,8 +152,8 @@ export class AirportMapComponent {
   }
 
   updateOverlay() {
-      console.log('updateOverlay : ');
-      console.log(this.overlayForUpdate);
+      //console.log('updateOverlay : ');
+      //console.log(this.overlayForUpdate);
       let index = this.overlays.findIndex((element) => {
         return this.overlayForUpdate.getTitle() === element.getTitle();
       });
@@ -161,10 +161,10 @@ export class AirportMapComponent {
       this.overlays[index] = this.overlayForUpdate;
       //this.overlays[index].draggable = this.draggable;
       this.overlays[index].draggable = true;
-      console.log(index);
-      console.log(this.overlays[index]);
-      console.log(this.overlayForUpdate.draggable);
-      console.log(this.overlays[index].draggable);
+      //console.log(index);
+      //console.log(this.overlays[index]);
+      //console.log(this.overlayForUpdate.draggable);
+      //console.log(this.overlays[index].draggable);
 
   }
 
@@ -173,7 +173,7 @@ export class AirportMapComponent {
     let airport = new AirportModel();
     let cityName = this.airportForView.city.name;
 
-    console.log(this.airportForView);
+    //console.log(this.airportForView);
 
 
     this.airportCitiesService.checkCityByName(this.airportForView.city.name).then((result)=>{
