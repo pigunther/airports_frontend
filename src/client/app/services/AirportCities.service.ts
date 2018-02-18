@@ -20,7 +20,8 @@ export class AirportCitiesService {
   private JSONUrl = '/assets/flights.json';
   private result = '';
 
-  private BaseUrl = 'http://localhost:1234';
+  //private BaseUrl = 'http://localhost:1234';
+  private BaseUrl = 'http://80.93.177.22:1234';
 
   private cities: Promise<CityModel[]>;
 
