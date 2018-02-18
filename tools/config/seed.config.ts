@@ -176,7 +176,7 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Flight search';
+  APP_TITLE = 'FlyScanner';
 
   /**
    * Tracking ID.
