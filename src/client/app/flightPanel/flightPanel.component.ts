@@ -122,7 +122,12 @@ export class FlightPanelComponent {
     console.log(event);
   }
 
-
+  changeCities() {
+     let tmpCity = this.flightQuery.airportFromObject.cityName;
+     this.flightQuery.airportFromObject.cityName = this.flightQuery.airportToObject.cityName;
+     this.flightQuery.airportToObject.cityName = tmpCity;
+     this.searchComplex();
+  }
 
   //todo поиск по enter
 }

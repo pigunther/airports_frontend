@@ -8,9 +8,12 @@
       </div>
       <div class="flightPanel__container">
         <p-autoComplete  placeholder="Откуда" [(ngModel)]="flightQuery.airportFromObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__container_first flightPanel__input"></p-autoComplete>
+        <button type="button" class="flightPanel__changeButton" (click)="changeCities()">
+          <i class="fas fa-exchange-alt"></i>
+        </button>
         <p-autoComplete  placeholder="Куда" [(ngModel)]="flightQuery.airportToObject.cityName" [suggestions]="tipCities" (completeMethod)="cityTip($event)" class="flightPanel__input"></p-autoComplete>
 
-        <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel__container_first"></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" placeholder="Когда" [(ngModel)]="flightQuery.departureTime" [minDate]="flightQuery.departureTime" class="flightPanel__container_first flightPanel_calendar-margin"></p-calendar>
         <!--<p-calendar dateFormat="dd/mm/yy" placeholder="Обратно" [(ngModel)]="flightQuery.arrivalTime" [minDate]="flightQuery.departureTime"></p-calendar>-->
 
 
