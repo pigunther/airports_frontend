@@ -5,7 +5,7 @@
 
     <div class="flightOffer__ticketNameColumn">
       <div >{{ flight.airportFromObject.city.name }}</div>
-      <div >{{ flight.departureTime | date:'d/MM/yy hh:mm' }}</div>
+      <div >{{ flight.departureTime | date:'d/MM/yy HH:mm' }}</div>
       <div >{{ flight.airportFromObject.name}}</div>
 
     </div>
@@ -22,7 +22,7 @@
     </div>
     <div class="flightOffer__ticketNameColumn ">
       <div >{{ flight.airportToObject.city.name }}</div>
-      <div >{{ flight.arrivalTime | date:'d/MM/yy hh:mm'  }}</div>
+      <div >{{ flight.arrivalTime | date:'d/MM/yy HH:mm'  }}</div>
       <div >{{ flight.airportToObject.name}}</div>
     </div>
 
@@ -47,7 +47,7 @@
 
         <div class="flightComplexOffer__ticketNameColumn">
           <div >{{ flighti.airportFromObject.city.name }}</div>
-          <div >{{ flighti.departureTime | date:'d/MM/yy hh:mm'  }}</div>
+          <div >{{ flighti.departureTime | date:'d/MM/yy HH:mm'  }}</div>
           <div >{{ flighti.airportFromObject.name}}</div>
 
         </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="flightComplexOffer__ticketNameColumn ">
           <div >{{ flighti.airportToObject.city.name }}</div>
-          <div >{{ flighti.arrivalTime | date:'d/MM/yy hh:mm' }}</div>
+          <div >{{ flighti.arrivalTime | date:'d/MM/yy HH:mm' }}</div>
           <div >{{ flighti.airportToObject.name}}</div>
         </div>
 
