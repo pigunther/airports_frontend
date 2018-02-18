@@ -1,4 +1,4 @@
-interface PropertyHandlers<T> {
+export interface PropertyHandlers<T> {
   beforeChange?: { (newValue: T, oldValue: T): boolean | void },
   afterChange?: { (newValue: T, oldValue: T): void }
 }
@@ -12,6 +12,7 @@ export function PropertyHandler<T>(handlers: PropertyHandlers<T>): PropertyDecor
     let propertyDescriptor = {
       configurable: true,
       enumerable: false,
+
       get: function () {
         return this[spoofPropertyKey];
       },
